@@ -1,0 +1,45 @@
+.registerWrap{
+    padding:45px 55px; width:430px; margin:0 auto;
+    border:1px solid #dcdcdc;
+}
+
+.registerWrap>a, .registerWrap>a:hover, .registerWrap>a:link, .registerWrap>a:visited{
+    position:relative; margin-bottom:40px; display:block; width:430px; height:65px; text-align:center;
+    background:#f1f1f1; border:1px solid #888; color:#000; text-decoration:none;
+}
+.registerWrap>a:after{
+    bottom:-20px; left:0; position:absolute; display:block; content:''; width:430px; height:1px; 
+    background:#dcdcdc;
+}
+.registerWrap>a>span{
+    line-height:65px;
+    text-decoration:none;
+}
+.registerWrap>a>img{
+    padding-top:21px;
+}
+
+.registerWrap .snsRegister li>a{
+    display:block; width:430px; height:45px; text-align:center; margin-bottom:12px;
+    border:1px solid #dcdcdc; color:#000; text-decoration:none;
+}
+.registerWrap .snsRegister li:last-child>a{
+    margin-bottom:0;
+}
+.registerWrap .snsRegister li>a>span{
+    line-height:45px;
+}
+.registerWrap .snsRegister li>a>img{
+    padding:10px 5px 0 0;
+}
+
+.loginGo{
+    margin-top:20px;
+    text-align:center; color:#666666; font-size:13px;
+}
+.loginGo>a, .loginGo>a:link, .loginGo>a:visited, .loginGo>a:hover{
+    text-decoration:underline solid #3e3f3c; color:#3e3f3c; font-size:13px;
+}
+.loginGo>a:link{
+    text-decoration:underline solid #3e3f3c; color:#3e3f3c;
+}

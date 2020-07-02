@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+.register_ag_2step_wrap{
+    width:1200px; margin:0 auto;
+}
+/* top */
+.register_ag_2step_wrap .top{
+    *zoom:1; height:95px; margin-bottom:50px;
+    border-bottom:1px solid #eaeaea;
+}
+.register_ag_2step_wrap .top:after{
+    display:table; content:''; clear:both;
+}
+.register_ag_2step_wrap .top h1{
+    padding-left:3px; float:left; line-height:95px;
+    font-size:24px; color:#111;
+}
+.register_ag_2step_wrap .top ol{
+    float:right;
+}
+.register_ag_2step_wrap .top ol>li{
+    float:left; line-height:95px; margin-right:40px; position:relative;
+    color:#bdbcbc; font-size:16px; font-weight:500;
+}
+.register_ag_2step_wrap .top ol>li:nth-child(2){
+    color:#3e3d3c;
+}
+.register_ag_2step_wrap .top ol>li:after{
+    display:block; content:''; position:absolute; right:-24px; width:10px; height:11px; top:42px;
+}
+.register_ag_2step_wrap .top ol>li:first-child:after{
+    background:url('/img/register/join-step.png');
+}
+.register_ag_2step_wrap .top ol>li:nth-child(2):after{
+    
+    background:url('/img/register/join-step-this.png');
+}
+.register_ag_2step_wrap .top ol>li:last-child{
+    margin:0;
+}
+
+
+/* form-basic title */
+.register_ag_2step_wrap form .basic_title{
+    *zoom:1;
+}
+.register_ag_2step_wrap form .basic_title:after{
+    content:''; display:table; clear:both;
+}
+.register_ag_2step_wrap form .basic_title h2{
+    margin-bottom:15px; float:left;
+    color:#000; font-size:20px;
+}
+.register_ag_2step_wrap form .basic_title p{
+    float:right; margin-top:10px;
+    color:#999; font-size:13px; font-weight:500;
+}
+.register_ag_2step_wrap form .basic_title p>strong{
+    padding-right:4px; line-height:20px;
+    color:#C70039; font-size:15px; 
+}
+
+/* Form-Table Common-Style */
+table{
+    border-spacing:0;
+}
+.register_ag_2step_wrap form fieldset{
+    border:none;
+}
+.register_ag_2step_wrap form tr>th{
+    padding:20px 0 0 20px; width:140px; text-align:left;
+    font-size:13px; color:#333; background:#f9f9f9; border-bottom:1px solid #eaeaea;
+}
+.register_ag_2step_wrap form tr>th strong{
+    padding-right:6px; line-height:16px;
+    color:#C70039;
+}
+.register_ag_2step_wrap form tr>td{
+    padding-left:20px;
+    border-bottom:1px solid #eaeaea;
+}
+.register_ag_2step_wrap form tr:first-child>th, .register_ag_2step_wrap form tr:first-child>td{
+    border-top:1px solid #999;
+}
+
+/* form-basic td Common-Style */
+.register_ag_2step_wrap form .basic td input{
+    padding:0 10px; width:458px; height:33px; margin:10px 0;
+    color:#444; font-size:13px; border:1px solid #cfcfcf;
+}
+/* form-basic td Style */
+.register_ag_2step_wrap form tr:nth-child(1)>td p{
+    margin:-5px 0 12px 0;
+    color:#444; font-size:13px; 
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td input[type="email"]{
+    width:276px;
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td select{
+    width:108px; height:35px; margin-left:10px; position:relative; top:1px; padding:0 6px;
+    border:1px solid #cfcfcf; font-size:13px; color:#444;
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td optgroup{
+    border:none;
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td optgroup>option:hover{
+    background:#999;
+}
+
+/* 이전, 다음단계 btn */
+.register_ag_2step_wrap .stepBtn{
+    margin:30px auto 50px; *zoom:1; width:420px;
+}
+.register_ag_2step_wrap .stepBtn:after{
+    display:table; clear:both; content:'';
+}
+.register_ag_2step_wrap .stepBtn>a, .register_ag_2step_wrap .stepBtn input{
+    display:block; float:left; width:203px; height:45px; line-height:45px; text-align:center;
+    text-decoration:none; font-size:14px; font-weight:500; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
+}
+.register_ag_2step_wrap .stepBtn>a{
+    margin-right:10px;
+    border:1px solid #ddd; color:#111; 
+}
+.register_ag_2step_wrap .stepBtn>a:hover{
+    background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+}
+.register_ag_2step_wrap .stepBtn input{
+    border:1px solid #444; color:#fff; background:#444; cursor:pointer;
+}
+.register_ag_2step_wrap .stepBtn input:hover{
+    -webkit-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -ms-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -moz-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -o-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+}

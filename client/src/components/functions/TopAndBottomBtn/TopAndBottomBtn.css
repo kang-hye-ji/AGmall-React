@@ -1,0 +1,9 @@
+.topNbottom .topNbottomInner{
+    z-index:150; position:fixed; bottom:30px; right:15px;
+}
+.topNbottom button{
+    display:block;
+}
+.topNbottom button:first-child{
+    margin-bottom:5px;
+}

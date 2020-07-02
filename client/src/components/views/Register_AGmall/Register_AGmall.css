@@ -1,0 +1,212 @@
+@charset "utf-8";
+
+.register_ag_1step_wrap{
+    width:1200px; margin:0 auto;
+}
+/* top */
+.register_ag_1step_wrap .top{
+    *zoom:1; height:95px; margin-bottom:50px;
+    border-bottom:1px solid #eaeaea;
+}
+.register_ag_1step_wrap .top:after{
+    display:table; content:''; clear:both;
+}
+.register_ag_1step_wrap .top h1{
+    padding-left:3px; float:left; line-height:95px;
+    font-size:24px; color:#111;
+}
+.register_ag_1step_wrap .top ol{
+    float:right;
+}
+.register_ag_1step_wrap .top ol>li{
+    float:left; line-height:95px; margin-right:40px; position:relative;
+    color:#bdbcbc; font-size:16px; font-weight:500;
+}
+.register_ag_1step_wrap .top ol>li:first-child{
+    color:#3e3d3c;
+}
+.register_ag_1step_wrap .top ol>li:after{
+    display:block; content:''; position:absolute; right:-24px; width:10px; height:11px; top:42px;
+}
+.register_ag_1step_wrap .top ol>li:first-child:after{
+    background:url('/img/register/join-step-this.png')
+}
+.register_ag_1step_wrap .top ol>li:nth-child(2):after{
+    background:url('/img/register/join-step.png')
+}
+.register_ag_1step_wrap .top ol>li:last-child{
+    margin:0;
+}
+
+
+.register_ag_1step_wrap form fieldset{
+    border:none;
+}
+
+/* 약관동의 & checkbox */
+.register_ag_1step_wrap form .access h2{
+    position:relative; margin-bottom:50px;
+    font-size:20px; color:#111; font-weight:500;
+}
+.register_ag_1step_wrap form .access h2:after{
+    display:block; content:''; position:absolute; height:1px; width:100%; bottom:-15px;
+    background:#000;
+}
+
+input[id="accessAll"] + label, input[id="accessUsage"] + label, input[id="accessPersonal"] + label{
+    display:block; width:100%; height:20px; padding-left:25px; cursor:pointer;
+    background:url('/img/register/check-off.png') left no-repeat;
+}
+input[id="accessAll"]:checked + label, input[id="accessUsage"]:checked + label, input[id="accessPersonal"]:checked + label{
+    background:url('/img/register/check-on.png') left no-repeat;
+}
+input[id="accessAll"]:hover + label, input[id="accessUsage"]:hover + label, input[id="accessPersonal"]:hover + label{
+    background:url('/img/register/check-ov.png') left no-repeat;
+}
+input[id="accessAll"]:checked:hover + label, input[id="accessUsage"]:checked:hover + label, input[id="accessPersonal"]:checked:hover + label{
+    background:url('/img/register/check-on.png') left no-repeat;
+}
+input[id="accessAll"], input[id="accessUsage"], input[id="accessPersonal"]{
+    display:none;
+}
+
+/* 약관동의 - 이용약관 전체동의 */
+.register_ag_1step_wrap form .access ul>li:first-child{
+    margin-bottom:30px;
+}
+input[id="accessAll"] + label > span{
+    line-height:20px;
+    font-size:13px; color:#999;
+}
+input[id="accessAll"] + label > span strong{
+    line-height:20px;
+    font-size:14px; color:#333; 
+}
+
+/* 약관동의 - 이용약관 동의 */
+.register_ag_1step_wrap form .access ul>li:nth-child(2){
+    margin-bottom:30px;
+}
+input[id="accessUsage"] + label > span{
+    line-height:20px;
+    font-size:13px; color:#333;
+}
+input[id="accessUsage"] + label > span strong{
+    line-height:20px;
+}
+input[id="accessUsage"] + label > a{
+    line-height:20px;
+    font-size:12px; color:#333; text-decoration:underline solid #333;
+}
+
+.register_ag_1step_wrap form .access ul>li:nth-child(2)>div{
+    margin-top:10px; width:1160px; height:90px; padding:20px; overflow-y:auto; line-height:18px;
+    border:1px solid #bdbcbc; border-top:1px solid #000; color:#717171; font-size:13px;
+    scrollbar-face-color:#cacaca;
+    scrollbar-arrow-color:#e3e3e3;
+    scrollbar-track-color: #f1f1f1;
+}
+
+.register_ag_1step_wrap form .access ul>li:nth-child(2)>div::-webkit-scrollbar{
+    width:13px;
+    background-color:#f1f1f1;
+}
+.register_ag_1step_wrap form .access ul>li:nth-child(2)>div::-webkit-scrollbar-thumb{
+    background-color:#b8b8b8;
+}
+.register_ag_1step_wrap form .access ul>li:nth-child(2)>div::-webkit-scrollbar-button{
+    background-color:#e3e3e3;
+}
+
+/* 약관동의 - 개인정보 동의 */
+input[id="accessPersonal"] + label > span{
+    line-height:20px;
+    font-size:13px; color:#333;
+}
+input[id="accessPersonal"] + label > span strong{
+    line-height:20px;
+}
+input[id="accessPersonal"] + label > a{
+    line-height:20px;
+    font-size:12px; color:#333; text-decoration:underline solid #333;
+}
+
+.register_ag_1step_wrap form .access ul>li:nth-child(3)>div{
+    margin-top:10px; width:1160px; height:90px; padding:20px; overflow-y:auto; line-height:18px;
+    border:1px solid #bdbcbc; border-top:1px solid #000; color:#717171; font-size:13px;
+    scrollbar-face-color:#cacaca;
+    scrollbar-arrow-color:#e3e3e3;
+    scrollbar-track-color: #f1f1f1;
+}
+
+.register_ag_1step_wrap form .access ul>li:nth-child(3)>div::-webkit-scrollbar{
+    width:13px;
+    background-color:#f1f1f1;
+}
+.register_ag_1step_wrap form .access ul>li:nth-child(3)>div::-webkit-scrollbar-thumb{
+    background-color:#b8b8b8;
+}
+.register_ag_1step_wrap form .access ul>li:nth-child(3)>div::-webkit-scrollbar-button{
+    background-color:#e3e3e3;
+}
+
+
+/* 본인 인증방법 */
+.register_ag_1step_wrap form .identify h2{
+    margin:50px 0 15px 0;
+    font-size:20px; color:#111; font-weight:500;
+}
+.register_ag_1step_wrap form .identify>div{
+    width:100%; padding:40px 0; text-align:center;
+    border:1px solid #bdbcbc; border-top:1px solid #000;
+}
+
+input[id="identiPersonal"] + label{
+    height:20px; padding-left:30px; cursor:pointer; line-height:20px;
+    background:url('/img/register/radio-off.png') left no-repeat;
+}
+input[id="identiPersonal"]:checked + label{
+    background:url('/img/register/radio-on.png') left no-repeat;
+}
+input[id="identiPersonal"]:hover + label{
+    background:url('/img/register/radio-ov.png') left no-repeat;
+}
+input[id="identiPersonal"]:checked:hover + label{
+    background:url('/img/register/radio-on.png') left no-repeat;
+}
+input[id="identiPersonal"]{
+    display:none;
+}
+
+input[id="identiPersonal"] + label>span{
+    font-size:20px; color:#111; font-weight:500; line-height:20px;
+}
+
+/* 이전, 다음단계 btn */
+.register_ag_1step_wrap .stepBtn{
+    margin:30px auto 50px; *zoom:1; width:420px;
+}
+.register_ag_1step_wrap .stepBtn:after{
+    display:table; clear:both; content:'';
+}
+.register_ag_1step_wrap .stepBtn>a, .register_ag_1step_wrap .stepBtn input{
+    display:block; float:left; width:203px; height:45px; line-height:45px; text-align:center;
+    text-decoration:none; font-size:14px; font-weight:500; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
+}
+.register_ag_1step_wrap .stepBtn>a{
+    margin-right:10px;
+    border:1px solid #ddd; color:#111; 
+}
+.register_ag_1step_wrap .stepBtn>a:hover{
+    background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+}
+.register_ag_1step_wrap .stepBtn input{
+    border:1px solid #444; color:#fff; background:#444; cursor:pointer;
+}
+.register_ag_1step_wrap .stepBtn input:hover{
+    -webkit-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -ms-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -moz-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -o-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+}

@@ -1,0 +1,32 @@
+@charset "utf-8";
+@import "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap";
+
+*   {padding:0; margin:0;}
+ol, ul, li       {list-style:none;}
+caption, legend      {font-size:0; width:0; height:0; line-height:0; overflow:hidden; text-indent:-9999px;}
+
+button       {cursor:pointer; border:0; background:none;}
+a:link       {text-decoration:none; color:#000;}
+a:hover,
+a:focus        {text-decoration:underline; color:#000;}
+
+em       {font-style:normal;}
+
+h1,h2,h3,h4,h5,h6,a,span,strong,b,s,u,i,em,p,ul,li,ol,div,dl,dt,dd,th,td,img       {vertical-align:top; line-height:100%; font-family:'Noto Sans KR', 'Nanum Gothic', sans-serif;}
+
+/* 스크롤바 디자인 */
+body{
+    scrollbar-face-color:#cacaca;
+    scrollbar-arrow-color:#e3e3e3;
+    scrollbar-track-color: #f1f1f1;
+}
+body::-webkit-scrollbar{
+    width:13px;
+    background-color:#f1f1f1;
+}
+body::-webkit-scrollbar-thumb{
+    background-color:#b8b8b8;
+}
+body::-webkit-scrollbar-button{
+    background-color:#e3e3e3;
+}
