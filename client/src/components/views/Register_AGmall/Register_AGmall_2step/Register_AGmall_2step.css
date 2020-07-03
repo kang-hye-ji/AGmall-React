@@ -82,6 +82,9 @@ table{
 .register_ag_2step_wrap form tr:first-child>th, .register_ag_2step_wrap form tr:first-child>td{
     border-top:1px solid #999;
 }
+input:focus{
+    outline:none;
+}
 
 /* form-basic td Common-Style */
 .register_ag_2step_wrap form .basic td input{
@@ -89,9 +92,26 @@ table{
     color:#444; font-size:13px; border:1px solid #cfcfcf;
 }
 /* form-basic td Style */
+.register_ag_2step_wrap form tr:nth-child(1)>td>input.wrong{
+    outline:3px solid #C70039;
+}
 .register_ag_2step_wrap form tr:nth-child(1)>td p{
     margin:-5px 0 12px 0;
     color:#444; font-size:13px; 
+}
+.register_ag_2step_wrap form tr:nth-child(1)>td .over6{
+    display:block; margin-bottom:12px;
+    font-size:15px; color:#444;
+}
+.register_ag_2step_wrap form tr:nth-child(1)>td .possibleID{
+    display:block; margin-bottom:12px;
+    font-size:15px; color:#0d75b7;
+}
+.register_ag_2step_wrap form tr:nth-child(2)>td p.combine{
+    display:none;
+}
+.register_ag_2step_wrap form tr:nth-child(2)>td p.wrong{
+    display:block;
 }
 .register_ag_2step_wrap form tr:nth-child(5)>td input[type="email"]{
     width:276px;

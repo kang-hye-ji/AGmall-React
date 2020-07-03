@@ -1,10 +1,52 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../../Header/Header'
 import {withRouter} from 'react-router-dom'
 import './Register_AGmall_2step.css'
 
 function Register_AGmall_2step() {
-    return (
+    const [AlphaNum, setAlphaNum] = useState("");
+    const [PW, setPW] = useState("")
+    const [IdClassName, setIdClassName] = useState("")
+    const [PWClassName, setPWClassName] = useState("")
+    const [PWAttentionClass, setPWAttentionClass] = useState("")
+
+    const IdHandler=(e)=>{
+        const curValue=e.currentTarget.value;
+        const notNum=/[^a-z0-9]/gi;
+        
+        if(notNum.test(curValue)){
+            alert('아이디는 영문 또는 숫자만 입력 가능합니다.')
+        }else{
+            setAlphaNum(curValue.replace(notNum,''))
+        }
+
+        if(curValue.length>0 && curValue.length<6){
+            setIdClassName('wrong');
+            e.preventDefault();
+        }else if(curValue.length>=6 || curValue.length==0){
+            setIdClassName('');
+        }
+    }
+
+    const PWHandler=(e)=>{
+        const curValue=e.currentTarget.value;
+        setPW(curValue);
+        
+        const Num = /[a-z0-9]/gi;
+        const Alpha = /[a-z]/gi;
+        const Special=/[~!@#$%";'^,&*()_+|</=>`?:{[\}]/gi;
+
+        if(curValue.length==0){
+        }else if(Num.test(curValue) && Alpha.test(curValue)){
+        }else if(Num.test(curValue) && Special.test(curValue)){
+        }else if(Alpha.test(curValue) && Special.test(curValue)){
+        }else if(Num.test(curValue) && Special.test(curValue) && Alpha.test(curValue)){
+        }else{
+            setPWAttentionClass('combine wrong')
+        }
+    }
+    
+    return(
         <div>
             <Header/>
             <div className="register_ag_2step_wrap">
@@ -26,14 +68,24 @@ function Register_AGmall_2step() {
                             <tr>
                                 <th><strong>*</strong>아이디</th>
                                 <td>
-                                    <input type="text"/>
+                                    <input type="text" value={AlphaNum} onChange={IdHandler} className={IdClassName}/>
                                     <p>※휴대전화번호로 아이디 사용가능 합니다.</p>
+                                    {AlphaNum.length>0 && AlphaNum.length<6 &&
+                                        <span className="over6">최소 6자 이상 입력해 주세요.</span>
+                                    }
+                                    {AlphaNum.length>=6 &&
+                                        <span className="possibleID">사용 가능한 아이디입니다.</span>
+                                    }
                                 </td>
                             </tr>
                             <tr>
                                 <th><strong>*</strong>비밀번호</th>
                                 <td>
-                                    <input type="password" placeholder="영문, 숫자, 특수문자 중 2가지 이상 조합하세요"/>
+                                    <input type="password" placeholder="영문, 숫자, 특수문자 중 2가지 이상 조합하세요" value={PW} onChange={PWHandler} className={PWClassName}/>
+                                    {PW.length<8 && PW.length>0 &&
+                                        <p>최소 8자 이상 입력하세요.</p>
+                                    }
+                                    <p className={`combine ${PWAttentionClass}`}>사용 불가합니다! 영문, 숫자, 특수문자 중 2가지 이상 조합하세요.</p>
                                 </td>
                             </tr>
                             <tr>
