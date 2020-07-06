@@ -92,7 +92,7 @@ input:focus{
     color:#444; font-size:13px; border:1px solid #cfcfcf;
 }
 /* form-basic td Style */
-.register_ag_2step_wrap form tr:nth-child(1)>td>input.wrong{
+.register_ag_2step_wrap form tr:nth-child(1)>td>input.wrong, .register_ag_2step_wrap form tr:nth-child(2)>td>input.wrong{
     outline:3px solid #C70039;
 }
 .register_ag_2step_wrap form tr:nth-child(1)>td p{
@@ -106,6 +106,9 @@ input:focus{
 .register_ag_2step_wrap form tr:nth-child(1)>td .possibleID{
     display:block; margin-bottom:12px;
     font-size:15px; color:#0d75b7;
+}
+.register_ag_2step_wrap form tr:nth-child(2)>td p{
+    margin-bottom:12px;
 }
 .register_ag_2step_wrap form tr:nth-child(2)>td p.combine{
     display:none;

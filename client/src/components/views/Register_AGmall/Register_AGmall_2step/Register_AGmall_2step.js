@@ -9,6 +9,7 @@ function Register_AGmall_2step() {
     const [IdClassName, setIdClassName] = useState("")
     const [PWClassName, setPWClassName] = useState("")
     const [PWAttentionClass, setPWAttentionClass] = useState("")
+    const [PWState, setPWState] = useState("")
 
     const IdHandler=(e)=>{
         const curValue=e.currentTarget.value;
@@ -23,26 +24,83 @@ function Register_AGmall_2step() {
         if(curValue.length>0 && curValue.length<6){
             setIdClassName('wrong');
             e.preventDefault();
-        }else if(curValue.length>=6 || curValue.length==0){
+        }else if(curValue.length>=6 || curValue.length===0){
             setIdClassName('');
         }
     }
 
     const PWHandler=(e)=>{
+        /* -, ], . 은 입력하지 마세요. */
         const curValue=e.currentTarget.value;
         setPW(curValue);
         
-        const Num = /[a-z0-9]/gi;
-        const Alpha = /[a-z]/gi;
-        const Special=/[~!@#$%";'^,&*()_+|</=>`?:{[\}]/gi;
-
-        if(curValue.length==0){
-        }else if(Num.test(curValue) && Alpha.test(curValue)){
-        }else if(Num.test(curValue) && Special.test(curValue)){
-        }else if(Alpha.test(curValue) && Special.test(curValue)){
-        }else if(Num.test(curValue) && Special.test(curValue) && Alpha.test(curValue)){
+        const Num = curValue.search(/[0-9]/g);
+        const Alpha = curValue.search(/[a-z]/g);
+        const Special=curValue.search(/[~!@#$%";'^,&*()_+|</>=>`?:{[\}]/g);
+        const space=/^\s+|\s+$/g;
+        const combineConfig=(Num>=0 && Alpha>=0) || (Num>=0 && Special>=0) || (Alpha>=0 && Special>=0) || (Num>=0 && Special>=0 && Alpha>=0);
+        const combineDoubleConfig= (Num>=0 && Alpha>=0 && Special<0) || (Num>=0 && Special>=0 && Alpha<0) || (Alpha>=0 && Special>=0 && Num<0);
+        //비밀번호 공백
+        setPW(curValue.replace(space, ''));
+        if (space.test(curValue)){
+            alert('비밀번호는 공백 없이 입력해주세요.')
+        }
+        
+        //안전도 체크
+        let SameLetter_0=0;
+        let SameLetter_1=0;
+        let SameLetter_2=0;
+        for(var i=0; i<curValue.length; i++){
+            var chr_pass_0;
+            var chr_pass_1;
+            var chr_pass_2;
+            if(i>=2){
+                chr_pass_0=curValue.charCodeAt(i-2);
+                chr_pass_1=curValue.charCodeAt(i-1);
+                chr_pass_2=curValue.charCodeAt(i);
+                //동일 문자 체크
+                if((chr_pass_0 ==chr_pass_1) && (chr_pass_1 == chr_pass_2)){
+                    SameLetter_0++;
+                }
+                //연속성(+) 체크
+                if(chr_pass_0 - chr_pass_1 == 1 && chr_pass_1 - chr_pass_2 == 1){
+                    SameLetter_1++;
+                }
+                //연속성(-) 체크
+                if(chr_pass_0 - chr_pass_1 == -1 && chr_pass_1 - chr_pass_2 == -1){
+                    SameLetter_2++;
+                }
+            }
+        }
+        const NotSafeConfig=SameLetter_0>0 || SameLetter_1>0 || SameLetter_2>0;
+        
+        //안전도 여부
+        if(combineDoubleConfig){
+            if(NotSafeConfig){
+                setPWState('안전도 낮음 | 예측하기 쉬운 비밀번호입니다.')
+            }else if(!NotSafeConfig){
+                setPWState('안전도 보통 | 안전한 비밀번호 입니다.')
+            }
+        }else if( Num>=0 && Special>=0 && Alpha>=0){
+            if(NotSafeConfig){
+                setPWState('안전도 보통 | 안전한 비밀번호 입니다.')
+            }else if(!NotSafeConfig){
+                setPWState('안전도 높음 | 예측하기 어려운 비밀번호 입니다.')
+            }
         }else{
-            setPWAttentionClass('combine wrong')
+            setPWState('')
+        }
+        //2가지 조합 메세지, input 빨간테두리 여부
+        if(curValue.length===0 || combineConfig){
+            setPWAttentionClass('')  // 2가지 이상 조합하세요 메세지 여부
+            setPWClassName('')  // input 빨간박스 여부
+        }else{
+            setPWAttentionClass('wrong')
+            setPWClassName('wrong')
+        }
+        //자릿수와 input 빨간테두리 여부
+        if((curValue.length<8 && curValue.length>0) || curValue.length>16){
+            setPWClassName('wrong')
         }
     }
     
@@ -82,10 +140,18 @@ function Register_AGmall_2step() {
                                 <th><strong>*</strong>비밀번호</th>
                                 <td>
                                     <input type="password" placeholder="영문, 숫자, 특수문자 중 2가지 이상 조합하세요" value={PW} onChange={PWHandler} className={PWClassName}/>
+                                    {PW.length>7 && PW.length<17 &&
+                                        <p style={{color:'#0d75b7'}}>{PWState}</p>
+                                    }   
                                     {PW.length<8 && PW.length>0 &&
                                         <p>최소 8자 이상 입력하세요.</p>
                                     }
-                                    <p className={`combine ${PWAttentionClass}`}>사용 불가합니다! 영문, 숫자, 특수문자 중 2가지 이상 조합하세요.</p>
+                                    {PW.length>16 &&
+                                        <p>최대 16자 이하로 입력하세요.</p>
+                                    }
+                                    {PW.length>=8 && PW.length<17 &&
+                                        <p className={`combine ${PWAttentionClass}`}>사용 불가합니다! 영문, 숫자, 특수문자 중 2가지 이상 조합하세요.</p>
+                                    }
                                 </td>
                             </tr>
                             <tr>
