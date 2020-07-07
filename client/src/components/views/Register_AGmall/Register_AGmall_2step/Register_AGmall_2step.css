@@ -92,7 +92,9 @@ input:focus{
     color:#444; font-size:13px; border:1px solid #cfcfcf;
 }
 /* form-basic td Style */
-.register_ag_2step_wrap form tr:nth-child(1)>td>input.wrong, .register_ag_2step_wrap form tr:nth-child(2)>td>input.wrong{
+.register_ag_2step_wrap form tr:nth-child(1)>td>input.wrong, 
+.register_ag_2step_wrap form tr:nth-child(2)>td>input.wrong,
+.register_ag_2step_wrap form tr:nth-child(3)>td>input.wrong{
     outline:3px solid #C70039;
 }
 .register_ag_2step_wrap form tr:nth-child(1)>td p{
@@ -105,7 +107,7 @@ input:focus{
 }
 .register_ag_2step_wrap form tr:nth-child(1)>td .possibleID{
     display:block; margin-bottom:12px;
-    font-size:15px; color:#0d75b7;
+    font-size:15px; color:#329cff;
 }
 .register_ag_2step_wrap form tr:nth-child(2)>td p{
     margin-bottom:12px;
@@ -119,17 +121,77 @@ input:focus{
 .register_ag_2step_wrap form tr:nth-child(5)>td input[type="email"]{
     width:276px;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td select{
-    width:108px; height:35px; margin-left:10px; position:relative; top:1px; padding:0 6px;
-    border:1px solid #cfcfcf; font-size:13px; color:#444;
+.register_ag_2step_wrap form tr:nth-child(5)>td .select{
+    display:inline-block; width:120px; margin:10px 0 0 10px; position:relative; 
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td optgroup{
-    border:none;
+.register_ag_2step_wrap form tr:nth-child(5)>td .select>input{
+    padding:0 0 0 8px; width:120px; height:35px; margin:0;
+    text-align:left; cursor:pointer; font-size:12px; color:#444; border:1px solid #ccc; background:url('/img/register/select-arrow-down-11x7.png') right 8px center no-repeat;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td optgroup>option:hover{
-    background:#999;
+.register_ag_2step_wrap form tr:nth-child(5)>td .select>input.arrowUp{
+    background:url('/img/register/select-arrow-up-11x7.png') right 8px center no-repeat;
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td .select>input:focus{
+    outline:none;
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ul{
+    position:absolute; top:35px;
+    border:1px solid #ccc; border-top:none; background:#fff;
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ul>li{
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ul>li:hover{
+    background:rgba(0,0,0,0.1);
+}
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ul>li>input{
+    width:118px; height:100%; margin:0; padding:10px 0 10px 8px;
+    color:#444; font-size:13px; border:none; background:none; text-align:left; cursor:pointer;
+
 }
 
+
+input[id="EmailinfoAndEventAgree"] + label{
+    display:block; padding-left:30px; cursor:pointer; line-height:20px; margin-bottom:12px;
+    background:url('/img/register/check-off.png') top left no-repeat; font-size:15px;
+}
+input[id="EmailinfoAndEventAgree"]:checked + label{
+    background:url('/img/register/check-on.png') top left no-repeat;
+}
+input[id="EmailinfoAndEventAgree"]:hover + label{
+    background:url('/img/register/check-ov.png') top left no-repeat;
+}
+input[id="EmailinfoAndEventAgree"]:checked:hover + label{
+    background:url('/img/register/check-on.png') top left no-repeat;
+}
+input[id="EmailinfoAndEventAgree"]{
+    display:none;
+}
+
+input[id="EmailinfoAndEventAgree"] + label>span{
+    font-size:15px; color:#0d75b7; line-height:20px;
+}
+
+
+input[id="PhoneinfoAndEventAgree"] + label{
+    display:block; padding-left:30px; cursor:pointer; line-height:20px; margin-bottom:12px;
+    background:url('/img/register/check-off.png') top left no-repeat;
+}
+input[id="PhoneinfoAndEventAgree"]:checked + label{
+    background:url('/img/register/check-on.png') top left no-repeat;
+}
+input[id="PhoneinfoAndEventAgree"]:hover + label{
+    background:url('/img/register/check-ov.png') top left no-repeat;
+}
+input[id="PhoneinfoAndEventAgree"]:checked:hover + label{
+    background:url('/img/register/check-on.png') top left no-repeat;
+}
+input[id="PhoneinfoAndEventAgree"]{
+    display:none;
+}
+
+input[id="PhoneinfoAndEventAgree"] + label>span{
+    font-size:15px; color:#0d75b7; line-height:20px;
+}
 /* 이전, 다음단계 btn */
 .register_ag_2step_wrap .stepBtn{
     margin:30px auto 50px; *zoom:1; width:420px;
