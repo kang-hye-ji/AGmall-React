@@ -94,7 +94,8 @@ input:focus{
 /* form-basic td Style */
 .register_ag_2step_wrap form tr:nth-child(1)>td>input.wrong, 
 .register_ag_2step_wrap form tr:nth-child(2)>td>input.wrong,
-.register_ag_2step_wrap form tr:nth-child(3)>td>input.wrong{
+.register_ag_2step_wrap form tr:nth-child(3)>td>input.wrong,
+.register_ag_2step_wrap form tr:nth-child(5)>td>ul>li>input[type="email"].wrong{
     outline:3px solid #C70039;
 }
 .register_ag_2step_wrap form tr:nth-child(1)>td p{
@@ -134,16 +135,16 @@ input:focus{
 .register_ag_2step_wrap form tr:nth-child(5)>td .select>input:focus{
     outline:none;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ul{
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ol{
     position:absolute; top:35px;
     border:1px solid #ccc; border-top:none; background:#fff;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ul>li{
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li{
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ul>li:hover{
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li:hover{
     background:rgba(0,0,0,0.1);
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ul>li>input{
+.register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li>input{
     width:118px; height:100%; margin:0; padding:10px 0 10px 8px;
     color:#444; font-size:13px; border:none; background:none; text-align:left; cursor:pointer;
 

@@ -11,12 +11,14 @@ function Register_AGmall_2step() {
     const [name, setname] = useState("")
     const [phone, setphone] = useState("")
     const [EmailBtnValue, setEmailBtnValue] = useState("직접입력")
+    const [EmailValue, setEmailValue] = useState("")
     /* className */
     const [IdClassName, setIdClassName] = useState("")
     const [PWClassName, setPWClassName] = useState("")
     const [PWAttentionClass, setPWAttentionClass] = useState("")
     const [confirmPWClassName, setconfirmPWClassName] = useState("")
     const [EmailBtnClassName, setEmailBtnClassName] = useState("")
+    const [EmailInputClassName, setEmailInputClassName] = useState("")
     /* etc */
     const [PWState, setPWState] = useState("")
     const [OpenEmailSelector, setOpenEmailSelector] = useState(false)
@@ -41,13 +43,13 @@ function Register_AGmall_2step() {
     }
     /* 비밀번호 */
     const PWHandler=(e)=>{
-        /* -, ], . 은 입력하지 마세요. */
+        /* -, . 은 입력하지 마세요. */
         const curValue=e.currentTarget.value;
         setPW(curValue);
         
         const Num = curValue.search(/[0-9]/g);
         const Alpha = curValue.search(/[a-z]/g);
-        const Special=curValue.search(/[~!@#$%";'^,&*()_+|</>=>`?:{[\}]/g);
+        const Special=curValue.search(/[~!@#$%";'^,&*()_+|</>=>`?:{[\]\\}]/g);
         const space=/^\s+|\s+$/g;
         const combineConfig=(Num>=0 && Alpha>=0) || (Num>=0 && Special>=0) || (Alpha>=0 && Special>=0) || (Num>=0 && Special>=0 && Alpha>=0);
         const combineDoubleConfig= (Num>=0 && Alpha>=0 && Special<0) || (Num>=0 && Special>=0 && Alpha<0) || (Alpha>=0 && Special>=0 && Num<0);
@@ -70,15 +72,15 @@ function Register_AGmall_2step() {
                 chr_pass_1=curValue.charCodeAt(i-1);
                 chr_pass_2=curValue.charCodeAt(i);
                 //동일 문자 체크
-                if((chr_pass_0 ==chr_pass_1) && (chr_pass_1 == chr_pass_2)){
+                if((chr_pass_0 === chr_pass_1) && (chr_pass_1 === chr_pass_2)){
                     SameLetter_0++;
                 }
                 //연속성(+) 체크
-                if(chr_pass_0 - chr_pass_1 == 1 && chr_pass_1 - chr_pass_2 == 1){
+                if(chr_pass_0 - chr_pass_1 === 1 && chr_pass_1 - chr_pass_2 === 1){
                     SameLetter_1++;
                 }
                 //연속성(-) 체크
-                if(chr_pass_0 - chr_pass_1 == -1 && chr_pass_1 - chr_pass_2 == -1){
+                if(chr_pass_0 - chr_pass_1 === -1 && chr_pass_1 - chr_pass_2 === -1){
                     SameLetter_2++;
                 }
             }
@@ -129,6 +131,31 @@ function Register_AGmall_2step() {
         setname(e.currentTarget.value)
     }
     /* 이메일 */
+    const EmailHandler=(e)=>{
+        const curValue=e.currentTarget.value;
+        setEmailValue(curValue)
+
+        const AtIndex=curValue.indexOf("@"); // @ 위치값
+        const FromAtString=curValue.substring(AtIndex+1);  // @를 제외하고 @ 뒤의 문자
+        const DotIndex=FromAtString.indexOf('.'); //@ 뒤의 dot의 index
+        const FromDotString= FromAtString.substring(DotIndex+1); // @ 뒤의 dot 뒤의 문자
+        const ToAtIndex=curValue.substring(AtIndex,0) // id 부분 = @ 앞 문자
+        
+        if(curValue===''){
+            setEmailInputClassName("")
+        }else if(curValue.search('@')<0 || FromAtString.search('.')<1 || FromDotString==='' || ToAtIndex==='@'
+            // @이 없는가
+            // @ 뒤에 점이 없는가 or @과 점 사이에 문자열이 없는가
+            // 점 뒤에 문자열이 있는지
+            // @ 앞에 아이디가 있는지
+            // 위 2번째 식에서 <0으로 하면 잘 먹었는데 현재 <=0이나 <1로 하면 안된다.
+        ){
+            setEmailInputClassName("wrong")
+        }else{
+            setEmailInputClassName("")
+        }
+        console.log(FromAtString.search('.'))
+    }
     const emailSelectorBtnHandler=(e)=>{
         setOpenEmailSelector(!OpenEmailSelector)
         if(EmailBtnClassName === ""){
@@ -137,7 +164,8 @@ function Register_AGmall_2step() {
             setEmailBtnClassName("")
         }
     }
-    const emailSelectorClickHandler=(e)=>{
+    /* 위 함수와 결합할지 생각해보기 */
+    const emailSelectorClickHandler=()=>{
         setOpenEmailSelector(!OpenEmailSelector)
         if(EmailBtnClassName === ""){
             setEmailBtnClassName("arrowUp")
@@ -146,8 +174,24 @@ function Register_AGmall_2step() {
         }
     }
     const emailOptionClickHandler=(e)=>{
-        setEmailBtnValue(`@ ${e.currentTarget.value}`)
+        const curValue=e.currentTarget.value;
+        if(curValue === '직접입력'){
+            setEmailBtnValue('직접입력')
+            if(EmailValue.search('@')<0){
+                setEmailValue(`${EmailValue}@`)
+            }
+        }else{
+            setEmailBtnValue(`@ ${curValue}`)
+            if(EmailValue.search('@')>=0){
+                let AtIndex=EmailValue.indexOf('@');
+                let TargetString=EmailValue.substring(AtIndex+1);
+                setEmailValue(EmailValue.replace(TargetString, curValue))
+            }else{
+                setEmailValue(`${EmailValue}@${curValue}`)
+            }
+        }
     }
+    
     /* 휴대폰 번호 */
     const PhoneHandler=(e)=>{
         setphone(e.currentTarget.value)
@@ -171,11 +215,12 @@ function Register_AGmall_2step() {
                     </div>
                     <fieldset className="basic">
                         <table>
+                            <caption>기본 정보</caption>
                             <tbody>
                                 <tr>
                                     <th><strong>*</strong>아이디</th>
                                     <td>
-                                        <input type="text" value={AlphaNum} onChange={IdHandler} className={IdClassName}/>
+                                        <input title="아이디" type="text" value={AlphaNum} onChange={IdHandler} className={IdClassName}/>
                                         <p>※휴대전화번호로 아이디 사용가능 합니다.</p>
                                         {AlphaNum.length>0 && AlphaNum.length<6 &&
                                             <span className="over6">최소 6자 이상 입력해 주세요.</span>
@@ -188,7 +233,7 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>비밀번호</th>
                                     <td>
-                                        <input type="password" placeholder="영문, 숫자, 특수문자 중 2가지 이상 조합하세요" value={PW} onChange={PWHandler} className={PWClassName}/>
+                                        <input title="비밀번호" type="password" placeholder="영문, 숫자, 특수문자 중 2가지 이상 조합하세요" value={PW} onChange={PWHandler} className={PWClassName}/>
                                         {PW.length>7 && PW.length<17 &&
                                             <p style={{color:'#329cff'}}>{PWState}</p>
                                         }   
@@ -206,7 +251,7 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>비밀번호 확인</th>
                                     <td>
-                                        <input type="password" value={confirmPW} onChange={confirmPWHandler} className={confirmPWClassName}/>
+                                        <input title="비밀번호 확인" type="password" value={confirmPW} onChange={confirmPWHandler} className={confirmPWClassName}/>
                                         { PW!==confirmPW &&
                                         confirmPW.length>0 &&
                                             <p style={{marginBottom:'12px', fontSize:'15px', color:'#444'}}>비밀번호가 서로 다릅니다.</p>
@@ -220,7 +265,7 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>이름</th>
                                     <td>
-                                        <input type="text" value={name} onChange={nameHandler}/>
+                                        <input title="이름" type="text" value={name} onChange={nameHandler}/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -228,20 +273,20 @@ function Register_AGmall_2step() {
                                     <td>
                                         <ul>
                                             <li>
-                                                <input type="email"/>
+                                                <input value={EmailValue} onChange={EmailHandler} title="이메일" type="email" className={EmailInputClassName}/>
                                                 <div className="select">
-                                                    <input type="button" value={EmailBtnValue} className={EmailBtnClassName} onClick={emailSelectorBtnHandler}/>
+                                                    <input title="이메일주소 선택버튼" type="button" value={EmailBtnValue} className={EmailBtnClassName} onClick={emailSelectorBtnHandler}/>
                                                     {OpenEmailSelector &&
-                                                        <ul onClick={emailSelectorClickHandler}>
-                                                            <li><input type="button" value="직접입력" onClick={emailOptionClickHandler}/></li>
-                                                            <li><input type="button" value="naver.com" onClick={emailOptionClickHandler}/></li>
-                                                            <li><input type="button" value="hanmail.net" onClick={emailOptionClickHandler}/></li>
-                                                            <li><input type="button" value="daum.net" onClick={emailOptionClickHandler}/></li>
-                                                            <li><input type="button" value="nate.com" onClick={emailOptionClickHandler}/></li>
-                                                            <li><input type="button" value="hotmail.com" onClick={emailOptionClickHandler}/></li>
-                                                            <li><input type="button" value="gmail.com" onClick={emailOptionClickHandler}/></li>
-                                                            <li><input type="button" value="icloud.com" onClick={emailOptionClickHandler}/></li>
-                                                        </ul>
+                                                        <ol onClick={emailSelectorClickHandler}>
+                                                            <li><input title="이메일주소 직접입력" type="button" value="직접입력" onClick={emailOptionClickHandler}/></li>
+                                                            <li><input title="네이버 이메일주소" type="button" value="naver.com" onClick={emailOptionClickHandler}/></li>
+                                                            <li><input title="한메일 이메일주소" type="button" value="hanmail.net" onClick={emailOptionClickHandler}/></li>
+                                                            <li><input title="다음 이메일주소" type="button" value="daum.net" onClick={emailOptionClickHandler}/></li>
+                                                            <li><input title="네이트 이메일주소" type="button" value="nate.com" onClick={emailOptionClickHandler}/></li>
+                                                            <li><input title="핫메일 이메일주소" type="button" value="hotmail.com" onClick={emailOptionClickHandler}/></li>
+                                                            <li><input title="쥐메일 이메일주소" type="button" value="gmail.com" onClick={emailOptionClickHandler}/></li>
+                                                            <li><input title="아이클라우드 이메일주소" type="button" value="icloud.com" onClick={emailOptionClickHandler}/></li>
+                                                        </ol>
                                                     }
                                                 </div>
                                             </li>
@@ -258,7 +303,7 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>휴대폰번호</th>
                                     <td>
-                                        <input type="tel" onChange={PhoneHandler} value={phone}/>
+                                        <input title="휴대폰번호" type="tel" onChange={PhoneHandler} value={phone}/>
                                         <input type="checkbox" id="PhoneinfoAndEventAgree"/>
                                         <label htmlFor="PhoneinfoAndEventAgree">정보/이벤트 메일 수신에 동의합니다.<br/><span>SMS 수신시 1,000원 적립금 즉시 지급됩니다.</span></label>
                                     </td>
@@ -266,10 +311,10 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>주소</th>
                                     <td>
-                                        <input type="text"/>
+                                        <input title="우편번호" type="text"/>
                                         <button>우편번호검색</button>
-                                        <input type="text"/>
-                                        <input type="text"/>
+                                        <input title="주소" type="text"/>
+                                        <input title="상세주소" type="text"/>
                                     </td>
                                 </tr>
                             </tbody>
@@ -278,8 +323,8 @@ function Register_AGmall_2step() {
                     <h2>부가 정보</h2>
                     <fieldset className="additional">
                         <table>
+                            <caption>부가 정보</caption>
                             <tbody>
-
                                 <tr>
                                     <th><strong>*</strong>성별</th>
                                     <td>
@@ -298,20 +343,20 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>생일</th>
                                     <td>
-                                        <select>
+                                        <select title="생년월일 양력, 음력 여부 선택">
                                             <optgroup>
                                                 <option value="opt">선택</option>
                                                 <option value="solar">양력</option>
                                                 <option value="lunar">음력</option>
                                             </optgroup>
                                         </select>
-                                        <input type="date"/>
+                                        <input title="생년월일" type="date"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>추천인 아이디</th>
                                     <td>
-                                        <input type="text"/>
+                                        <input title="추천인 아이디" type="text"/>
                                         <p>회원가입 시만 기재 가능합니다. *추후 수정 불가</p>
                                     </td>
                                 </tr>
@@ -337,7 +382,7 @@ function Register_AGmall_2step() {
                 <div className="stepBtn">
                     <button type="button">이전단계</button>
                     <form>
-                        <input type="submit" value="다음단계"/>
+                        <input title="다음단계" type="submit" value="다음단계"/>
                     </form>
                 </div>
             </div>

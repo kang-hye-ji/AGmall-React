@@ -20,7 +20,7 @@ function Header() {
                             </h1>
                             <div className="search">
                                 <form>
-                                    <input type="text" placeholder="루테인"/>
+                                    <input title="검색창" type="text" placeholder="루테인"/>
                                     <button type="button" className="searchBt">
                                         <img src="/img/layout/searchBt.png" alt="검색버튼"/>
                                     </button>
