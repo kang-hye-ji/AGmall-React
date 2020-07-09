@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Header from '../../Header/Header'
 import {withRouter} from 'react-router-dom'
 import './Register_AGmall_2step.css'
+/* import Post from './Sections/Post/Post' */
 
 function Register_AGmall_2step() {
     /* value */
@@ -22,6 +23,8 @@ function Register_AGmall_2step() {
     /* etc */
     const [PWState, setPWState] = useState("")
     const [OpenEmailSelector, setOpenEmailSelector] = useState(false)
+    const [EmailFormRight, setEmailFormRight] = useState(false)
+    const [EmailWrongMsg, setEmailWrongMsg] = useState("")
 
     /* 아이디 */
     const IdHandler=(e)=>{
@@ -135,27 +138,35 @@ function Register_AGmall_2step() {
         const curValue=e.currentTarget.value;
         setEmailValue(curValue)
 
-        const AtIndex=curValue.indexOf("@"); // @ 위치값
+        const AtIndex=curValue.lastIndexOf("@"); // @ 위치값
         const FromAtString=curValue.substring(AtIndex+1);  // @를 제외하고 @ 뒤의 문자
-        const DotIndex=FromAtString.indexOf('.'); //@ 뒤의 dot의 index
+        const DotIndex=FromAtString.lastIndexOf('.'); //@ 뒤의 dot의 index
         const FromDotString= FromAtString.substring(DotIndex+1); // @ 뒤의 dot 뒤의 문자
-        const ToAtIndex=curValue.substring(AtIndex,0) // id 부분 = @ 앞 문자
-        
+        const ToAtString=curValue.substring(AtIndex,0) // id 부분 = @ 제외하고 앞의 문자
         if(curValue===''){
             setEmailInputClassName("")
-        }else if(curValue.search('@')<0 || FromAtString.search('.')<1 || FromDotString==='' || ToAtIndex==='@'
-            // @이 없는가
-            // @ 뒤에 점이 없는가 or @과 점 사이에 문자열이 없는가
-            // 점 뒤에 문자열이 있는지
-            // @ 앞에 아이디가 있는지
-            // 위 2번째 식에서 <0으로 하면 잘 먹었는데 현재 <=0이나 <1로 하면 안된다.
-        ){
-            setEmailInputClassName("wrong")
+            setEmailWrongMsg("")
         }else{
-            setEmailInputClassName("")
+            setEmailWrongMsg("이메일을 정확하게 입력해주세요.")
+            if(curValue.search('@')>-1){
+                if(DotIndex<=0 || FromDotString==='' || ToAtString===''){
+                    // @ 뒤에 점이 없는가 or @과 점 사이에 문자열이 없는가
+                    // 점 뒤에 문자열이 있는지
+                    // @ 앞에 아이디가 있는지
+                    setEmailInputClassName("wrong")
+                    setEmailFormRight(false)
+                }else{
+                    setEmailInputClassName("")
+                    setEmailFormRight(true)
+                }
+            }else{
+                // @이 없는가
+                setEmailInputClassName("wrong")
+                setEmailFormRight(false)
+            }
         }
-        console.log(FromAtString.search('.'))
     }
+    //kanghj9380@naver.com
     const emailSelectorBtnHandler=(e)=>{
         setOpenEmailSelector(!OpenEmailSelector)
         if(EmailBtnClassName === ""){
@@ -183,7 +194,7 @@ function Register_AGmall_2step() {
         }else{
             setEmailBtnValue(`@ ${curValue}`)
             if(EmailValue.search('@')>=0){
-                let AtIndex=EmailValue.indexOf('@');
+                let AtIndex=EmailValue.lastIndexOf('@');
                 let TargetString=EmailValue.substring(AtIndex+1);
                 setEmailValue(EmailValue.replace(TargetString, curValue))
             }else{
@@ -294,8 +305,11 @@ function Register_AGmall_2step() {
                                                 <input type="checkbox" id="EmailinfoAndEventAgree"/>
                                                 <label htmlFor="EmailinfoAndEventAgree">정보/이벤트 메일 수신에 동의합니다.<br/><span>이메일 수신시 1,000원 적립금 즉시 지급됩니다.</span></label>
                                             </li>
-                                            <li classnmae="checkEmailType" style={{display:'none'}}>
-                                                이메일을 정확하게 입력해주세요.
+                                            <li>
+                                                {EmailFormRight 
+                                                    ? <p style={{color:'#329cff', fontSize:'15px', marginBottom:'12px'}}>사용 가능한 이메일입니다.</p>
+                                                : <p style={{color:'#444', fontSize:'15px', marginBottom:'12px'}}>{EmailWrongMsg}</p>
+                                                }
                                             </li>
                                         </ul>
                                     </td>
@@ -303,7 +317,7 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>휴대폰번호</th>
                                     <td>
-                                        <input title="휴대폰번호" type="tel" onChange={PhoneHandler} value={phone}/>
+                                        <input title="휴대폰번호" type="tel" onChange={PhoneHandler} value={phone}/><br/>
                                         <input type="checkbox" id="PhoneinfoAndEventAgree"/>
                                         <label htmlFor="PhoneinfoAndEventAgree">정보/이벤트 메일 수신에 동의합니다.<br/><span>SMS 수신시 1,000원 적립금 즉시 지급됩니다.</span></label>
                                     </td>
@@ -311,10 +325,13 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>주소</th>
                                     <td>
-                                        <input title="우편번호" type="text"/>
-                                        <button>우편번호검색</button>
-                                        <input title="주소" type="text"/>
-                                        <input title="상세주소" type="text"/>
+                                        {/* <input title="우편번호" type="text" className="postNum" value={postNumber}/>
+                                        <form type="submit">
+                                            <input title="우편번호 검색" type="button" value="우편번호 검색" className="postSchBtn"/>
+                                        </form>
+                                        <br/><input title="주소" type="text" className="address"/><br/>
+                                        <input title="상세주소" placholder="상세주소" type="text" className="detailedAddress"/> */}
+                                        {/* <Post/> */}
                                     </td>
                                 </tr>
                             </tbody>

@@ -62,7 +62,7 @@
 
 /* Form-Table Common-Style */
 table{
-    border-spacing:0;
+    border-spacing:0; width:100%;
 }
 .register_ag_2step_wrap form fieldset{
     border:none;
@@ -139,20 +139,16 @@ input:focus{
     position:absolute; top:35px;
     border:1px solid #ccc; border-top:none; background:#fff;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li{
-}
 .register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li:hover{
     background:rgba(0,0,0,0.1);
 }
 .register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li>input{
     width:118px; height:100%; margin:0; padding:10px 0 10px 8px;
     color:#444; font-size:13px; border:none; background:none; text-align:left; cursor:pointer;
-
 }
 
-
 input[id="EmailinfoAndEventAgree"] + label{
-    display:block; padding-left:30px; cursor:pointer; line-height:20px; margin-bottom:12px;
+    display:inline-block; padding-left:30px; cursor:pointer; line-height:20px; margin-bottom:12px;
     background:url('/img/register/check-off.png') top left no-repeat; font-size:15px;
 }
 input[id="EmailinfoAndEventAgree"]:checked + label{
@@ -167,14 +163,12 @@ input[id="EmailinfoAndEventAgree"]:checked:hover + label{
 input[id="EmailinfoAndEventAgree"]{
     display:none;
 }
-
 input[id="EmailinfoAndEventAgree"] + label>span{
     font-size:15px; color:#0d75b7; line-height:20px;
 }
 
-
 input[id="PhoneinfoAndEventAgree"] + label{
-    display:block; padding-left:30px; cursor:pointer; line-height:20px; margin-bottom:12px;
+    display:inline-block; padding-left:30px; cursor:pointer; line-height:20px; margin-bottom:12px;
     background:url('/img/register/check-off.png') top left no-repeat;
 }
 input[id="PhoneinfoAndEventAgree"]:checked + label{
@@ -189,10 +183,36 @@ input[id="PhoneinfoAndEventAgree"]:checked:hover + label{
 input[id="PhoneinfoAndEventAgree"]{
     display:none;
 }
-
 input[id="PhoneinfoAndEventAgree"] + label>span{
     font-size:15px; color:#0d75b7; line-height:20px;
 }
+
+/* .register_ag_2step_wrap form tr:nth-child(7)>td .postNum{
+    width:200px; margin:10px 0 0 0;
+}
+.register_ag_2step_wrap form tr:nth-child(7)>td form{
+    display:inline-block; margin:0 0 0 10px;
+}
+.register_ag_2step_wrap form tr:nth-child(7)>td .postSchBtn{
+    width:100px; height:35px; line-height:35px; text-align:center; padding:0 7px; margin:10px 0 0 0;
+    cursor:pointer; border:1px solid #ddd; color:#444; font-weight:600; 
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
+    -webkit-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    -ms-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    -moz-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    -o-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+}
+.register_ag_2step_wrap form tr:nth-child(7)>td .postSchBtn:hover{
+    background:rgba(230,230,230,0.2);
+}
+.register_ag_2step_wrap form tr:nth-child(7)>td .address{
+    margin:10px 0 0 0;
+}
+.register_ag_2step_wrap form tr:nth-child(7)>td .detailedAddress{
+    margin:10px 0;
+} */
+
 /* 이전, 다음단계 btn */
 .register_ag_2step_wrap .stepBtn{
     margin:30px auto 50px; *zoom:1; width:420px;
@@ -209,6 +229,10 @@ input[id="PhoneinfoAndEventAgree"] + label>span{
     border:1px solid #ddd; color:#111; 
 }
 .register_ag_2step_wrap .stepBtn>a:hover{
+    -webkit-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -ms-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -moz-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -o-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
     background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
 }
 .register_ag_2step_wrap .stepBtn input{

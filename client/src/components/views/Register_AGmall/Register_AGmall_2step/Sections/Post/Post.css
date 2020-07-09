@@ -1,0 +1,32 @@
+/* @charset "utf-8";
+
+input{
+    padding:0 10px; width:458px; height:33px; margin:10px 0;
+    color:#444; font-size:13px; border:1px solid #cfcfcf;
+}
+
+.postNum{
+    width:200px; margin:10px 0 0 0;
+}
+form{
+    display:inline-block; margin:0 0 0 10px;
+}
+.postSchBtn{
+    width:100px; height:35px; line-height:35px; text-align:center; padding:0 7px; margin:10px 0 0 0;
+    cursor:pointer; border:1px solid #ddd; color:#444; font-weight:600; 
+    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
+    -webkit-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    -ms-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    -moz-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    -o-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+    background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+}
+.postSchBtn:hover{
+    background:rgba(230,230,230,0.2);
+}
+.address{
+    margin:10px 0 0 0;
+}
+.detailedAddress{
+    margin:10px 0;
+} */

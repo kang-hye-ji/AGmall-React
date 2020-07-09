@@ -198,6 +198,10 @@ input[id="identiPersonal"] + label>span{
     border:1px solid #ddd; color:#111; 
 }
 .register_ag_1step_wrap .stepBtn>a:hover{
+    -webkit-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -moz-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -o-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -ms-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
     background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
 }
 .register_ag_1step_wrap .stepBtn input{
