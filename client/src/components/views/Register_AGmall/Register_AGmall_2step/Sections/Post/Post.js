@@ -13,6 +13,7 @@ function Post() {
     const [openPostLayer, setopenPostLayer] = useState(false)
     
     const handleComplete = (data) => {
+        setopenPostLayer(!openPostLayer)
         let fullAddress = data.address;
         let extraAddress = ''; 
         
@@ -30,21 +31,22 @@ function Post() {
         setpostNum(data.zonecode);
         setaddress(fullAddress);
     }
+    /* extra address 처리 */
     return (
         <div className="Register_AG_2_POST">
-            <AnimateOnChange>
+            <AnimateOnChange durationOut="200">
                 {openPostLayer &&
                     <React.Fragment>
-                        <div className="PostLayerWrap" style={{zIndex:'2000'}}>
-                                <div id="PostLayer" style={{width:'300px', height:'500px', position:'fixed', top:'20px', left:'30%', zIndex:'2000'}}>
-                                    <DaumPostcode 
-                                        onComplete={handleComplete}
-                                        autoClose={true}
-                                        animation={true}
-                                    />
-                                </div>
+                        <div id="PostLayer" style={{/* background:'#222', width:'545px', height:'424px', position:'fixed', top:'50%', left:'50%', transform:'translate(-50%, -50%)', zIndex:'2000' */}}>
+                            <button type="button" title="닫기버튼" onClick={e=>setopenPostLayer(!openPostLayer)}>x</button>
+                            <DaumPostcode 
+                                onComplete={handleComplete}
+                                autoClose={true}
+                                animation={true}
+                                style={{width:'541px', position:'absolute', bottom:'2px', left:'2px'}}
+                            />
                         </div>
-                        <div className="PostLayerDimm"></div>
+                        <div className="PostLayerDimm" onClick={e=>setopenPostLayer(false)}></div>
                     </React.Fragment>
                 }
             </AnimateOnChange>

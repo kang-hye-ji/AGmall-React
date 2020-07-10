@@ -166,7 +166,6 @@ function Register_AGmall_2step() {
             }
         }
     }
-    
     const emailSelectorBtnHandler=(e)=>{
         setOpenEmailSelector(!OpenEmailSelector)
         if(EmailBtnClassName === ""){
@@ -184,7 +183,6 @@ function Register_AGmall_2step() {
             setEmailBtnClassName("")
         }
     }
-    
     const emailOptionClickHandler=(e)=>{
         const curValue=e.currentTarget.value;
         if(curValue === '직접입력'){
@@ -397,9 +395,9 @@ function Register_AGmall_2step() {
                     </fieldset>
                 </form>
                 <div className="stepBtn">
-                    <button type="button">이전단계</button>
+                    <button type="button">취소</button>
                     <form>
-                        <input title="다음단계" type="submit" value="다음단계"/>
+                        <input title="회원가입" type="submit" value="회원가입"/>
                     </form>
                 </div>
             </div>
