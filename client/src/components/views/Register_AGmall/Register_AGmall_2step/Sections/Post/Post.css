@@ -1,17 +1,18 @@
-/* @charset "utf-8";
+@charset "utf-8";
+/* 부모컴포넌트 CSS 초기화 */
 
-input{
+.register_ag_2step_wrap form .basic td input{
     padding:0 10px; width:458px; height:33px; margin:10px 0;
     color:#444; font-size:13px; border:1px solid #cfcfcf;
 }
 
-.postNum{
+.register_ag_2step_wrap form .basic td input.postNum{
     width:200px; margin:10px 0 0 0;
 }
-form{
+.Register_AG_2_POST form{
     display:inline-block; margin:0 0 0 10px;
 }
-.postSchBtn{
+.register_ag_2step_wrap form .basic td input.postSchBtn{
     width:100px; height:35px; line-height:35px; text-align:center; padding:0 7px; margin:10px 0 0 0;
     cursor:pointer; border:1px solid #ddd; color:#444; font-weight:600; 
     border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
@@ -21,12 +22,28 @@ form{
     -o-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
     background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
 }
-.postSchBtn:hover{
+.register_ag_2step_wrap form .basic td input.postSchBtn:hover{
     background:rgba(230,230,230,0.2);
 }
-.address{
+.register_ag_2step_wrap form .basic td input.address{
     margin:10px 0 0 0;
 }
-.detailedAddress{
+.register_ag_2step_wrap form .basic td input.detailedAddress{
     margin:10px 0;
-} */
+}
+
+/* 레이어 */
+.Register_AG_2_POST .PostLayerWrap{
+    z-index:2000; position:fixed;
+}
+#PostLayer{
+    z-index:2000; position:fixed;
+}
+.Register_AG_2_POST .PostLayerDimm{
+    position:fixed; width:100%; height:100%; top:0; left:0; z-index:1000;
+    background:rgba(0,0,0,0.5);
+}
+
+@keyframes{
+    /* animation: */
+}

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Header from '../../Header/Header'
 import {withRouter} from 'react-router-dom'
 import './Register_AGmall_2step.css'
-/* import Post from './Sections/Post/Post' */
+import Post from './Sections/Post/Post'
 
 function Register_AGmall_2step() {
     /* value */
@@ -166,7 +166,7 @@ function Register_AGmall_2step() {
             }
         }
     }
-    //kanghj9380@naver.com
+    
     const emailSelectorBtnHandler=(e)=>{
         setOpenEmailSelector(!OpenEmailSelector)
         if(EmailBtnClassName === ""){
@@ -184,6 +184,7 @@ function Register_AGmall_2step() {
             setEmailBtnClassName("")
         }
     }
+    
     const emailOptionClickHandler=(e)=>{
         const curValue=e.currentTarget.value;
         if(curValue === '직접입력'){
@@ -202,7 +203,6 @@ function Register_AGmall_2step() {
             }
         }
     }
-    
     /* 휴대폰 번호 */
     const PhoneHandler=(e)=>{
         setphone(e.currentTarget.value)
@@ -331,7 +331,7 @@ function Register_AGmall_2step() {
                                         </form>
                                         <br/><input title="주소" type="text" className="address"/><br/>
                                         <input title="상세주소" placholder="상세주소" type="text" className="detailedAddress"/> */}
-                                        {/* <Post/> */}
+                                        <Post/>
                                     </td>
                                 </tr>
                             </tbody>
