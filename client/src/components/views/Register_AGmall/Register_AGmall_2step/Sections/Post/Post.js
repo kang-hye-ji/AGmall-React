@@ -35,8 +35,8 @@ function Post() {
             <AnimateOnChange durationOut="200">
                 {openPostLayer &&
                     <React.Fragment>
-                        <div id="PostLayer" style={{/* background:'#222', width:'545px', height:'424px', position:'fixed', top:'50%', left:'50%', transform:'translate(-50%, -50%)', zIndex:'2000' */}}>
-                            <button type="button" title="닫기버튼" onClick={e=>setopenPostLayer(!openPostLayer)}>x</button>
+                        <div id="PostLayer">
+                            <button type="button" title="닫기" onClick={e=>setopenPostLayer(!openPostLayer)}>x</button>
                             <DaumPostcode 
                                 onComplete={handleComplete}
                                 autoClose={true}
@@ -48,11 +48,11 @@ function Post() {
                     </React.Fragment>
                 }
             </AnimateOnChange>
-            <input title="우편번호" type="text" className="postNum" value={postNum} readOnly/>
+            <input title="우편번호" type="text" className="postNum" value={postNum} readOnly  required/>
             <form type="submit">
                 <input onClick={e=>{setopenPostLayer(!openPostLayer)}} title="우편번호 검색" type="button" value="우편번호 검색" className="postSchBtn"/>
             </form>
-            <br/><input title="주소" type="text" className="address" value={address} readOnly/><br/>
+            <br/><input title="주소" type="text" className="address" value={address} readOnly required/><br/>
             <input title="상세주소" placholder="상세주소" type="text" className="detailedAddress" value={detailedAddress} onChange={detailAddress}/>
         </div>
     )

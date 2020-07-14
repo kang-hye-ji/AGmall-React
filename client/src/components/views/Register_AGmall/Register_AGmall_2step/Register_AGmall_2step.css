@@ -94,7 +94,9 @@
 .register_ag_2step_wrap form .basic tr:nth-child(1)>td>input.wrong, 
 .register_ag_2step_wrap form .basic tr:nth-child(2)>td>input.wrong,
 .register_ag_2step_wrap form .basic tr:nth-child(3)>td>input.wrong,
-.register_ag_2step_wrap form .basic tr:nth-child(5)>td>ul>li>input[type="email"].wrong{
+.register_ag_2step_wrap form .basic tr:nth-child(4)>td>input.wrong,
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td>ul>li>input[type="email"].wrong,
+.register_ag_2step_wrap form .basic tr:nth-child(6)>td>input.wrong{
     outline:3px solid #C70039;
 }
 /* 아이디 */
