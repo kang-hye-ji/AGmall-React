@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import './Post.css'
 import DaumPostcode from 'react-daum-postcode';
-/* import {Fade} from 'react-fade' */
-/* import FadeIn from 'react-fade-in'; */
 import {AnimateOnChange} from 'react-animation'
 
 
@@ -26,12 +24,12 @@ function Post() {
             }
             fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
         }
-
-        console.log(fullAddress);  // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
         setpostNum(data.zonecode);
         setaddress(fullAddress);
     }
-    /* extra address 처리 */
+    const detailAddress=(e)=>{
+        setdetailedAddress(e.currentTarget.value)
+    }
     return (
         <div className="Register_AG_2_POST">
             <AnimateOnChange durationOut="200">
@@ -50,12 +48,12 @@ function Post() {
                     </React.Fragment>
                 }
             </AnimateOnChange>
-            <input title="우편번호" type="text" className="postNum" value={postNum}/>
+            <input title="우편번호" type="text" className="postNum" value={postNum} readOnly/>
             <form type="submit">
                 <input onClick={e=>{setopenPostLayer(!openPostLayer)}} title="우편번호 검색" type="button" value="우편번호 검색" className="postSchBtn"/>
             </form>
-            <br/><input title="주소" type="text" className="address" value={address}/><br/>
-            <input title="상세주소" placholder="상세주소" type="text" className="detailedAddress" value={detailedAddress}/>
+            <br/><input title="주소" type="text" className="address" value={address} readOnly/><br/>
+            <input title="상세주소" placholder="상세주소" type="text" className="detailedAddress" value={detailedAddress} onChange={detailAddress}/>
         </div>
     )
 }

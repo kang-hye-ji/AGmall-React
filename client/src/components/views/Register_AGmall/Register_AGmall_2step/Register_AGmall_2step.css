@@ -39,7 +39,6 @@
     margin:0;
 }
 
-
 /* form-basic title */
 .register_ag_2step_wrap form .basic_title{
     *zoom:1;
@@ -61,7 +60,7 @@
 }
 
 /* Form-Table Common-Style */
-table{
+.register_ag_2step_wrap table{
     border-spacing:0; width:100%;
 }
 .register_ag_2step_wrap form fieldset{
@@ -82,7 +81,7 @@ table{
 .register_ag_2step_wrap form tr:first-child>th, .register_ag_2step_wrap form tr:first-child>td{
     border-top:1px solid #999;
 }
-input:focus{
+.register_ag_2step_wrap input:focus{
     outline:none;
 }
 
@@ -92,57 +91,60 @@ input:focus{
     color:#444; font-size:13px; border:1px solid #cfcfcf;
 }
 /* form-basic td Style */
-.register_ag_2step_wrap form tr:nth-child(1)>td>input.wrong, 
-.register_ag_2step_wrap form tr:nth-child(2)>td>input.wrong,
-.register_ag_2step_wrap form tr:nth-child(3)>td>input.wrong,
-.register_ag_2step_wrap form tr:nth-child(5)>td>ul>li>input[type="email"].wrong{
+.register_ag_2step_wrap form .basic tr:nth-child(1)>td>input.wrong, 
+.register_ag_2step_wrap form .basic tr:nth-child(2)>td>input.wrong,
+.register_ag_2step_wrap form .basic tr:nth-child(3)>td>input.wrong,
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td>ul>li>input[type="email"].wrong{
     outline:3px solid #C70039;
 }
-.register_ag_2step_wrap form tr:nth-child(1)>td p{
+/* 아이디 */
+.register_ag_2step_wrap form .basic tr:nth-child(1)>td p{
     margin:-5px 0 12px 0;
     color:#444; font-size:13px; 
 }
-.register_ag_2step_wrap form tr:nth-child(1)>td .over6{
+.register_ag_2step_wrap form .basic tr:nth-child(1)>td .over6{
     display:block; margin-bottom:12px;
     font-size:15px; color:#444;
 }
-.register_ag_2step_wrap form tr:nth-child(1)>td .possibleID{
+.register_ag_2step_wrap form .basic tr:nth-child(1)>td .possibleID{
     display:block; margin-bottom:12px;
     font-size:15px; color:#329cff;
 }
-.register_ag_2step_wrap form tr:nth-child(2)>td p{
+/* 비밀번호 */
+.register_ag_2step_wrap form .basic tr:nth-child(2)>td p{
     margin-bottom:12px;
 }
-.register_ag_2step_wrap form tr:nth-child(2)>td p.combine{
+.register_ag_2step_wrap form .basic tr:nth-child(2)>td p.combine{
     display:none;
 }
-.register_ag_2step_wrap form tr:nth-child(2)>td p.wrong{
+.register_ag_2step_wrap form .basic tr:nth-child(2)>td p.wrong{
     display:block;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td input[type="email"]{
+/* 이메일 */
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td input[type="email"]{
     width:276px;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select{
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td .select{
     display:inline-block; width:120px; margin:10px 0 0 10px; position:relative; 
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select>input{
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td .select>input{
     padding:0 0 0 8px; width:120px; height:35px; margin:0;
     text-align:left; cursor:pointer; font-size:12px; color:#444; border:1px solid #ccc; background:url('/img/register/select-arrow-down-11x7.png') right 8px center no-repeat;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select>input.arrowUp{
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td .select>input.arrowUp{
     background:url('/img/register/select-arrow-up-11x7.png') right 8px center no-repeat;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select>input:focus{
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td .select>input:focus{
     outline:none;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ol{
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td .select ol{
     position:absolute; top:35px;
     border:1px solid #ccc; border-top:none; background:#fff;
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li:hover{
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td .select ol>li:hover{
     background:rgba(0,0,0,0.1);
 }
-.register_ag_2step_wrap form tr:nth-child(5)>td .select ol>li>input{
+.register_ag_2step_wrap form .basic tr:nth-child(5)>td .select ol>li>input{
     width:118px; height:100%; margin:0; padding:10px 0 10px 8px;
     color:#444; font-size:13px; border:none; background:none; text-align:left; cursor:pointer;
 }
@@ -166,7 +168,7 @@ input[id="EmailinfoAndEventAgree"]{
 input[id="EmailinfoAndEventAgree"] + label>span{
     font-size:15px; color:#0d75b7; line-height:20px;
 }
-
+/* 휴대폰번호 체크박스 */
 input[id="PhoneinfoAndEventAgree"] + label{
     display:inline-block; padding-left:30px; cursor:pointer; line-height:20px; margin-bottom:12px;
     background:url('/img/register/check-off.png') top left no-repeat;
@@ -187,31 +189,127 @@ input[id="PhoneinfoAndEventAgree"] + label>span{
     font-size:15px; color:#0d75b7; line-height:20px;
 }
 
-/* .register_ag_2step_wrap form tr:nth-child(7)>td .postNum{
-    width:200px; margin:10px 0 0 0;
+/* form-additional title */
+.register_ag_2step_wrap form h2.additional_title{
+    margin:50px 0 15px;
+    color:#000; font-size:20px;
 }
-.register_ag_2step_wrap form tr:nth-child(7)>td form{
-    display:inline-block; margin:0 0 0 10px;
+/* 성별 */
+.register_ag_2step_wrap form .additional tr:nth-child(1) ul{
+    *zoom:1;
 }
-.register_ag_2step_wrap form tr:nth-child(7)>td .postSchBtn{
-    width:100px; height:35px; line-height:35px; text-align:center; padding:0 7px; margin:10px 0 0 0;
-    cursor:pointer; border:1px solid #ddd; color:#444; font-weight:600; 
-    border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
-    -webkit-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
-    -ms-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
-    -moz-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
-    -o-background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
-    background-image:linear-gradient(to bottom, #fff 60%, rgba(230,230,230,0.1));
+.register_ag_2step_wrap form .additional tr:nth-child(1) ul:after{
+    display:table; content:''; clear:both;
 }
-.register_ag_2step_wrap form tr:nth-child(7)>td .postSchBtn:hover{
-    background:rgba(230,230,230,0.2);
+.register_ag_2step_wrap form .additional tr:nth-child(1) ul>li{
+    float:left;
 }
-.register_ag_2step_wrap form tr:nth-child(7)>td .address{
-    margin:10px 0 0 0;
+.register_ag_2step_wrap form .additional tr:nth-child(1)>td{
+    padding:20px 0 20px 20px;
 }
-.register_ag_2step_wrap form tr:nth-child(7)>td .detailedAddress{
-    margin:10px 0;
-} */
+input[id="male"] + label{
+    height:20px; padding-left:30px; cursor:pointer; line-height:20px;
+    background:url('/img/register/radio-off.png') left center no-repeat; font-size:13px; color:#111;
+}
+input[id="female"] + label{
+    height:20px; padding-left:30px; cursor:pointer; line-height:20px; margin-left: 10px;
+    background:url('/img/register/radio-off.png') left center no-repeat; font-size:13px; color:#111;
+}
+input[id="male"]:checked + label, 
+input[id="female"]:checked + label{
+    background:url('/img/register/radio-on.png') left center no-repeat;
+}
+input[id="male"]:hover + label, 
+input[id="female"]:hover + label{
+    background:url('/img/register/radio-ov.png') left center no-repeat;
+}
+input[id="male"]:checked:hover + label, 
+input[id="female"]:checked:hover + label{
+    background:url('/img/register/radio-on.png') left no-repeat;
+}
+input[id="male"],
+input[id="female"]{
+    display:none;
+}
+/* 날짜 */
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td{
+    padding:10px 0 20px 20px;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .DateSelect{
+    display:inline-block; width:120px; margin:0 10px 0 0; position:relative; 
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .DateSelect>input{
+    padding:0 0 0 8px; width:120px; height:35px; margin:0;
+    text-align:left; cursor:pointer; font-size:12px; color:#444; border:1px solid #ccc; background:url('/img/register/select-arrow-down-11x7.png') right 8px center no-repeat;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .DateSelect>input.arrowUp{
+    background:url('/img/register/select-arrow-up-11x7.png') right 8px center no-repeat;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .DateSelect>input:focus{
+    outline:none;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .DateSelect ol{
+    position:absolute; top:35px;
+    border:1px solid #ccc; border-top:none; background:#fff;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .DateSelect ol>li:hover{
+    background:rgba(0,0,0,0.1);
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .DateSelect ol>li>input{
+    width:118px; height:100%; margin:0; padding:10px 0 10px 8px;
+    color:#444; font-size:13px; border:none; background:none; text-align:left; cursor:pointer;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(2)>td .InputOfDateType{
+    height:33px; padding:0 8px;
+    border:1px solid #ccc; color:#444;
+    font-family: 'Noto Sans KR', 'Nanum Gothic', sans-serif;
+}
+/* 추천인 아이디 */
+.register_ag_2step_wrap form .additional tr:nth-child(3)>td input{
+    padding:0 10px; width:261px; height:33px; margin:10px 0;
+    color:#444; font-size:13px; border:1px solid #cfcfcf;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(3)>td p{
+    margin-bottom:10px;
+    font-size:15px; color:#0d75b7; line-height:20px;
+}
+/* 휴면회원 방지기간 */
+.register_ag_2step_wrap form .additional tr:nth-child(4) ul{
+    *zoom:1;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(4) ul:after{
+    display:table; content:''; clear:both;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(4) ul>li{
+    float:left;
+}
+.register_ag_2step_wrap form .additional tr:nth-child(4)>td{
+    padding:20px 0 20px 20px;
+}
+input[id="1yearMember"] + label{
+    height:20px; padding-left:30px; cursor:pointer; line-height:20px;
+    background:url('/img/register/radio-off.png') left center no-repeat; font-size:13px; color:#111;
+}
+input[id="lifeMember"] + label{
+    height:20px; padding-left:30px; cursor:pointer; line-height:20px; margin-left: 10px;
+    background:url('/img/register/radio-off.png') left center no-repeat; font-size:13px; color:#111;
+}
+input[id="1yearMember"]:checked + label, 
+input[id="lifeMember"]:checked + label{
+    background:url('/img/register/radio-on.png') left center no-repeat;
+}
+input[id="1yearMember"]:hover + label, 
+input[id="lifeMember"]:hover + label{
+    background:url('/img/register/radio-ov.png') left center no-repeat;
+}
+input[id="1yearMember"]:checked:hover + label, 
+input[id="lifeMember"]:checked:hover + label{
+    background:url('/img/register/radio-on.png') left no-repeat;
+}
+input[id="1yearMember"],
+input[id="lifeMember"]{
+    display:none;
+}
 
 /* 이전, 다음단계 btn */
 .register_ag_2step_wrap .stepBtn{
@@ -220,15 +318,15 @@ input[id="PhoneinfoAndEventAgree"] + label>span{
 .register_ag_2step_wrap .stepBtn:after{
     display:table; clear:both; content:'';
 }
-.register_ag_2step_wrap .stepBtn>a, .register_ag_2step_wrap .stepBtn input{
+.register_ag_2step_wrap .stepBtn>button, .register_ag_2step_wrap .stepBtn input{
     display:block; float:left; width:203px; height:45px; line-height:45px; text-align:center;
     text-decoration:none; font-size:14px; font-weight:500; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
 }
-.register_ag_2step_wrap .stepBtn>a{
+.register_ag_2step_wrap .stepBtn>button{
     margin-right:10px;
     border:1px solid #ddd; color:#111; 
 }
-.register_ag_2step_wrap .stepBtn>a:hover{
+.register_ag_2step_wrap .stepBtn>button:hover{
     -webkit-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
     -ms-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
     -moz-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);

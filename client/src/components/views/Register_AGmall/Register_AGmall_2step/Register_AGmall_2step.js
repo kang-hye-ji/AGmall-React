@@ -13,6 +13,7 @@ function Register_AGmall_2step() {
     const [phone, setphone] = useState("")
     const [EmailBtnValue, setEmailBtnValue] = useState("직접입력")
     const [EmailValue, setEmailValue] = useState("")
+    const [DateBtnValue, setDateBtnValue] = useState("선택")
     /* className */
     const [IdClassName, setIdClassName] = useState("")
     const [PWClassName, setPWClassName] = useState("")
@@ -20,11 +21,13 @@ function Register_AGmall_2step() {
     const [confirmPWClassName, setconfirmPWClassName] = useState("")
     const [EmailBtnClassName, setEmailBtnClassName] = useState("")
     const [EmailInputClassName, setEmailInputClassName] = useState("")
+    const [DateBtnClassName, setDateBtnClassName] = useState("")
     /* etc */
     const [PWState, setPWState] = useState("")
     const [OpenEmailSelector, setOpenEmailSelector] = useState(false)
     const [EmailFormRight, setEmailFormRight] = useState(false)
     const [EmailWrongMsg, setEmailWrongMsg] = useState("")
+    const [OpenDateSelector, setOpenDateSelector] = useState(false)
 
     /* 아이디 */
     const IdHandler=(e)=>{
@@ -174,15 +177,6 @@ function Register_AGmall_2step() {
             setEmailBtnClassName("")
         }
     }
-    /* 위 함수와 결합할지 생각해보기 */
-    const emailSelectorClickHandler=()=>{
-        setOpenEmailSelector(!OpenEmailSelector)
-        if(EmailBtnClassName === ""){
-            setEmailBtnClassName("arrowUp")
-        }else{
-            setEmailBtnClassName("")
-        }
-    }
     const emailOptionClickHandler=(e)=>{
         const curValue=e.currentTarget.value;
         if(curValue === '직접입력'){
@@ -205,6 +199,20 @@ function Register_AGmall_2step() {
     const PhoneHandler=(e)=>{
         setphone(e.currentTarget.value)
     }
+    /* 날짜 */
+    const DateSelectorBtnHandler=()=>{
+        setOpenDateSelector(!OpenDateSelector)
+        if(DateBtnClassName === ""){
+            setDateBtnClassName("arrowUp")
+        }else{
+            setDateBtnClassName("")
+        }
+    }
+    const dateOptionClickHandler=(e)=>{
+        const curValue=e.currentTarget.value;
+        setDateBtnValue(curValue)
+    }
+    /* radio 선택 기능 / 취소버튼 */
     return(
         <div>
             <Header/>
@@ -284,9 +292,9 @@ function Register_AGmall_2step() {
                                             <li>
                                                 <input value={EmailValue} onChange={EmailHandler} title="이메일" type="email" className={EmailInputClassName}/>
                                                 <div className="select">
-                                                    <input title="이메일주소 선택버튼" type="button" value={EmailBtnValue} className={EmailBtnClassName} onClick={emailSelectorBtnHandler}/>
+                                                    <input title="이메일주소" type="button" value={EmailBtnValue} className={EmailBtnClassName} onClick={emailSelectorBtnHandler}/>
                                                     {OpenEmailSelector &&
-                                                        <ol onClick={emailSelectorClickHandler}>
+                                                        <ol onClick={emailSelectorBtnHandler}>
                                                             <li><input title="이메일주소 직접입력" type="button" value="직접입력" onClick={emailOptionClickHandler}/></li>
                                                             <li><input title="네이버 이메일주소" type="button" value="naver.com" onClick={emailOptionClickHandler}/></li>
                                                             <li><input title="한메일 이메일주소" type="button" value="hanmail.net" onClick={emailOptionClickHandler}/></li>
@@ -323,19 +331,13 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>주소</th>
                                     <td>
-                                        {/* <input title="우편번호" type="text" className="postNum" value={postNumber}/>
-                                        <form type="submit">
-                                            <input title="우편번호 검색" type="button" value="우편번호 검색" className="postSchBtn"/>
-                                        </form>
-                                        <br/><input title="주소" type="text" className="address"/><br/>
-                                        <input title="상세주소" placholder="상세주소" type="text" className="detailedAddress"/> */}
                                         <Post/>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </fieldset>
-                    <h2>부가 정보</h2>
+                    <h2 className="additional_title">부가 정보</h2>
                     <fieldset className="additional">
                         <table>
                             <caption>부가 정보</caption>
@@ -358,21 +360,24 @@ function Register_AGmall_2step() {
                                 <tr>
                                     <th><strong>*</strong>생일</th>
                                     <td>
-                                        <select title="생년월일 양력, 음력 여부 선택">
-                                            <optgroup>
-                                                <option value="opt">선택</option>
-                                                <option value="solar">양력</option>
-                                                <option value="lunar">음력</option>
-                                            </optgroup>
-                                        </select>
-                                        <input title="생년월일" type="date"/>
+                                        <div className="DateSelect">
+                                            <input title="양·음력" type="button" value={DateBtnValue} className={DateBtnClassName} onClick={DateSelectorBtnHandler}/>
+                                            {OpenDateSelector &&
+                                                <ol onClick={DateSelectorBtnHandler}>
+                                                    <li><input title="선택" type="button" value="선택" onClick={dateOptionClickHandler}/></li>
+                                                    <li><input title="양력" type="button" value="양력" onClick={dateOptionClickHandler}/></li>
+                                                    <li><input title="음력" type="button" value="음력" onClick={dateOptionClickHandler}/></li>
+                                                </ol>
+                                            }
+                                        </div>
+                                        <input title="날짜선택" className="InputOfDateType" type="date"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>추천인 아이디</th>
                                     <td>
                                         <input title="추천인 아이디" type="text"/>
-                                        <p>회원가입 시만 기재 가능합니다. *추후 수정 불가</p>
+                                        <p><strong>회원가입 시만 기재 가능합니다. *추후 수정 불가</strong></p>
                                     </td>
                                 </tr>
                                 <tr>
