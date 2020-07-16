@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import {useDispatch} from 'react-redux'
 import './Post.css'
 import DaumPostcode from 'react-daum-postcode';
 import {AnimateOnChange} from 'react-animation'
-
+import {SavePostUserInfo} from '../../../../../../_actions/user_action'
 
 function Post() {
+    const dispatch = useDispatch();
     const [postNum, setpostNum] = useState("")
     const [address, setaddress] = useState("")
     const [detailedAddress, setdetailedAddress] = useState("")
@@ -30,6 +32,12 @@ function Post() {
     const detailAddress=(e)=>{
         setdetailedAddress(e.currentTarget.value)
     }
+    let postVariable={
+        postNum:postNum,
+        address:address,
+        detailedAddress:detailedAddress
+    }
+    dispatch(SavePostUserInfo(postVariable))
     return (
         <div className="Register_AG_2_POST">
             <AnimateOnChange durationOut="200">

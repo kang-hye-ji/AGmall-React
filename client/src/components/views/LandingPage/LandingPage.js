@@ -1,12 +1,12 @@
 import React from 'react'
 import './LandingPage.css'
-/* import "../../../index_js/jquery.easing.1.3"; */
 import DropCont from '../Header/DropCont/DropCont'
 import Header from '../Header/Header'
 import QuickAndBest from './Sections/QuickAndBest/QuickAndBest'
 import MD from './Sections/MD/MD'
 import StoryAndBestRe from './Sections/StoryAndBestRe/StoryAndBestRe'
 import Visual from './Sections/Visual/Visual';
+import {withRouter} from 'react-router-dom'
 
 function LandingPage() {
     return (
@@ -29,4 +29,4 @@ function LandingPage() {
     )
 }
 
-export default LandingPage
+export default withRouter(LandingPage)
