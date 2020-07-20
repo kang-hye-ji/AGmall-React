@@ -8,7 +8,7 @@ import {registerUser, SaveEmailCurVal} from '../../../../_actions/user_action'
 
 function Register_AGmall_2step(props) {
     const dispatch = useDispatch();
-    const emailCurval = useSelector(state => state.user.emailCurval)
+    /* const postInfo = useSelector(state => state.user.postInfo) */
     /* value */
     const [IdValue, setIdValue] = useState("");
     const [PW, setPW] = useState("")
@@ -50,6 +50,8 @@ function Register_AGmall_2step(props) {
     const Alpha=/[a-z]/g;
     const Special=/[~!@#$%";'^,&*()_+|</>=>`?:{[\]\\}]/g;
     const Space=/^\s+|\s+$/g;
+
+    const user = useSelector(state => state.user)
 
     /* 아이디 */
     const IdHandler=(e)=>{
@@ -176,22 +178,22 @@ function Register_AGmall_2step(props) {
         const curValue=e.currentTarget.value;
         if(curValue === '직접입력'){
             setEmailBtnValue('직접입력')
-            if(emailCurval.search('@')<0){
-                setEmailValue(`${emailCurval}@`)
+            if(user.emailCurval.search('@')<0){
+                setEmailValue(`${user.emailCurval}@`)
             }
         }else{
-            if(emailCurval.search('@')>=0){
-                let AtIndex1=emailCurval.lastIndexOf('@');
-                let TargetString=emailCurval.substring(AtIndex1);
-                setEmailValue(emailCurval.replace(TargetString, `@${curValue}`))
+            if(user.emailCurval.search('@')>=0){
+                let AtIndex1=user.emailCurval.lastIndexOf('@');
+                let TargetString=user.emailCurval.substring(AtIndex1);
+                setEmailValue(user.emailCurval.replace(TargetString, `@${curValue}`))
             }else{
-                setEmailValue(`${emailCurval}@${curValue}`)
+                setEmailValue(`${user.emailCurval}@${curValue}`)
             }
         }
 
-        const AtIndex=emailCurval.lastIndexOf("@");
-        const ToAtString=emailCurval.substring(AtIndex,0)
-        if(emailCurval!==''){
+        const AtIndex=user.emailCurval.lastIndexOf("@");
+        const ToAtString=user.emailCurval.substring(AtIndex,0)
+        if(user.emailCurval!==''){
             setEmailInputClassName("")
             setEmailWrongMsg("")
             setEmailFormRight(true)
@@ -277,18 +279,21 @@ function Register_AGmall_2step(props) {
         const curValue=e.currentTarget.value;
         setDateBtnValue(curValue)
     }
-    let today=new Date();
-    var month = today.getUTCMonth() + 1; //months from 1-12
-    var day = today.getUTCDate();
-    var year = today.getUTCFullYear();
-
-    let todayDate = year + "-" + month + "-" + day;
-    console.log(today)
     const birthDateHandler=(e)=>{
-        setbirthDateValue(e.currentTarget.value)
-        console.log(e.currentTarget.value)
+        var today=new Date();
+        var month=new String(today.getUTCMonth() + 1);
+        if(month.length===1){ month="0" + month; }
+        var day = new String(today.getDate());
+        if(day.length===1){ day="0" + day; }
+        var year = today.getFullYear();
+        
+        let todayDate = year + "-" + month + "-" + day;
+
         if(e.currentTarget.value>todayDate){
-            alert('현재 날짜 보다 ')
+            alert('생일이 현재 날짜보다 크면 안됩니다.')
+            e.preventDefault();
+        }else{
+            setbirthDateValue(e.currentTarget.value)
         }
     }
     /* 멤버 유형 */
@@ -319,7 +324,26 @@ function Register_AGmall_2step(props) {
             alert('생일의 양·음력 여부를 입력해주세요.')
             e.preventDefault();
         }else{
-            dispatch(registerUser(variable))
+            if(IdClassName==='wrong'){
+                alert('아이디를 형식에 맞게 입력하세요.')
+                e.preventDefault();
+            }else if(PWClassName==='wrong'){
+                alert('비밀번호를 형식에 맞게 입력하세요.')
+                e.preventDefault();
+            }else if(confirmPWClassName==='wrong'){
+                alert('비밀번호를 확인해주세요.')
+                e.preventDefault();
+            }else if(NameClassName==='wrong'){
+                alert('이름을 형식에 맞게 입력해 주세요.')
+                e.preventDefault();
+            }else if(EmailInputClassName==='wrong'){
+                alert('이메일을 형식에 맞게 입력하세요.')
+                e.preventDefault();
+            }else if(PhoneClassName==='wrong'){
+                alert('휴대폰 번호를 형식에 맞게 입력하세요.')
+                e.preventDefault();
+            }else{
+                dispatch(registerUser(variable))
                 .then(response=>{
                     if(response.payload.success){
                         props.history.push('/')
@@ -328,6 +352,7 @@ function Register_AGmall_2step(props) {
                         console.log(response.payload.message)
                     }
                 })
+            }
         }
     }
     return(
