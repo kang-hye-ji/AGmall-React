@@ -1,30 +1,29 @@
 const express = require('express')
 const router = express.Router()
 const {User} = require('../models/user')
-const { body, validationResult } = require('express-validator');
-/* router.post('/register', [
-    body('password')
-        .isLength({min:5})
-], (req, res)=>{
-    const result = validationResult(req);
-    const hasErrors = !result.isEmpty();
-    if(hasErrors){
-        res.json({message:'비밀번호를 5자리 이상 입력해주세요.'})
-        return;
-    }
-
-    const registerInfo = new User(req.body);
-    registerInfo.save((err, doc)=>{
-        if(err) return res.send(err)
-        return res.status(200).json({success:true})
-    })
-}) */
 
 router.post('/register', (req, res)=>{
     const registerInfo = new User(req.body);
     registerInfo.save((err, doc)=>{
-        if(err) return res.send(err)
+        if(err) return console.log(err)
         return res.status(200).json({success:true})
     })
 })
+
+router.post('/register/idDuplCheck', (req, res)=>{
+    User.findOne({userId:req.body.userId}, (err, userId)=>{
+        if(err) return console.log(err)
+        if(userId===null){
+            return res.status(200).json({uniqueID:false})
+        }
+        return res.status(200).json({uniqueID:true})
+    })
+})
+
+/* router.get('/auth', auth, (req, res)=>{
+    res.status(200).json({
+        _id:req.user._id
+    })
+}) */
+
 module.exports = router;

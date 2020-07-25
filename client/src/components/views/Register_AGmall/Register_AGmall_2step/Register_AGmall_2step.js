@@ -1,14 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Header from '../../Header/Header'
 import {withRouter} from 'react-router-dom'
 import './Register_AGmall_2step.css'
 import Post from './Sections/Post/Post'
-import {registerUser, SaveEmailCurVal} from '../../../../_actions/user_action'
+import {
+    registerUser, 
+    saveUserAgree, 
+    saveMemberMsgTarget,
+    IdDuplCheck,
+    SavePostUserInfo,
+    SavePostDetailUserInfo
+} from '../../../../_actions/user_action'
 
 function Register_AGmall_2step(props) {
     const dispatch = useDispatch();
-    /* const postInfo = useSelector(state => state.user.postInfo) */
+    const user = useSelector(state => state.user)
+    /* useEffect(() => {
+        const variable={
+            agreeUsage:'',
+            agreePersonal:''
+        };
+        dispatch(saveUserAgree(variable))
+    }, []) */
     /* value */
     const [IdValue, setIdValue] = useState("");
     const [PW, setPW] = useState("")
@@ -23,6 +37,7 @@ function Register_AGmall_2step(props) {
     const [birthDateValue, setbirthDateValue] = useState("")
     const [maleValue, setmaleValue] = useState(false)
     const [femaleValue, setfemaleValue] = useState(false)
+    const [recommenderIdValue, setrecommenderIdValue] = useState("")
     const [yearMemberValue, setyearMemberValue] = useState(false)
     const [lifeMemberValue, setlifeMemberValue] = useState(false)
     /* className */
@@ -32,10 +47,11 @@ function Register_AGmall_2step(props) {
     const [confirmPWClassName, setconfirmPWClassName] = useState("")
     const [NameClassName, setNameClassName] = useState("")
     const [EmailBtnClassName, setEmailBtnClassName] = useState("")
-    const [EmailInputClassName, setEmailInputClassName] = useState("emailInput")
+    const [EmailInputClassName, setEmailInputClassName] = useState("")
     const [PhoneClassName, setPhoneClassName] = useState("")
     const [DateBtnClassName, setDateBtnClassName] = useState("")
     /* etc */
+    const [IDDupCheck, setIDDupCheck] = useState(false)
     const [PWState, setPWState] = useState("")
     const [OpenNameWrong, setOpenNameWrong] = useState(false)
     const [OpenEmailSelector, setOpenEmailSelector] = useState(false)
@@ -50,9 +66,6 @@ function Register_AGmall_2step(props) {
     const Alpha=/[a-z]/g;
     const Special=/[~!@#$%";'^,&*()_+|</>=>`?:{[\]\\}]/g;
     const Space=/^\s+|\s+$/g;
-
-    const user = useSelector(state => state.user)
-
     /* 아이디 */
     const IdHandler=(e)=>{
         const curValue=e.currentTarget.value;
@@ -68,6 +81,20 @@ function Register_AGmall_2step(props) {
         }else if(curValue.length>=6 || curValue.length===0){
             setIdClassName('');
         }
+    }
+    const idDuplCheck=(e)=>{
+        let variable={userId:IdValue}
+        dispatch(IdDuplCheck(variable))
+        /* .then(response=>{
+            if(response.payload.uniqueID){
+                e.preventDefault();
+                setIDDupCheck(true)
+            }else{
+                e.preventDefault();
+                alert('중복된 아이디가 존재합니다. 다른 아이디로 가입해주세요.')
+            }
+            console.log(response)
+        }) */
     }
     /* 비밀번호 */
     const PWHandler=(e)=>{
@@ -166,6 +193,35 @@ function Register_AGmall_2step(props) {
         }
     }
     /* 이메일 */
+    const emailValidate=(i)=>{
+        const AtIndex=i.lastIndexOf("@"); // @ 위치값
+        const FromAtString=i.substring(AtIndex+1);  // @를 제외하고 @ 뒤의 문자
+        const DotIndex=FromAtString.lastIndexOf('.'); //@ 뒤의 dot의 index
+        const FromDotString= FromAtString.substring(DotIndex+1); // @ 뒤의 dot 뒤의 문자
+        const ToAtString=i.substring(AtIndex,0) // id 부분 = @ 제외하고 앞의 문자
+        if(i===''){
+            setEmailInputClassName("")
+            setEmailWrongMsg("")
+        }else{
+            setEmailWrongMsg("이메일을 정확하게 입력해주세요.")
+            if(i.search('@')>-1){
+                if(DotIndex<=0 || FromDotString==='' || ToAtString===''){
+                    // @ 뒤에 점이 없는가 or @과 점 사이에 문자열이 없는가
+                    // 점 뒤에 문자열이 있는지
+                    // @ 앞에 아이디가 있는지
+                    setEmailInputClassName("wrong")
+                    setEmailFormRight(false)
+                }else{
+                    setEmailInputClassName("")
+                    setEmailFormRight(true)
+                }
+            }else{
+                // @이 없는가
+                setEmailInputClassName("wrong")
+                setEmailFormRight(false)
+            }
+        }
+    }
     const emailSelectorBtnHandler=(e)=>{
         setOpenEmailSelector(!OpenEmailSelector)
         if(EmailBtnClassName === ""){
@@ -178,63 +234,33 @@ function Register_AGmall_2step(props) {
         const curValue=e.currentTarget.value;
         if(curValue === '직접입력'){
             setEmailBtnValue('직접입력')
-            if(user.emailCurval.search('@')<0){
-                setEmailValue(`${user.emailCurval}@`)
+            if(EmailValue.search('@')<0){
+                setEmailValue(`${EmailValue}@`)
             }
+            emailValidate(EmailValue)
         }else{
-            if(user.emailCurval.search('@')>=0){
-                let AtIndex1=user.emailCurval.lastIndexOf('@');
-                let TargetString=user.emailCurval.substring(AtIndex1);
-                setEmailValue(user.emailCurval.replace(TargetString, `@${curValue}`))
+            if(EmailValue.search('@')>=0){
+                let AtIndex1=EmailValue.lastIndexOf('@');
+                let TargetString=EmailValue.substring(AtIndex1);
+                setEmailValue(EmailValue.replace(TargetString, `@${curValue}`))
             }else{
-                setEmailValue(`${user.emailCurval}@${curValue}`)
+                setEmailValue(`${EmailValue}@${curValue}`)
             }
-        }
-
-        const AtIndex=user.emailCurval.lastIndexOf("@");
-        const ToAtString=user.emailCurval.substring(AtIndex,0)
-        if(user.emailCurval!==''){
-            setEmailInputClassName("")
-            setEmailWrongMsg("")
-            setEmailFormRight(true)
-        }else if(ToAtString===''){
-            setEmailInputClassName("wrong")
-            setEmailWrongMsg("이메일을 정확하게 입력해주세요.")
-            setEmailFormRight(false)
+            if(EmailValue==='' || EmailValue.search('@')===0){
+                setEmailInputClassName("wrong")
+                setEmailFormRight(false)
+                setEmailWrongMsg("이메일을 정확하게 입력해주세요.")
+            }else{
+                setEmailInputClassName("")
+                setEmailFormRight(true)
+                setEmailWrongMsg("")
+            }
         }
     }
-    dispatch(SaveEmailCurVal(EmailValue))
     const EmailHandler=(e)=>{
         const curValue=e.currentTarget.value;
         setEmailValue(curValue)
-
-        const AtIndex=curValue.lastIndexOf("@"); // @ 위치값
-        const FromAtString=curValue.substring(AtIndex+1);  // @를 제외하고 @ 뒤의 문자
-        const DotIndex=FromAtString.lastIndexOf('.'); //@ 뒤의 dot의 index
-        const FromDotString= FromAtString.substring(DotIndex+1); // @ 뒤의 dot 뒤의 문자
-        const ToAtString=curValue.substring(AtIndex,0) // id 부분 = @ 제외하고 앞의 문자
-        if(curValue===''){
-            setEmailInputClassName("emailInput")
-            setEmailWrongMsg("")
-        }else{
-            setEmailWrongMsg("이메일을 정확하게 입력해주세요.")
-            if(curValue.search('@')>-1){
-                if(DotIndex<=0 || FromDotString==='' || ToAtString===''){
-                    // @ 뒤에 점이 없는가 or @과 점 사이에 문자열이 없는가
-                    // 점 뒤에 문자열이 있는지
-                    // @ 앞에 아이디가 있는지
-                    setEmailInputClassName("emailInput wrong")
-                    setEmailFormRight(false)
-                }else{
-                    setEmailInputClassName("emailInput")
-                    setEmailFormRight(true)
-                }
-            }else{
-                // @이 없는가
-                setEmailInputClassName("emailInput wrong")
-                setEmailFormRight(false)
-            }
-        }
+        emailValidate(curValue)
     }
     const EmailInfoOnclick=(e)=>{
         setEmailInfoAgree(!EmailInfoAgree)
@@ -250,6 +276,7 @@ function Register_AGmall_2step(props) {
             if(notNum.test(curVal) || curVal.search('0')!==0){
                 setPhoneClassName("wrong")
                 setOpenPhoneWrong(true)
+                
             }else{
                 setPhoneClassName("")
                 setOpenPhoneWrong(false)
@@ -303,18 +330,32 @@ function Register_AGmall_2step(props) {
     const lifeMemberHandler=(e)=>{
         setlifeMemberValue(!lifeMemberValue)
     }
-    
-    let variable={
-        useId:IdValue,
+    let gender='';
+    if(maleValue){
+        gender='male'
+    }else if(femaleValue){
+        gender='female'
+    }
+
+    let memberType='';
+    if(yearMemberValue){memberType='yearMember'}
+    else if(lifeMemberValue){memberType='lifeMember'}
+
+    const variable={
+        userId:IdValue,
         password:PW,
         name:name,
-        eamil:EmailValue,
-        phoneNum:phone/* ,
-        address:,
-        gender:,
-        birthDay:,
-        recommenderId:,
-        memberType: */
+        email:EmailValue,
+        emailInfoAgree:EmailInfoAgree,
+        phoneNum:phone,
+        phoneInfoAgree:PhoneInfoAgree,
+        postInfo:user.postInfo,
+        postDetailInfo: user.postDetailInfo,
+        gender:gender,
+        calender:DateBtnValue,
+        birthDay:birthDateValue,
+        recommenderId:recommenderIdValue,
+        memberType:memberType
     }
     const onSubmit=(e)=>{
         if(IdValue==='' ||PW==='' ||name==='' ||EmailValue==='' ||phone==='' ||(maleValue==='' && femaleValue==='') || birthDateValue===''){
@@ -344,14 +385,11 @@ function Register_AGmall_2step(props) {
                 e.preventDefault();
             }else{
                 dispatch(registerUser(variable))
-                .then(response=>{
-                    if(response.payload.success){
-                        props.history.push('/')
-                    }else{
-                        e.preventDefault();
-                        console.log(response.payload.message)
-                    }
-                })
+                dispatch(SavePostDetailUserInfo())
+                dispatch(SavePostUserInfo())
+                dispatch(saveUserAgree())
+                dispatch(saveMemberMsgTarget(name))
+                props.history.push('/Register_AGmall_3step')
             }
         }
     }
@@ -380,12 +418,17 @@ function Register_AGmall_2step(props) {
                                     <th><strong>*</strong>아이디</th>
                                     <td>
                                         <input title="아이디" type="text" value={IdValue} onChange={IdHandler} className={IdClassName} />
+                                        <button type="type" onChange={idDuplCheck}>아이디 중복체크</button>
                                         <p>※휴대전화번호로 아이디 사용가능 합니다.</p>
+                                        {IDDupCheck
+                                            ? <p style={{color:'#329cff', fontSize:'15px'}}>중복되지 않은 아이디입니다.</p>
+                                            : <p style={{color:'#C70039'}}>※아이디 중복체크를 해주세요.</p>
+                                        }
                                         {IdValue.length>0 && IdValue.length<6 &&
                                             <span className="over6">최소 6자 이상 입력해 주세요.</span>
                                         }
                                         {IdValue.length>=6 &&
-                                            <span className="possibleID">사용 가능한 아이디입니다.</span>
+                                            <span className="possibleID">올바른 아이디 형식입니다.</span>
                                         }
                                     </td>
                                 </tr>
@@ -435,7 +478,7 @@ function Register_AGmall_2step(props) {
                                     <td>
                                         <ul>
                                             <li>
-                                                <input value={EmailValue} onChange={EmailHandler} title="이메일" type="email" className={EmailInputClassName} />
+                                                <input value={EmailValue} onChange={EmailHandler} title="이메일" type="text" className={EmailInputClassName}/>
                                                 <div className="select">
                                                     <input title="이메일주소" type="button" value={EmailBtnValue} className={EmailBtnClassName} onClick={emailSelectorBtnHandler}/>
                                                     {OpenEmailSelector &&
@@ -524,7 +567,7 @@ function Register_AGmall_2step(props) {
                                 <tr>
                                     <th>추천인 아이디</th>
                                     <td>
-                                        <input title="추천인 아이디" type="text"/>
+                                        <input title="추천인 아이디" type="text" value={recommenderIdValue} onChange={e=>{setrecommenderIdValue(e.currentTarget.value)}}/>
                                         <p><strong>회원가입 시만 기재 가능합니다. *추후 수정 불가</strong></p>
                                     </td>
                                 </tr>

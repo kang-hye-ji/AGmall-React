@@ -14,7 +14,6 @@ mongoose.connect(config.MongoURI,{
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use('/api/agree', require('./routes/agrees'))
 app.use('/api/user', require('./routes/users'))
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

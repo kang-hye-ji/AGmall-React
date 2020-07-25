@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from '../Header/Header'
 import './Register_AGmall.css'
 import {useDispatch} from 'react-redux'
@@ -7,7 +7,13 @@ import {withRouter} from 'react-router-dom'
 
 function Register_AGmall(props) {
     const dispatch=useDispatch();
-
+    useEffect(() => {
+        const variable={
+            agreeUsage:'',
+            agreePersonal:''
+        };
+        dispatch(saveUserAgree(variable))
+    }, [])
     const [accessAllCheckBox, setaccessAllCheckBox] = useState(false)
     const [accessCheckBox1, setaccessCheckBox1] = useState(false)
     const [accessCheckBox2, setaccessCheckBox2] = useState(false)
@@ -47,12 +53,6 @@ function Register_AGmall(props) {
             e.preventDefault();
         }else{
             dispatch(saveUserAgree(variables))
-            .then(response=>{
-                if(response.payload.success){
-                }else{
-                    alert('동의 여부를 저장하는 데 실패했습니다.')
-                }
-            })
             props.history.push('/Register_AGmall_2step')
         }
     }

@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+.register_ag_3step_wrap{
+    width:1200px; margin:0 auto;
+}
+/* top */
+.register_ag_3step_wrap .top{
+    *zoom:1; height:95px; margin-bottom:50px;
+    border-bottom:1px solid #eaeaea;
+}
+.register_ag_3step_wrap .top:after{
+    display:table; content:''; clear:both;
+}
+.register_ag_3step_wrap .top h1{
+    padding-left:3px; float:left; line-height:95px;
+    font-size:24px; color:#111;
+}
+.register_ag_3step_wrap .top ol{
+    float:right;
+}
+.register_ag_3step_wrap .top ol>li{
+    float:left; line-height:95px; margin-right:40px; position:relative;
+    color:#bdbcbc; font-size:16px; font-weight:500;
+}
+.register_ag_3step_wrap .top ol>li:nth-child(3){
+    color:#3e3d3c;
+}
+.register_ag_3step_wrap .top ol>li:after{
+    display:block; content:''; position:absolute; right:-24px; width:10px; height:11px; top:42px;
+}
+.register_ag_3step_wrap .top ol>li:first-child:after,
+.register_ag_3step_wrap .top ol>li:nth-child(2):after{
+    background:url('/img/register/join-step.png');
+}
+.register_ag_3step_wrap .top ol>li:last-child{
+    margin:0;
+}
+/* Contents */
+.register_ag_3step_wrap .contWrap{
+    padding:60px 55px 30px; margin:50px auto; width:500px;
+    border:1px solid #eaeaea;
+}
+.register_ag_3step_wrap .contWrap .textBox{
+    padding-top:100px; position: relative; margin-bottom:70px;
+    text-align:center; background:url('/img/register/join-complete.png') top 20px center no-repeat;
+}
+.register_ag_3step_wrap .contWrap .textBox:after{
+    position: absolute; bottom:-30px; left:0; display:block; content:''; width:100%; height:1px; 
+    background:#eaeaea;
+
+}
+.register_ag_3step_wrap .contWrap .textBox h3{
+    font-size:20px; color:#222; font-weight:500;
+}
+.register_ag_3step_wrap .contWrap .textBox p{
+    margin-top:20px; line-height:19px;
+    font-size:13px; color:#717171;
+}
+.register_ag_3step_wrap .contWrap .textBox em{
+    line-height:16px;
+    color:#444; font-weight:600; font-size:15px;
+}
+
+/* 이전, 다음단계 btn */
+.register_ag_3step_wrap .stepBtn{
+    margin:30px auto 50px; *zoom:1; width:420px;
+}
+.register_ag_3step_wrap .stepBtn:after{
+    display:table; clear:both; content:'';
+}
+.register_ag_3step_wrap .stepBtn>button{
+    display:block; float:left; width:203px; height:45px; line-height:45px; text-align:center;
+    text-decoration:none; font-size:14px; font-weight:500; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
+}
+.register_ag_3step_wrap .stepBtn>button:first-child{
+    margin-right:10px;
+    border:1px solid #ddd; color:#111; 
+}
+.register_ag_3step_wrap .stepBtn>button:first-child:hover{
+    -webkit-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -ms-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -moz-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -o-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+}
+.register_ag_3step_wrap .stepBtn>button:nth-child(2){
+    border:1px solid #444; color:#fff; background:#444; cursor:pointer;
+}
+.register_ag_3step_wrap .stepBtn>button:nth-child(2):hover{
+    -webkit-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -ms-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -moz-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -o-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+}

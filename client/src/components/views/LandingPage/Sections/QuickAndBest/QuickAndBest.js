@@ -75,8 +75,8 @@ function QuickAndBest() {
                                 </a>
                                 <a className="B_tit" href="!#" target="_self" title="">아이세이프 루테인 3통Set 1박스</a>
                                 <div>
-                                    <del datetime="2020-01-01T00:00">75,000원</del>
-                                    <ins datetime="2020-01-01T00:00">44,900원</ins>
+                                    <del dateTime="2020-01-01T00:00">75,000원</del>
+                                    <ins dateTime="2020-01-01T00:00">44,900원</ins>
                                     <strong>BEST</strong>
                                 </div>
                             </li>
@@ -95,8 +95,8 @@ function QuickAndBest() {
                                 </a>
                                 <a className="B_tit" href="!#" target="_self" title="">안국 루테인지아잔틴 플러스 90캡슐</a>
                                 <div>
-                                    <del datetime="2020-01-01T00:00">90,000원</del>
-                                    <ins datetime="2020-01-01T00:00">45,900원</ins>
+                                    <del dateTime="2020-01-01T00:00">90,000원</del>
+                                    <ins dateTime="2020-01-01T00:00">45,900원</ins>
                                     <strong>BEST</strong>
                                 </div>
                             </li>
@@ -115,8 +115,8 @@ function QuickAndBest() {
                                 </a>
                                 <a className="B_tit" href="!#" target="_self" title="">NEW 눈에 좋은 루테인 플러스 180캡슐(PTP)</a>
                                 <div>
-                                    <del datetime="2020-01-01T00:00">90,000원</del>
-                                    <ins datetime="2020-01-01T00:00">46,900원</ins>
+                                    <del dateTime="2020-01-01T00:00">90,000원</del>
+                                    <ins dateTime="2020-01-01T00:00">46,900원</ins>
                                 </div>
                             </li>
                             <li>
@@ -134,8 +134,8 @@ function QuickAndBest() {
                                 </a>
                                 <a className="B_tit" href="!#" target="_self" title="">안국 알티지 RTG 오메가3 2통</a>
                                 <div>
-                                    <del datetime="2020-01-01T00:00">60,000원</del>
-                                    <ins datetime="2020-01-01T00:00">39,000원</ins>
+                                    <del dateTime="2020-01-01T00:00">60,000원</del>
+                                    <ins dateTime="2020-01-01T00:00">39,000원</ins>
                                 </div>
                             </li>
                             <li>
@@ -153,8 +153,8 @@ function QuickAndBest() {
                                 </a>
                                 <a className="B_tit" href="!#" target="_self" title="">안국 루테인지아잔틴 포뮬라 4박스</a>
                                 <div>
-                                    <del datetime="2020-01-01T00:00">100,000원</del>
-                                    <ins datetime="2020-01-01T00:00">69,900원</ins>
+                                    <del dateTime="2020-01-01T00:00">100,000원</del>
+                                    <ins dateTime="2020-01-01T00:00">69,900원</ins>
                                 </div>
                             </li>
                         </ul>
