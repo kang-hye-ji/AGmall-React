@@ -1,0 +1,153 @@
+.loginWrap{
+    padding:45px 55px; width:468px; margin:0 auto; position:relative;
+    border:1px solid #dcdcdc;
+}
+.loginWrap .loginTitle{
+    position:absolute; top:-40px; left:0;
+    font-size:28px; letter-spacing:2px;
+}
+/* 회원 로그인 */
+.loginWrap .memberLogin fieldset{
+    *zoom:1; position:relative; padding-bottom:35px;
+    border:none;
+}
+.loginWrap .memberLogin fieldset:after{
+    content:''; display:table; clear:both;
+}
+.loginWrap .memberLogin h3{
+    margin-bottom:20px;
+    font-size:20px; font-weight:500;
+}
+.loginWrap .memberLogin .idAndPW{
+    float:left;
+}
+.loginWrap .memberLogin .idAndPW>input:first-child{
+    color:#444;
+}
+.loginWrap .memberLogin .idAndPW>input{
+    width:270px; height:36px; padding:0 13px; line-height:36px; margin-bottom:11px;
+    border:1px solid #ccc; color:#8c8c8c; font-size:13px; font-weight:550; letter-spacing:0px;
+}
+
+.loginWrap .memberLogin .loginBtn{
+    float:right; display:block; width:158px; height:87px;
+    background:#444; color:#fff; font-weight:600; font-size:16px;
+    border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;
+}
+.loginWrap .memberLogin .loginBtn:hover{
+    -webkit-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -ms-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -moz-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    -o-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+    background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
+}
+
+input[id="idSave"] + label{
+    height:20px; padding-left:30px; cursor:pointer; line-height:20px; position:absolute; left:0; bottom:15px;
+    background:url('/img/register/check-off.png') left center no-repeat; font-size:13px; color:#717171;
+}
+input[id="idSave"]:checked + label{
+    background:url('/img/register/check-on.png') left center no-repeat;
+}
+input[id="idSave"]:hover + label{
+    background:url('/img/register/check-ov.png') left center no-repeat;
+}
+input[id="idSave"]:checked:hover + label{
+    background:url('/img/register/check-on.png') left no-repeat;
+}
+input[id="idSave"]{
+    display:none;
+}
+
+/* SNS 아이디 로그인 */
+.loginWrap .snsLogin{
+    position:relative; margin-bottom:25px;
+}
+.loginWrap .snsLogin:after{
+    display:block; content:''; width:100%; height:1px; position:absolute; bottom:-13px;
+    background:#dcdcdc;
+}
+.loginWrap .snsLogin li>a{
+    display:block; width:100%; height:45px; text-align:center; margin-bottom:12px;
+    border:1px solid #dcdcdc; color:#333; text-decoration:none;
+}
+.loginWrap .snsLogin li:last-child>a{
+    margin-bottom:0;
+}
+.loginWrap .snsLogin li>a>span{
+    line-height:45px;
+}
+.loginWrap .snsLogin li>a>img{
+    padding:10px 5px 0 0;
+}
+
+/* 3버튼 */
+.loginWrap .ThreeBtn{
+    *zoom:1;
+}
+.loginWrap .ThreeBtn:after{
+    display:table; content:''; clear:both;
+}
+.loginWrap .ThreeBtn>li{
+    float:left; margin-right:7px;
+}
+.loginWrap .ThreeBtn>li:last-child{
+    margin:0;
+}
+.loginWrap .ThreeBtn>li>a{
+    width:149px; height:44px; display:block; text-align:center;
+    text-decoration:none; border:1px solid #6b6b6b; line-height:44px; font-weight:500; font-size:14px;
+    border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px;
+}
+.loginWrap .ThreeBtn>li:first-child>a{
+    background:#6b6b6b; color:#fff;
+}
+.loginWrap .ThreeBtn>li:first-child>a:hover{
+    background:#444;
+}
+.loginWrap .ThreeBtn>li:nth-child(2)>a,
+.loginWrap .ThreeBtn>li:nth-child(3)>a{
+    color:#444; font-weight:600;
+}
+.loginWrap .ThreeBtn>li:nth-child(2)>a:hover,
+.loginWrap .ThreeBtn>li:nth-child(3)>a:hover{
+    color:#111; font-weight:600;
+}
+
+/* 비회원 주문조회 */
+.loginWrap .nomember fieldset{
+    *zoom:1; position:relative; padding:80px 0 0 0;
+    border:none;
+}
+.loginWrap .nomember fieldset:after{
+    content:''; display:table; clear:both;
+}
+.loginWrap .nomember h3{
+    margin-bottom:20px;
+    font-size:20px; font-weight:500;
+}
+.loginWrap .nomember .nameAndNum{
+    float:left;
+}
+.loginWrap .nomember .nameAndNum>input{
+    width:270px; height:36px; padding:0 13px; line-height:36px; margin-bottom:11px;
+    border:1px solid #ccc; color:#8c8c8c; font-size:13px; font-weight:550;
+}
+
+.loginWrap .nomember .nomemberCheck{
+    float:right; display:block; width:158px; height:87px;
+    background:#fff; color:#3c3c3c; font-weight:600; font-size:16px; border: 1px solid #ddd;
+    border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;
+}
+.loginWrap .nomember .nomemberCheck:hover{
+    -webkit-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -ms-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -moz-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    -o-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+    background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
+}
+
+.loginWrap .nomember fieldset>p{
+    float:left; padding-left:20px; margin-top:7px;
+    background:url('/img/login/caution-2.png') top 50% left no-repeat;font-size:13px; color:#999; line-height:20px;
+}

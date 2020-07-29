@@ -19,7 +19,7 @@ const userSchema=mongoose.Schema({
     },
     email:{
         type:String,
-        trim:true,
+        /* trim:true, */
         /* trim:true,
         index:true,
         sparse:true */

@@ -69,6 +69,7 @@ function Register_AGmall_2step(props) {
     /* 아이디 */
     const IdHandler=(e)=>{
         const curValue=e.currentTarget.value;
+        setIDDupCheck(false)
         if(notNumOrAlpha.test(curValue)){
             alert('아이디는 영문 또는 숫자만 입력 가능합니다.')
         }else{
@@ -83,18 +84,18 @@ function Register_AGmall_2step(props) {
         }
     }
     const idDuplCheck=(e)=>{
-        let variable={userId:IdValue}
-        dispatch(IdDuplCheck(variable))
-        /* .then(response=>{
+        let variableDup={userId:IdValue}
+        dispatch(IdDuplCheck(variableDup))
+        .then(response=>{
             if(response.payload.uniqueID){
-                e.preventDefault();
+                /* e.preventDefault(); */
                 setIDDupCheck(true)
             }else{
-                e.preventDefault();
+                /* e.preventDefault(); */
+                setIDDupCheck(false)
                 alert('중복된 아이디가 존재합니다. 다른 아이디로 가입해주세요.')
             }
-            console.log(response)
-        }) */
+        })
     }
     /* 비밀번호 */
     const PWHandler=(e)=>{
@@ -365,7 +366,10 @@ function Register_AGmall_2step(props) {
             alert('생일의 양·음력 여부를 입력해주세요.')
             e.preventDefault();
         }else{
-            if(IdClassName==='wrong'){
+            if(!IDDupCheck){
+                alert('아이디 중복체크를 해주세요.')
+                e.preventDefault();
+            }else if(IdClassName==='wrong'){
                 alert('아이디를 형식에 맞게 입력하세요.')
                 e.preventDefault();
             }else if(PWClassName==='wrong'){
@@ -385,11 +389,18 @@ function Register_AGmall_2step(props) {
                 e.preventDefault();
             }else{
                 dispatch(registerUser(variable))
-                dispatch(SavePostDetailUserInfo())
-                dispatch(SavePostUserInfo())
-                dispatch(saveUserAgree())
-                dispatch(saveMemberMsgTarget(name))
-                props.history.push('/Register_AGmall_3step')
+                .then(response=>{
+                    if(response.payload.success){
+                        dispatch(SavePostDetailUserInfo())
+                        dispatch(SavePostUserInfo())
+                        dispatch(saveUserAgree())
+                        dispatch(IdDuplCheck())
+                        dispatch(saveMemberMsgTarget(name))
+                        props.history.push('/Register_AGmall_3step')
+                    }else{
+                        alert('회원가입 하는데 실패했습니다.')
+                    }
+                })
             }
         }
     }
@@ -405,7 +416,15 @@ function Register_AGmall_2step(props) {
                         <li>03 가입완료</li>
                     </ol>
                 </div>
-                <form>
+                <div className="idDupleChecker">
+                    <button type="type" onClick={idDuplCheck}>아이디 중복체크</button>
+                    {IDDupCheck
+                        ? <p style={{color:'#329cff', fontSize:'13px'}}>※중복되지 않은 아이디입니다.</p>
+                        : <p style={{color:'#C70039', fontSize:'15px'}}>※아이디 중복체크를 해주세요.</p>
+                    }
+                </div>
+                
+                <form /* onSubmit={onSubmit} */>
                     <div className="basic_title">
                         <h2>기본 정보</h2>
                         <p><strong>*</strong> 표시는 반드시 입력하셔야 하는 항목입니다.</p>
@@ -418,12 +437,7 @@ function Register_AGmall_2step(props) {
                                     <th><strong>*</strong>아이디</th>
                                     <td>
                                         <input title="아이디" type="text" value={IdValue} onChange={IdHandler} className={IdClassName} />
-                                        <button type="type" onChange={idDuplCheck}>아이디 중복체크</button>
                                         <p>※휴대전화번호로 아이디 사용가능 합니다.</p>
-                                        {IDDupCheck
-                                            ? <p style={{color:'#329cff', fontSize:'15px'}}>중복되지 않은 아이디입니다.</p>
-                                            : <p style={{color:'#C70039'}}>※아이디 중복체크를 해주세요.</p>
-                                        }
                                         {IdValue.length>0 && IdValue.length<6 &&
                                             <span className="over6">최소 6자 이상 입력해 주세요.</span>
                                         }
@@ -478,7 +492,7 @@ function Register_AGmall_2step(props) {
                                     <td>
                                         <ul>
                                             <li>
-                                                <input value={EmailValue} onChange={EmailHandler} title="이메일" type="text" className={EmailInputClassName}/>
+                                                <input value={EmailValue} onChange={EmailHandler} title="이메일" type="email" className={EmailInputClassName}/>
                                                 <div className="select">
                                                     <input title="이메일주소" type="button" value={EmailBtnValue} className={EmailBtnClassName} onClick={emailSelectorBtnHandler}/>
                                                     {OpenEmailSelector &&
@@ -501,7 +515,7 @@ function Register_AGmall_2step(props) {
                                             </li>
                                             <li>
                                                 {EmailFormRight 
-                                                    ? <p style={{color:'#329cff', fontSize:'15px', marginBottom:'12px'}}>사용 가능한 이메일입니다.</p>
+                                                    ? <p style={{color:'#329cff', fontSize:'15px', marginBottom:'12px'}}>올바른 이메일 형식입니다.</p>
                                                 : <p style={{color:'#444', fontSize:'15px', marginBottom:'12px'}}>{EmailWrongMsg}</p>
                                                 }
                                             </li>
@@ -593,9 +607,10 @@ function Register_AGmall_2step(props) {
                 <div className="stepBtn">
                     <button type="button" onClick={e=>props.history.push('/register')}>취소</button>
                     <form onSubmit={onSubmit}>
-                        <input title="회원가입" type="submit" value="회원가입" onSubmit={onSubmit}/>
+                        <input title="회원가입" type="button" value="회원가입" onClick={onSubmit}/>
                     </form>
                 </div>
+                
             </div>
         </div>
     )

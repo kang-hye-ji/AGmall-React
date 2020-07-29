@@ -34,7 +34,7 @@ function Header() {
                                 </a>
                             </div>
                             <ul className="info">
-                                <li><a href="!#" title="" target="_self">로그인</a></li>
+                                <li><a href="/login" title="" target="_self">로그인</a></li>
                                 <li>
                                     <a href="/register" title="" target="_self">회원가입</a>
                                 </li>

@@ -7,6 +7,9 @@ export function Register_AG_2_restrict(RegisterAG2stepComponent){
         if(!user.agreeSave){
             alert('잘못된 경로로 접근하셨습니다.')
             props.history.push('/register_agmall');
+        }else if(user.agreeSave.agreeUsage===''){
+            alert('잘못된 경로로 접근하셨습니다.')
+            props.history.push('/register_agmall');
         }
         return <RegisterAG2stepComponent {...props} />
     }

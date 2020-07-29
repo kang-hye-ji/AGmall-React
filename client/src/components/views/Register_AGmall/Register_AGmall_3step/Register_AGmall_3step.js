@@ -31,6 +31,7 @@ function Register_AGmall_3step(props) {
                             dispatch(saveMemberMsgTarget())}
                             }>홈으로</button>
                         <button type="button" onClick={e=>{
+                            props.history.push('/login')
                             dispatch(saveMemberMsgTarget())
                         }}>로그인</button>
                     </div>

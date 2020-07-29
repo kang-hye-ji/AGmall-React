@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .register_ag_2step_wrap{
-    width:1200px; margin:0 auto;
+    width:1200px; margin:0 auto; position:relative;
 }
 /* top */
 .register_ag_2step_wrap .top{
@@ -104,8 +104,11 @@
     margin:-5px 0 12px 0;
     color:#444; font-size:13px; 
 }
-.register_ag_2step_wrap form .basic tr:nth-child(1)>td button{
-    width:100px; height:35px; line-height:35px; text-align:center; padding:0 3px; margin:10px 0 0 10px;
+.register_ag_2step_wrap .idDupleChecker{
+    position:absolute; top:192px; left:672px;
+}
+.register_ag_2step_wrap .idDupleChecker>button{
+    width:100px; height:35px; line-height:35px; text-align:center; padding:0 3px; margin-bottom:7px;
     cursor:pointer; border:1px solid #b2b2b2; color:#111; font-weight:500; font-size:12px; background:#f8f8f8;
     border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;
 }
@@ -325,7 +328,7 @@ input[id="lifeMember"]{
 .register_ag_2step_wrap .stepBtn:after{
     display:table; clear:both; content:'';
 }
-.register_ag_2step_wrap .stepBtn>button, .register_ag_2step_wrap .stepBtn form>input{
+.register_ag_2step_wrap .stepBtn>button, .register_ag_2step_wrap .stepBtn input{
     display:block; float:left; width:203px; height:45px; line-height:45px; text-align:center;
     text-decoration:none; font-size:14px; font-weight:500; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; 
 }
@@ -340,10 +343,10 @@ input[id="lifeMember"]{
     -o-background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
     background-image:linear-gradient(to bottom, #E6E6E6 10%, #fff);
 }
-.register_ag_2step_wrap .stepBtn form>input{
+.register_ag_2step_wrap .stepBtn input{
     border:1px solid #444; color:#fff; background:#444; cursor:pointer;
 }
-.register_ag_2step_wrap .stepBtn form>input:hover{
+.register_ag_2step_wrap .stepBtn input:hover{
     -webkit-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
     -ms-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
     -moz-background-image:linear-gradient(to bottom, #2E2E2E 10%, #444);
