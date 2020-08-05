@@ -8,11 +8,11 @@ import {withRouter} from 'react-router-dom'
 function Register_AGmall(props) {
     const dispatch=useDispatch();
     useEffect(() => {
-        const variable={
+        /* const variable={
             agreeUsage:'',
             agreePersonal:''
-        };
-        dispatch(saveUserAgree(variable))
+        }; */
+        dispatch(saveUserAgree())
     }, [])
     const [accessAllCheckBox, setaccessAllCheckBox] = useState(false)
     const [accessCheckBox1, setaccessCheckBox1] = useState(false)

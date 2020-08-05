@@ -24,7 +24,7 @@ header.onH .headerInner{
 .mainHeadInner:after{
     content:''; display:table; clear:both;
 }
-.logo, .search, .info{
+.logo, .search, .info, .info_login{
     float:left;
 }
 
@@ -69,34 +69,47 @@ header.onH .headerInner{
     display:inline-block; margin:27.5px 0 0 15px;
 }
 
-.info{
+.info,
+.info_login{
     width:350px; margin-top:37px; position:relative;
 }
-.info:after{
+.info:after,
+.info_login:after{
     display:table; clear:both; content:'';
 }
-.info>li{
+.info>li,
+.info_login>li{
     float:left;
 }
-.info>li>a{
+.info>li>a,
+.info_login>li>a{
     display:block; height:22px; line-height:22px; width:45px; padding-left:28px; margin-left:10px;
     text-decoration:none; color:#000; font-size:11px;
 }
-.info>li:nth-child(1)>a{
+.info_login>li:first-child>a{
+    /* info_login 마이페이지 */
+    width:52px;
+}
+.info>li:nth-child(1)>a,
+.info_login>li:nth-child(4)>a{
     background:url('/img/layout/info_ico1.png') left no-repeat;
 }
-.info>li:nth-child(2)>a{
+.info>li:nth-child(2)>a,
+.info_login>li:nth-child(1)>a{
     background:url('/img/layout/info_ico2.png') left no-repeat;
 }
-.info>li:nth-child(3)>a{
+.info>li:nth-child(3)>a,
+.info_login>li:nth-child(2)>a{
     position:relative;
     background:url('/img/layout/info_ico3.png') left no-repeat;
 }
-.info>li:nth-child(4)>a{
+.info>li:nth-child(4)>a,
+.info_login>li:nth-child(3)>a{
     background:url('/img/layout/info_ico4.png') left no-repeat;
 }
 
-.info .shoppingBN{
+.info .shoppingBN,
+.info_login .shoppingBN{
     position:absolute; top:-7px; left:14px; width:14px; height:17px; line-height:17px; text-align:center;
     color:#000; background:#ffe884; border-radius:50%; -webkit-border-radius:50%; -moz-border-radius:50%;
 }

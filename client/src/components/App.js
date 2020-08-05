@@ -10,10 +10,12 @@ import PersonalTerms from "./views/Register_AGmall/TermsAllView/PersonalTerms";
 import Register_AGmall_2step from "./views/Register_AGmall/Register_AGmall_2step/Register_AGmall_2step";
 import Register_AGmall_3step from "./views/Register_AGmall/Register_AGmall_3step/Register_AGmall_3step";
 import LoginPage from "./views/LoginPage/LoginPage";
+import MyPage from "./views/MyPage/MyPage";
 import Footer from "./views/Footer/Footer"
 import TopAndBottomBtn from "./functions/TopAndBottomBtn/TopAndBottomBtn"
 import QuickSide from "./functions/QuickSide/QuickSide"
 import {Register_AG_2_restrict, Register_AG_3_restrict} from '../hoc/routeConnRestrict'
+import auth from '../hoc/auth'
 
 function App() {
   return (
@@ -22,14 +24,15 @@ function App() {
           <TopAndBottomBtn/>
           <QuickSide/>
           <Switch>
-            <Route exact path="/" component={LandingPage} lading/>
-            <Route exact path="/register" component={RegisterPage}/>
-            <Route exact path="/register_agmall" component={Register_AGmall}/>
-            <Route exact path="/usageterms" component={UsageTerms}/>
-            <Route exact path="/personalterms" component={PersonalTerms}/>
-            <Route exact path="/Register_AGmall_2step" component={/* Register_AGmall_2step */Register_AG_2_restrict(Register_AGmall_2step)}/>
-            <Route exact path="/Register_AGmall_3step" component={Register_AG_3_restrict(Register_AGmall_3step)}/>
-            <Route exact path="/login" component={LoginPage}/>
+            <Route exact path="/" component={auth(LandingPage)}/>
+            <Route exact path="/register" component={auth(RegisterPage, false)}/>
+            <Route exact path="/register_agmall" component={auth(Register_AGmall, false)}/>
+            <Route exact path="/usageterms" component={auth(UsageTerms, false)}/>
+            <Route exact path="/personalterms" component={auth(PersonalTerms, false)}/>
+            <Route exact path="/Register_AGmall_2step" component={auth(Register_AG_2_restrict(Register_AGmall_2step), false)}/>
+            <Route exact path="/Register_AGmall_3step" component={auth(Register_AG_3_restrict(Register_AGmall_3step), false)}/>
+            <Route exact path="/login" component={auth(LoginPage, false)}/>
+            <Route exact path="/mypage" component={MyPage}/>
           </Switch>
           <Footer/>
         </div>

@@ -8,12 +8,12 @@ function Footer() {
                 <div className="guide">
                     <div className="guideInner">
                         <ul>
-                            <li><a href="!#" title="" target="_self">회사소개</a></li>
-                            <li><a href="!#" title="" target="_self">이용약관</a></li>
-                            <li><a href="!#" title="" target="_self">개인정보처리방침</a></li>
-                            <li><a href="!#" title="" target="_self">이용안내</a></li>
-                            <li><a href="!#" title="" target="_self">고객센터</a></li>
-                            <li><a href="!#" title="" target="_self">대량구매/광고/제휴 문의</a></li>
+                            <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">회사소개</a></li>
+                            <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">이용약관</a></li>
+                            <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">개인정보처리방침</a></li>
+                            <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">이용안내</a></li>
+                            <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">고객센터</a></li>
+                            <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">대량구매/광고/제휴 문의</a></li>
                         </ul>
                     </div>
                 </div>
@@ -30,7 +30,7 @@ function Footer() {
                                     <span>사업자등록번호 | 124-86-00538</span>
                                     <br/>
                                     <span>통신판매업 신고 | 2004-00122</span>
-                                    <a href="!#" title="사업자번호조회 새창" target="_blank">사업자번호조회</a>
+                                    <a href="!#" onClick={e=>{e.preventDefault();}} title="사업자번호조회 새창" target="_blank">사업자번호조회</a>
                                     <br/>
                                     <span>서울본사 | 서울특별시 강남구 영동대로 511 (트레이드타워) 11층(1101호)</span>
                                     <br/>
@@ -52,17 +52,17 @@ function Footer() {
                             <li>
                                 <ol className="GoPage">
                                     <li>
-                                        <a href="!#" title="" target="_self">
+                                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                                             <img src="/img/layout/GoPage1.png" alt="안국건강 미디어"/>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="!#" title="" target="_self">
+                                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                                             <img src="/img/layout/GoPage2.png" alt="안국건강 브랜드"/>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="!#" title="" target="_self">
+                                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                                             <img src="/img/layout/GoPage3.png" alt="자주묻는 질문"/>
                                         </a>
                                     </li>
