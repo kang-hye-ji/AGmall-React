@@ -20,10 +20,10 @@
 }
 
 .mypageWrap .myInfo ul>li:first-child{
-    width:60%;
+    width:54%;
 }
 .mypageWrap .myInfo ul>li:first-child>p{
-    margin-bottom:10px;
+    margin:15px 0 10px;
     color:#717171; font-size:13px;
 }
 .mypageWrap .myInfo ul>li:first-child>h3{
@@ -53,10 +53,217 @@
 
 .mypageWrap .myInfo ul>li:nth-child(2),
 .mypageWrap .myInfo ul>li:nth-child(3){
-    width:calc(20% - 1px); height:100%;
+    width:calc(23% - 1px); height:100%;
     border-left:1px dashed #e3e3e3;
 }
 .mypageWrap .myInfo ul>li:nth-child(2)>h3,
 .mypageWrap .myInfo ul>li:nth-child(3)>h3{
+    padding:43px 0 0 0; width:72px; margin:10px auto 0;
     font-size:14px; color:#333; font-weight:600; text-align:center;
+}
+.mypageWrap .myInfo ul>li:nth-child(2)>h3{
+    background:url('/img/mypage/icon1.png') no-repeat;
+    background-position:top left 15px;
+}
+.mypageWrap .myInfo ul>li:nth-child(3)>h3{
+    background:url('/img/mypage/icon1.png') no-repeat;
+    background-position:top left -98px;
+}
+
+.mypageWrap .myInfo ul>li:nth-child(2)>p,
+.mypageWrap .myInfo ul>li:nth-child(3)>p{
+    margin-top:18px;
+    font-size:12px; vertical-align: bottom; text-align:center;
+}
+.mypageWrap .myInfo ul>li:nth-child(2)>p>a,
+.mypageWrap .myInfo ul>li:nth-child(3)>p>a{
+    font-size:16px; color:#333; vertical-align: bottom; font-weight:600;
+}
+
+
+.mypageWrap .orderInProgress{
+    margin-top:65px;
+}
+.mypageWrap .orderInProgress>h2{
+    font-size:20px; color:#111; font-weight:600;
+}
+.mypageWrap .orderInProgress>h2>span{
+    margin-left:10px;
+    font-size:12px; color:#787878; vertical-align: bottom; font-weight:500;
+}
+
+.mypageWrap .orderInProgress>ul{
+    width:100%; margin-top:13px; *zoom:1; padding:20px 0;
+    border:1px solid #e3e3e3; border-top:0.5px solid #000;
+}
+.mypageWrap .orderInProgress>ul:after{
+    clear:both; display:table; content:'';
+}
+.mypageWrap .orderInProgress>ul>li{
+    float:left; width:50%; padding:0 20px; box-sizing:border-box;
+}
+.mypageWrap .orderInProgress>ul>li:last-child{
+    padding:0 40px;
+    border-left:1px solid rgba(0,0,0,0.1);
+}
+
+.mypageWrap .orderInProgress>ul .progress>li{
+    float:left; width:16.6%; position:relative; 
+}
+.mypageWrap .orderInProgress>ul .progress>li:after{
+    display:block; position:absolute; content:''; width:18px; height:18px; top:50px; right:-9px;
+    background:url('/img/mypage/icon-arr1-r.png') no-repeat;
+}
+.mypageWrap .orderInProgress>ul .progress>li:last-child:after{
+    display:none;
+}
+.mypageWrap .orderInProgress>ul .progress>li>h3{
+    margin-top:12px;
+    font-size:12px; color:#717171; text-align:center;
+}
+.mypageWrap .orderInProgress>ul .progress>li>p{
+    width:30px; height:33px; line-height:33px; margin:10px auto 0;
+    background:#c6c6c6; font-size:14px; color:#fff; text-align:center; font-weight:600;
+    border-radius:50%; -webkit-border-radius:50%; -moz-border-radius:50%;
+}
+
+.mypageWrap .orderInProgress>ul .refund>li{
+    *zoom:1; width:100%; height:25px;
+    border-bottom:1px dotted #c6c6c6;
+}
+.mypageWrap .orderInProgress>ul .refund>li:after{
+    content:''; display:table; clear:both;
+}
+.mypageWrap .orderInProgress>ul .refund h3{
+    float:left; 
+    font-size:13px; color:#717171; font-weight:600; line-height:25px;
+}
+.mypageWrap .orderInProgress>ul .refund p{
+    float:right;
+    font-size:13px; color:#717171; font-weight:500; line-height:25px;
+}
+.mypageWrap .orderInProgress>ul .refund p>span{
+    vertical-align: baseline; margin-right:5px;
+}
+
+
+.mypageWrap .recentOrder{
+    margin-top:65px; *zoom: 1;
+}
+.mypageWrap .recentOrder:after{
+    content:''; display:table; clear:both;
+}
+.mypageWrap .recentOrder>h2{
+    float:left;
+    font-size:20px; color:#111; font-weight:600;
+}
+.mypageWrap .recentOrder>h2>span{
+    margin-left:10px;
+    font-size:12px; color:#787878; vertical-align: bottom; font-weight:500;
+}
+.mypageWrap .recentOrder>a{
+    float:right; display:block; padding-right:8px;
+    color:#717171; font-size:13px; background:url('/img/mypage/icon-arr2-r.png') center right no-repeat;
+}
+.mypageWrap .recentOrder>table{
+    display:block; width:100%; margin-top:13px; float:left; position:relative;
+    border-bottom:1px solid #e3e3e3; border-top:0.5px solid #000; border-collapse: collapse;
+}
+.mypageWrap .recentOrder>table:after{
+    content:''; display:block; width:100%; height:30px; position:absolute; top:0; left:0;
+    background:rgba(0,0,0,0.1);
+}
+.mypageWrap .recentOrder>table thead tr{
+    width:100%; height:30px; 
+    font-size:13px; color:#717171;
+}
+.mypageWrap .recentOrder>table thead tr>th{
+    line-height:30px;
+}
+.mypageWrap .recentOrder>table thead tr>th:nth-child(1){
+    width:15%;
+}
+.mypageWrap .recentOrder>table thead tr>th:nth-child(2){
+    width:600px;
+}
+.mypageWrap .recentOrder>table thead tr>th:nth-child(3){
+    width:15%;
+}
+.mypageWrap .recentOrder>table thead tr>th:nth-child(4){
+    width:10%;
+}
+.mypageWrap .recentOrder>table thead tr>th:nth-child(5){
+    width:10%;
+}
+.mypageWrap .recentOrder>table tbody tr{
+    position:relative;
+    border-bottom:1px dotted #999;
+}
+.mypageWrap .recentOrder>table tbody tr:last-child{
+    border:none;
+}
+.mypageWrap .recentOrder>table tbody tr td{
+    padding:5px;
+    font-size:13px; color:#555;
+}
+
+
+.mypageWrap .recentView{
+    margin-top:65px;
+}
+.mypageWrap .recentView>h2{
+    font-size:20px; color:#111; font-weight:600;
+}
+.mypageWrap .recentView>h2>span{
+    margin-left:10px;
+    font-size:12px; color:#787878; vertical-align: bottom; font-weight:500;
+}
+
+.mypageWrap .recentView>ul{
+    margin-top: 13px; *zoom:1; width:100%;
+    border-top:1px solid #000;
+}
+.mypageWrap .recentView>ul:after{
+    display:table; clear:both; content:'';
+}
+.mypageWrap .recentView>ul>li{
+    width:25%; float:left; padding:40px 5px 0; box-sizing:border-box;
+}
+.mypageWrap .recentView>ul .recentCont{
+    width:100%;
+}
+.mypageWrap .recentView>ul .recentCont>.productImg{
+    display:block; width:100%; height:100%; position:relative; overflow:hidden;
+    border:1px solid #e5e5e5;
+}
+.mypageWrap .recentView>ul .recentCont>.productImg>img{
+    /* position:absolute;  */width:289px; height:289px;
+}
+.mypageWrap .recentView>ul .recentCont>.productImg button{
+    position:absolute; bottom:53px; right:18px; width:22px; height:23px; display:block; z-index:5;
+}
+.mypageWrap .recentView>ul .recentCont>.productImg button:nth-child(2){
+    bottom:21px; right:16px;
+}
+.mypageWrap .recentView>ul .recentCont>.productImg button:hover:after{
+    display:block; content:'장바구니'; width:65px; padding-right:10px; height:22px; position:absolute; right:22px; top:0;
+    background:url('/img/mypage/productHoverBox.png') center left no-repeat; font-size:12px; color:#fff; font-weight:600;
+    line-height:22px;
+}
+.mypageWrap .recentView>ul .recentCont>.productImg button:nth-child(2):hover:after{
+    content:'찜하기'; letter-spacing:1px;
+}
+
+.mypageWrap .recentView>ul .recentCont>.productName{
+    display:block; width:100%; height:40px;
+    border-bottom:1px solid #000; text-decoration:none; color:#545454; text-align:center;
+}
+.mypageWrap .recentView>ul .recentCont>.productName>h3{
+    margin-top:20px;
+    font-size:18px;
+}
+
+.mypageWrap .recentView>ul>li>span{
+    margin-top:15px; width:100%; text-align:center; display:block;
+    font-weight:600; font-size:17px;
 }

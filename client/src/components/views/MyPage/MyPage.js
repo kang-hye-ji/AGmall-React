@@ -158,6 +158,13 @@ function MyPage() {
                                 <td>1</td>
                                 <td>1</td>
                             </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
                         </tbody>
                     </table>
                 </article>
@@ -165,14 +172,81 @@ function MyPage() {
                     <h2>최근 본 상품<span>님께서 본 최근 상품입니다.</span></h2>
                     <ul>
                         <li>
-                            <a href="!#" target="_self">
-                                <div>
-                                    <img src="#" alt="상품"/>
-                                </div>
-                                <h3>상품명</h3>
-                            </a>
-                            <span>가격</span>
+                            <div className="recentCont">
+                                <a href="!#" target="_self" className="productImg">
+                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
+                                    <div>
+                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
+                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
+                                    </div>
+                                </a>
+                                <a href="!#" target="_self" className="productName">
+                                    <h3>코박사키즈 1통</h3>
+                                </a>
+                            </div>
+                            <span>25,000원</span>
                         </li>
+                        <li>
+                            <div className="recentCont">
+                                <a href="!#" target="_self" className="productImg">
+                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
+                                    <div>
+                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
+                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
+                                    </div>
+                                </a>
+                                <a href="!#" target="_self" className="productName">
+                                    <h3>코박사키즈 1통</h3>
+                                </a>
+                            </div>
+                            <span>25,000원</span>
+                        </li>
+                        <li>
+                            <div className="recentCont">
+                                <a href="!#" target="_self" className="productImg">
+                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
+                                    <div>
+                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
+                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
+                                    </div>
+                                </a>
+                                <a href="!#" target="_self" className="productName">
+                                    <h3>코박사키즈 1통</h3>
+                                </a>
+                            </div>
+                            <span>25,000원</span>
+                        </li>
+                        <li>
+                            <div className="recentCont">
+                                <a href="!#" target="_self" className="productImg">
+                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
+                                    <div>
+                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
+                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
+                                    </div>
+                                </a>
+                                <a href="!#" target="_self" className="productName">
+                                    <h3>코박사키즈 1통</h3>
+                                </a>
+                            </div>
+                            <span>25,000원</span>
+                        </li>
+                        <li>
+                            <div className="recentCont">
+                                <a href="!#" target="_self" className="productImg">
+                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
+                                    <div>
+                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
+                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
+                                    </div>
+                                </a>
+                                <a href="!#" target="_self" className="productName">
+                                    <h3>코박사키즈 1통</h3>
+                                </a>
+                            </div>
+                            <span>25,000원</span>
+                        </li>
+                        
                     </ul>
                 </article>
             </div>
