@@ -13,8 +13,7 @@ function LandingPage() {
         <div>
             <DropCont/>
             <Header/>
-            <div className="contents">
-                
+            <div className="landingPageWrap">
                 <Visual/>
                 <QuickAndBest/>
                 <MD/>

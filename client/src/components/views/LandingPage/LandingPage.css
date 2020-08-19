@@ -5,14 +5,14 @@ font-family: 'Noto Sans KR', sans-serif; //전반적
 font-family: 'Heebo', sans-serif;   //footer 숫자
 */
 
-.banner{
+.landingPageWrap .banner{
     width:100%; height:172px; padding-top:126px;
     background:url('/img/main/fixBg.jpg') center; background-attachment:fixed;
 }
-.banner .bannerInner{
+.landingPageWrap .banner .bannerInner{
     max-width:1200px; margin:0 auto;
 }
-.banner .bannerInner h3{
+.landingPageWrap .banner .bannerInner h3{
     margin:0 auto; width:388px; height:42px; text-align:center; line-height:42px;
     font-size:18px; font-style:italic; color:#fff; border:2px solid #fff; border-radius:1px; -moz-border-radius:1px; -webkit-border-radius:1px; 
 }

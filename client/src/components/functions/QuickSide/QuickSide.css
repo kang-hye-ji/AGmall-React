@@ -8,7 +8,7 @@
 }
 .quickWrap{
     z-index:200; width:115px;
-    position:fixed; top:220px; right:10px; margin-left:-118px;
+    position:fixed; top:300px; right:10px; margin-left:-118px;
 }
 .quickWrap>a{
     display:block; width:115px; padding:8px 0;

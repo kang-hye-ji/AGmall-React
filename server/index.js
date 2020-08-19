@@ -17,5 +17,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use('/api/user', require('./routes/users'))
+app.use('/api/product', require('./routes/products'))
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

@@ -11,6 +11,11 @@ import Register_AGmall_2step from "./views/Register_AGmall/Register_AGmall_2step
 import Register_AGmall_3step from "./views/Register_AGmall/Register_AGmall_3step/Register_AGmall_3step";
 import LoginPage from "./views/LoginPage/LoginPage";
 import MyPage from "./views/MyPage/MyPage";
+import BeautyProdPage from "./views/ProdListPage/BeautyProdPage/BeautyProdPage";
+import EyeProdPage from "./views/ProdListPage/EyeProdPage/EyeProdPage";
+import HealthProdPage from "./views/ProdListPage/HealthProdPage/HealthProdPage";
+import NoseProdPage from "./views/ProdListPage/NoseProdPage/NoseProdPage";
+import VitaProdPage from "./views/ProdListPage/VitaProdPage/VitaProdPage";
 import Footer from "./views/Footer/Footer"
 import TopAndBottomBtn from "./functions/TopAndBottomBtn/TopAndBottomBtn"
 import QuickSide from "./functions/QuickSide/QuickSide"
@@ -32,7 +37,12 @@ function App() {
             <Route exact path="/Register_AGmall_2step" component={auth(Register_AG_2_restrict(Register_AGmall_2step), false)}/>
             <Route exact path="/Register_AGmall_3step" component={auth(Register_AG_3_restrict(Register_AGmall_3step), false)}/>
             <Route exact path="/login" component={auth(LoginPage, false)}/>
-            <Route exact path="/mypage" component={MyPage}/>
+            <Route exact path="/mypage" component={auth(MyPage,true)}/>
+            <Route exact path="/beauty_prod_list" component={auth(BeautyProdPage)}/>
+            <Route exact path="/eye_prod_list" component={auth(EyeProdPage)}/>
+            <Route exact path="/health_prod_list" component={auth(HealthProdPage)}/>
+            <Route exact path="/nose_prod_list" component={auth(NoseProdPage)}/>
+            <Route exact path="/vitamin_prod_list" component={auth(VitaProdPage)}/>
           </Switch>
           <Footer/>
         </div>
