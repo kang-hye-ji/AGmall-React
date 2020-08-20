@@ -255,11 +255,11 @@
 }
 
 .mypageWrap .recentView>ul .recentCont>.productName{
-    display:block; width:100%; height:40px;
+    display:block; width:100%; padding:10px 0;
     border-bottom:1px solid #000; text-decoration:none; color:#545454; text-align:center;
 }
 .mypageWrap .recentView>ul .recentCont>.productName>h3{
-    margin-top:20px;
+    margin-top:20px; line-height:22px;
     font-size:18px;
 }
 

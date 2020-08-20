@@ -1,8 +1,26 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../../Header/Header'
 import './BeautyProdPage.css'
+import ProdList from '../../ProdList/ProdList'
+import Axios from 'axios'
 
 function BeautyProdPage() {
+    const [Products, setProducts] = useState([])
+    useEffect(() => {
+        let body={category:'인생뷰티'}
+        Axios.post('/api/product/lists', body)
+        .then(response=>{
+            if(response.data.success){
+                setProducts(response.data.products)
+                console.log(response.data.products)
+            }
+        })
+    }, [])
+    const productBox=Products.map((product, index)=>{
+        return(
+            <ProdList product={product}/>
+        )
+    })
     return (
         <div>
             <Header/>
@@ -20,6 +38,9 @@ function BeautyProdPage() {
                             <a>2</a>
                         </li>
                     </ul>
+                </div>
+                <div className="prodList">
+                    {productBox}
                 </div>
             </div>
         </div>

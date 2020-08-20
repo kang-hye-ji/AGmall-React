@@ -9,3 +9,6 @@ export const SAVE_ID_USER='save_id_user';
 export const PROVIDE_ID_USER='provide_id_user';
 export const LOGOUT_USER='logout_user';
 export const AUTH_USER='auth_user';
+
+
+export const CATEGORY_PRODUCT='category_product';

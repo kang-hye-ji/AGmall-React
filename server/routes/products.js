@@ -1,14 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const jwt=require('jsonwebtoken');
-const {User} = require('../models/user')
-const {auth}=require('../middleware/auth')
+const {Product} = require('../models/product')
 
-router.post('/register', (req, res)=>{
-    const registerInfo = new User(req.body);
-    registerInfo.save((err, doc)=>{
+router.post('/lists', (req, res)=>{
+    Product.find({'category':req.body.category}, (err, products)=>{
         if(err) return console.log(err)
-        return res.status(200).json({success:true})
+        res.status(200).json({success:true, products})
     })
 })
 
