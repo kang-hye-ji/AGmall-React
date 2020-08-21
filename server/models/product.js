@@ -8,9 +8,9 @@ const productSchema=mongoose.Schema({
     discount:Number,
     deliveryCharge:Number,
     productOption:Object,
-    emailInfoAgree:Boolean,
-    filePath:String
-})
+    filePath:String,
+    createDate:Date
+},{timestamps:true})
 
 const Product=mongoose.model('Product', productSchema)
 module.exports={Product}

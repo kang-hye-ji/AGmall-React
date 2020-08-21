@@ -239,16 +239,38 @@
 .mypageWrap .recentView>ul .recentCont>.productImg>img{
     /* position:absolute;  */width:289px; height:289px;
 }
+.mypageWrap .recentView>ul .recentCont>.productImg:hover>img{
+    animation:productImg 0.5s ease 0s both;
+}
+@keyframes productImg{
+    to{
+        transform:scale(1.1, 1.1); -webkit-transform:scale(1.1, 1.1); -ms-transform:scale(1.1, 1.1);
+    }
+}
+
 .mypageWrap .recentView>ul .recentCont>.productImg button{
-    position:absolute; bottom:53px; right:18px; width:22px; height:23px; display:block; z-index:5;
+    position:absolute; bottom:53px; right:18px; width:22px; height:23px; display:block; z-index:5; opacity:0;
 }
 .mypageWrap .recentView>ul .recentCont>.productImg button:nth-child(2){
     bottom:21px; right:16px;
 }
+.mypageWrap .recentView>ul .recentCont>.productImg:hover button{
+    animation:productChild 0.4s ease 0s both;
+}
+@keyframes productChild{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
 .mypageWrap .recentView>ul .recentCont>.productImg button:hover:after{
     display:block; content:'장바구니'; width:65px; padding-right:10px; height:22px; position:absolute; right:22px; top:0;
     background:url('/img/mypage/productHoverBox.png') center left no-repeat; font-size:12px; color:#fff; font-weight:600;
-    line-height:22px;
+    line-height:25px;
+    animation:productChild 0.4s ease 0s both;
 }
 .mypageWrap .recentView>ul .recentCont>.productImg button:nth-child(2):hover:after{
     content:'찜하기'; letter-spacing:1px;
