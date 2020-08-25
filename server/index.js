@@ -19,4 +19,7 @@ app.use(cookieParser());
 app.use('/api/user', require('./routes/users'))
 app.use('/api/product', require('./routes/products'))
 
+app.get('/', (req, res)=>{
+    res.send("Hello World")
+})
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
