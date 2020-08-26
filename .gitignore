@@ -1,2 +1,4 @@
 node_modules
 memo.txt
+# Local Netlify folder
+.netlify

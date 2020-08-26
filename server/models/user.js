@@ -29,7 +29,7 @@ const userSchema=mongoose.Schema({
     },
     emailInfoAgree:Boolean,
     phoneNum:{
-        type:Number,
+        type:String,
     },
     phoneInfoAgree:Boolean,
     postInfo:{
@@ -56,7 +56,7 @@ const userSchema=mongoose.Schema({
         type:String,
     },
     tokenExp:{
-        type:Number,
+        type:String,
     },
     token:{
         type:String,
