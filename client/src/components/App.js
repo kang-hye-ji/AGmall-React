@@ -23,13 +23,28 @@ import {Register_AG_2_restrict, Register_AG_3_restrict} from '../hoc/routeConnRe
 import auth from '../hoc/auth'
 
 function App() {
-  const AppUrl="https://5f45df38d47f526391a40912--jolly-turing-1308c8.netlify.app/"
   return (
     <Suspense fallback={(<div style={{fontSize:"20px", textAlign:'center', paddingTop:'80px'}}>loading...</div>)}>
         <div style={{minWidth:"1200px", margin:"0 auto", overflow:"auto"}}>
           <TopAndBottomBtn/>
           <QuickSide/>
           <Switch>
+            <Route exact path="/" component={auth(LandingPage)}/>
+            <Route exact path="/register" component={auth(RegisterPage, false)}/>
+            <Route exact path="/register_agmall" component={auth(Register_AGmall, false)}/>
+            <Route exact path="/usageterms" component={auth(UsageTerms, false)}/>
+            <Route exact path="/personalterms" component={auth(PersonalTerms, false)}/>
+            <Route exact path="/Register_AGmall_2step" component={auth(Register_AG_2_restrict(Register_AGmall_2step), false)}/>
+            <Route exact path="/Register_AGmall_3step" component={auth(Register_AG_3_restrict(Register_AGmall_3step), false)}/>
+            <Route exact path="/login" component={auth(LoginPage, false)}/>
+            <Route exact path="/mypage" component={auth(MyPage,true)}/>
+            <Route exact path="/beauty_prod_list" component={auth(BeautyProdPage)}/>
+            <Route exact path="/eye_prod_list" component={auth(EyeProdPage)}/>
+            <Route exact path="/health_prod_list" component={auth(HealthProdPage)}/>
+            <Route exact path="/nose_prod_list" component={auth(NoseProdPage)}/>
+            <Route exact path="/vitamin_prod_list" component={auth(VitaProdPage)}/>
+          </Switch>
+          {/* <Switch>
             <Route exact path={$(AppUrl)} component={auth(LandingPage)}/>
             <Route exact path={`${AppUrl}}/register`} component={auth(RegisterPage, false)}/>
             <Route exact path={`${AppUrl}/register_agmall`} component={auth(Register_AGmall, false)}/>
@@ -44,7 +59,7 @@ function App() {
             <Route exact path={`${AppUrl}/health_prod_list`} component={auth(HealthProdPage)}/>
             <Route exact path={`${AppUrl}/nose_prod_list`} component={auth(NoseProdPage)}/>
             <Route exact path={`${AppUrl}/vitamin_prod_list`} component={auth(VitaProdPage)}/>
-          </Switch>
+          </Switch> */}
           <Footer/>
         </div>
     </Suspense>
