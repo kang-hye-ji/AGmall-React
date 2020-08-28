@@ -13,6 +13,7 @@
     "http-proxy-middleware": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.27.0",
+    "mongodb": "^3.6.0",
     "mongoose": "^5.9.20",
     "nodemon": "^2.0.4",
     "react-redux": "^7.2.0",
