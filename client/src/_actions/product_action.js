@@ -8,10 +8,3 @@ export function WhatIsCategory(dataToSubmit){
         type:CATEGORY_PRODUCT, payload:dataToSubmit
     }
 }
-/* export function registerUser(dataToSubmit){
-    const request=axios.post('/api/user/register', dataToSubmit)
-        .then(response=>response.data)
-    return{
-        type:Register_USER, payload:request
-    }
-} */

@@ -44,22 +44,6 @@ function App() {
             <Route exact path="/nose_prod_list" component={auth(NoseProdPage)}/>
             <Route exact path="/vitamin_prod_list" component={auth(VitaProdPage)}/>
           </Switch>
-          {/* <Switch>
-            <Route exact path={$(AppUrl)} component={auth(LandingPage)}/>
-            <Route exact path={`${AppUrl}}/register`} component={auth(RegisterPage, false)}/>
-            <Route exact path={`${AppUrl}/register_agmall`} component={auth(Register_AGmall, false)}/>
-            <Route exact path={`${AppUrl}/usageterms`} component={auth(UsageTerms, false)}/>
-            <Route exact path={`${AppUrl}/personalterms`} component={auth(PersonalTerms, false)}/>
-            <Route exact path={`${AppUrl}/Register_AGmall_2step`} component={auth(Register_AG_2_restrict(Register_AGmall_2step), false)}/>
-            <Route exact path={`${AppUrl}/Register_AGmall_3step`} component={auth(Register_AG_3_restrict(Register_AGmall_3step), false)}/>
-            <Route exact path={`${AppUrl}/login`} component={auth(LoginPage, false)}/>
-            <Route exact path={`${AppUrl}/mypage`} component={auth(MyPage,true)}/>
-            <Route exact path={`${AppUrl}/beauty_prod_list`} component={auth(BeautyProdPage)}/>
-            <Route exact path={`${AppUrl}/eye_prod_list`} component={auth(EyeProdPage)}/>
-            <Route exact path={`${AppUrl}/health_prod_list`} component={auth(HealthProdPage)}/>
-            <Route exact path={`${AppUrl}/nose_prod_list`} component={auth(NoseProdPage)}/>
-            <Route exact path={`${AppUrl}/vitamin_prod_list`} component={auth(VitaProdPage)}/>
-          </Switch> */}
           <Footer/>
         </div>
     </Suspense>

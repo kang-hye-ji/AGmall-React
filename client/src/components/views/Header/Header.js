@@ -88,23 +88,23 @@ function Header(props) {
                                     <h2>카테고리 전체보기</h2>
                                     <ul>
                                         <li>
-                                            <a href="!#" onClick={e=>{e.preventDefault();}} target="_self" tile="">눈건강</a>
+                                            <a href="eye_prod_list" target="_self" tile="">눈건강</a>
                                             <ol></ol>
                                         </li>
                                         <li>
-                                            <a href="!#" onClick={e=>{e.preventDefault();}} target="_self" tile="">인생뷰티</a>
+                                            <a href="/beauty_prod_list" target="_self" tile="">인생뷰티</a>
                                             <ol></ol>
                                         </li>
                                         <li>
-                                            <a href="!#" onClick={e=>{e.preventDefault();}} target="_self" tile="">안심비타민</a>
+                                            <a href="vitamin_prod_list" target="_self" tile="">안심비타민</a>
                                             <ol></ol>
                                         </li>
                                         <li>
-                                            <a href="!#" onClick={e=>{e.preventDefault();}} target="_self" tile="">코박사</a>
+                                            <a href="nose_prod_list" target="_self" tile="">코박사</a>
                                             <ol></ol>
                                         </li>
                                         <li>
-                                            <a href="!#" onClick={e=>{e.preventDefault();}} target="_self" tile="">건강기능식품</a>
+                                            <a href="health_prod_list" target="_self" tile="">건강기능식품</a>
                                             <ol>
                                                 <li><a href="!#" onClick={e=>{e.preventDefault();}} target="_self" title="">오메가3</a></li>
                                                 <li><a href="!#" onClick={e=>{e.preventDefault();}} target="_self" title="">밀크씨슬</a></li>
@@ -137,21 +137,21 @@ function Header(props) {
                             </div>
                             <ul className="mainMenu">
                                 <li>
-                                    <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">눈건강</a>
+                                    <a href="eye_prod_list" title="" target="_self">눈건강</a>
                                 </li>
                                 <li>
-                                    <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">인생뷰티</a>
+                                    <a href="beauty_prod_list" title="" target="_self">인생뷰티</a>
                                 </li>
                                 <li>
-                                    <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">안심비타민</a>
+                                    <a href="vitamin_prod_list" title="" target="_self">안심비타민</a>
                                 </li>
                                 <li>
-                                    <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">코박사</a>
+                                    <a href="nose_prod_list" title="" target="_self">코박사</a>
                                 </li>
                                 <li>
-                                    <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">건강기능식품</a>
+                                    <a href="health_prod_list" title="" target="_self">건강기능식품</a>
                                     <div className="mainMenuDrop">
-                                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">건강기능식품</a>
+                                        <a href="health_prod_list" title="" target="_self">건강기능식품</a>
                                         <ol>
                                             <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">오메가3</a></li>
                                             <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">밀크씨슬</a></li>
