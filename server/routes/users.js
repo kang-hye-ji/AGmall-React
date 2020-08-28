@@ -4,6 +4,13 @@ const jwt=require('jsonwebtoken');
 const {User} = require('../models/user')
 const {auth}=require('../middleware/auth')
 
+router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    //res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+    //res.header("Access-Control-Allow-Credentials", true);
+    next();
+});
 router.post('/register', (req, res)=>{
     const registerInfo = new User(req.body);
     registerInfo.save((err, doc)=>{
