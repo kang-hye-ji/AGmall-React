@@ -56,7 +56,7 @@ router.post('/memberLogin', (req, res)=>{
                         .status(200)
                         .json({
                             loginSuccess:true,
-                            user_id:ObjectId(user._id)
+                            user_id:user._id
                         })
                 })
             })
@@ -66,7 +66,7 @@ router.post('/memberLogin', (req, res)=>{
 
 router.post('/idSave', (req, res)=>{
     User.findOne({userId:req.body.loggedId}, (err, user)=>{
-        var token=jwt.sign(ObjectId(user._id).toHexString(),'secret')
+        var token=jwt.sign(user._id.toHexString(),'secret')
 
         if(err) return console.log(err)
         return res.status(200).json({success:true, user_id:token})
