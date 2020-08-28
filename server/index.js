@@ -9,15 +9,15 @@ const config = require('./config/key')
 const {Product}=require('./models/product')
 const {User}=require('./models/user')
 
-/* const path = require('path');
+const path = require('path');
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "client/build")));
-} */
+}
 
-/* app.get("/", (req, res) => {
+app.get("/", (req, res) => {
 res.sendFile(path.join(__dirname, "client/build", "index.html"));
-}); */
+});
 
 mongoose.connect(config.MongoURI,{
     useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false
