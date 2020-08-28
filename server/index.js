@@ -23,7 +23,7 @@ res.sendFile(path.join(__dirname, "client/build", "index.html"));
 
 mongoose.connect(config.MongoURI,{
     useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false
-}).then(() => console.log('MongoDB Connected...'))
+}).then(() => console.log('MongoDB Connected...', config.MongoURI))
 .catch(err => console.log(err))
 
 
