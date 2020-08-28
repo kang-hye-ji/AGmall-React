@@ -6,9 +6,6 @@ const cookieParser=require('cookie-parser')
 const mongoose = require('mongoose')
 const config = require('./config/key')
 
-const {PRODUCT}=require('./models/product')
-const {USER}=require('./models/users')
-
 mongoose.connect(config.MongoURI,{
     useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false
 }).then(() => console.log('MongoDB Connected...'))
