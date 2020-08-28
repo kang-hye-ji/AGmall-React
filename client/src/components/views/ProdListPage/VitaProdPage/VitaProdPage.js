@@ -15,7 +15,7 @@ function VitaProdPage() {
     useEffect(() => {
         setloading(true);
         let body={category:'안심비타민'}
-        Axios.post('/api/product/lists', body)
+        Axios.post('https://agmall.herokuapp.com/api/product/lists', body)
         .then(response=>{
             if(response.data.success){
                 setProducts(response.data.products)

@@ -15,7 +15,7 @@ function EyeProdPage() {
     useEffect(() => {
         setloading(true);
         let body={category:'눈건강'}
-        Axios.post('/api/product/lists', body)
+        Axios.post('https://agmall.herokuapp.com/api/product/lists', body)
         .then(response=>{
             if(response.data.success){
                 setProducts(response.data.products)

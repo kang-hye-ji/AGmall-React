@@ -15,7 +15,7 @@ function HealthProdPage() {
     useEffect(() => {
         setloading(true);
         let body={category:'건강기능식품'}
-        Axios.post('/api/product/lists', body)
+        Axios.post('https://agmall.herokuapp.com/api/product/lists', body)
         .then(response=>{
             if(response.data.success){
                 setProducts(response.data.products)
