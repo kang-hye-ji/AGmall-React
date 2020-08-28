@@ -3,6 +3,7 @@ const bcrypt=require('bcrypt')
 const saltRounds=10;
 const jwt=require('jsonwebtoken');
 const moment=require('moment');
+var ObjectId = require('mongodb').ObjectID;
 
 const userSchema=mongoose.Schema({
     userId:{
@@ -88,7 +89,7 @@ userSchema.methods.comparePassword=function(plainPassword, cb){
 
 userSchema.methods.generateToken=function(cb){
     var user=this;
-    var token=jwt.sign(user._id.toHexString(),'secret')
+    var token=jwt.sign(ObjectId(user._id).toHexString(),'secret')
     var Hour=moment().add(1, 'hour').valueOf();
 
     user.update({token:token, tokenExp:Hour},function(err, user){
