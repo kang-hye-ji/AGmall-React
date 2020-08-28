@@ -5,11 +5,13 @@ const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
 const mongoose = require('mongoose')
 const config = require('./config/key')
+const cors =require('cors');
 
 const {Product}=require('./models/product')
 const {User}=require('./models/user')
 
 const path = require('path');
+app.use(cors());
 
 /* if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "client/build")));
