@@ -35,7 +35,7 @@ app.use('/api/product', require('./routes/products'))
 app.get('/', (req, res)=>{
     res.send("Hello World")
 })
-app.get('/product', (req, res)=>{
+app.get('/api/product', (req, res)=>{
     Product.find((err, products)=>{
         if(err) return res.status(400).send(err)
         console.log(products)

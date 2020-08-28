@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Header from '../../Header/Header'
 import './BeautyProdPage.css'
 import ProdList from '../../ProdList/ProdList'
-import Axios from 'axios'
+import axios from '../../../../axios/axios'
 import { Pagination } from 'antd';
 
 function BeautyProdPage() {
@@ -13,10 +13,11 @@ function BeautyProdPage() {
     const [loading, setloading] = useState(false)
     const [currentPage, setcurrentPage] = useState(1)
     const [productsPerPage, setproductsPerPage] = useState(40)
+    
     useEffect(() => {
         setloading(true);
         let body={category:'인생뷰티'}
-        Axios.post('/api/product/lists', body)
+        axios.post('/api/product/lists', body)
         .then(response=>{
             if(response.data.success){
                 setProducts(response.data.products)
