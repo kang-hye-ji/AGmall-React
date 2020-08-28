@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Header from '../../Header/Header'
 import './BeautyProdPage.css'
 import ProdList from '../../ProdList/ProdList'
-import axios from '../../../../axios/axios'
+import Axios from 'axios'
 import { Pagination } from 'antd';
 
 function BeautyProdPage() {
@@ -17,7 +17,7 @@ function BeautyProdPage() {
     useEffect(() => {
         setloading(true);
         let body={category:'인생뷰티'}
-        axios.post('/api/product/lists', body)
+        Axios.post('https://agmall.herokuapp.com/api/product/lists', body)
         .then(response=>{
             if(response.data.success){
                 setProducts(response.data.products)
