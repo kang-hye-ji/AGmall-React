@@ -38,49 +38,49 @@ function MD() {
                         </div>
                     </article>
                     <article className="MDList">
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist1.png" alt="아이세이프 루테인"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist2.png" alt="눈에좋은 루테인 플러스"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist3.png" alt="루테인 미니100"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist4.png" alt="루테인 지아잔틴"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist5.png" alt="아이포커스"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist6.png" alt="오메가 루테인 플러스"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist7.png" alt="알티지오메가3"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist8.png" alt="밀크씨슬"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist9.png" alt="안심 비타민"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist10.png" alt="건강 선물세트"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist11.png" alt="인생뷰티"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist12.png" alt="저분자 콜라겐"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist13.png" alt="코박사"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist14.png" alt="코박사 키즈"/>
                         </a>
-                        <a href="!#" onClick={e=>{e.preventDefault();}} onClick={e=>{e.preventDefault();}} title="" target="_self">
+                        <a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">
                             <img src="/img/main/MDlist15.png" alt="편강 청강원"/>
                         </a>
                     </article>

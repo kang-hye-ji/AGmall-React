@@ -3,7 +3,6 @@ const router = express.Router()
 const jwt=require('jsonwebtoken');
 const {User} = require('../models/user')
 const {auth}=require('../middleware/auth')
-var ObjectId = require('mongodb').ObjectID;
 
 router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -102,6 +101,11 @@ router.get('/logout', auth, (req, res)=>{
     })
 })
 
+/* router.get('/auth', (req, res)=>{
+    res.status(200).json({
+        isAuth:true
+    })
+}) */
 router.get('/auth', auth, (req, res)=>{
     res.status(200).json({
         _id:req.user._id,

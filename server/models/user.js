@@ -3,7 +3,6 @@ const bcrypt=require('bcrypt')
 const saltRounds=10;
 const jwt=require('jsonwebtoken');
 const moment=require('moment');
-var ObjectId = require('mongodb').ObjectID;
 
 const userSchema=mongoose.Schema({
     userId:{

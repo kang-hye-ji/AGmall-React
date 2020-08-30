@@ -7,9 +7,6 @@ const mongoose = require('mongoose')
 const config = require('./config/key')
 const cors =require('cors');
 
-const {Product}=require('./models/product')
-const {User}=require('./models/user')
-
 const path = require('path');
 app.use(cors());
 
@@ -36,11 +33,5 @@ app.use('/api/product', require('./routes/products'))
 
 app.get('/', (req, res)=>{
     res.send("Hello World")
-})
-app.get('/api/product', (req, res)=>{
-    Product.find((err, products)=>{
-        if(err) return res.status(400).send(err)
-        console.log(products)
-    })
 })
 app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
