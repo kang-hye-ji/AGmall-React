@@ -52,9 +52,9 @@ router.post('/memberLogin', (req, res)=>{
                 User.findOne({userId:req.body.userId})
                 .exec((err, user)=>{
                     if(err) return res.send(err);
-                    /* res.cookie('w_authExp', user.tokenExp);
-                    res.cookie('w_auth', user.token) */
-                    req.session.w_auth=user.token
+                    res.cookie('w_authExp', user.tokenExp);
+                    res.cookie('w_auth', user.token)
+                    /* req.session.w_auth=user.token */
                     res.status(200)
                         .json({
                             loginSuccess:true,
@@ -97,12 +97,18 @@ router.post('/provideId', (req, res)=>{
     })
 } */
 
-router.get('/logout', auth, (req, res)=>{
+router.get('/logout',  (req, res)=>{
+    User.findOneAndUpdate({'userId':'kanghj9480'}, {'postDetailInfo':'haha'}, (err, doc)=>{
+        if(err) return console.log(err)
+        return res.status(200).json({success:true})
+    })
+})
+/* router.get('/logout', auth, (req, res)=>{
     User.findOneAndUpdate({'_id':req.user._id}, {'token':'', 'tokenExp':''}, (err, doc)=>{
         if(err) return console.log(err)
         return res.status(200).json({success:true, message:req.user.user_id})
     })
-})
+}) */
 
 /* router.get('/auth', (req, res)=>{
     res.status(200).json({

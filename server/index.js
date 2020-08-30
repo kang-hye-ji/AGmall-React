@@ -28,24 +28,25 @@ mongoose.connect(config.MongoURI,{
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(cookieParser());
 /* app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 })); */
-/* app.use(cookieParser()); */
 
 
 
 //express- session
-app.set('trust proxy', 1)
+/* app.set('trust proxy', 1)
 app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'agag',
     resave: false,
-    saveUninitialized: true/* ,
-    cookie: { secure: '' } */
-}))
+    saveUninitialized: true
+})) */
 //store 설정할것
 
+
+///xxx
 //개발환경
 /* var sess = {
     secret: 'agag',
