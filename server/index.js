@@ -45,7 +45,7 @@ app.set('trust proxy', 1)
 app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'agag',
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     cookie: { secure: true }
 }))
