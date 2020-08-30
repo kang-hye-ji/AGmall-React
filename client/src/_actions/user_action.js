@@ -23,14 +23,14 @@ export function saveMemberMsgTarget(dataToSubmit){
     }
 }
 export function registerUser(dataToSubmit){
-    const request=axios.post('https://agmall.herokuapp.com/api/user/register', dataToSubmit)
+    const request=axios.post('https://agmall.herokuapp.com/api/user/register', dataToSubmit, {withCredentials:true})
         .then(response=>response.data)
     return{
         type:Register_USER, payload:request
     }
 }
 export function IdDuplCheck(dataToSubmit){
-    const request=axios.post('https://agmall.herokuapp.com/api/user/register/idDuplCheck', dataToSubmit)
+    const request=axios.post('https://agmall.herokuapp.com/api/user/register/idDuplCheck', dataToSubmit, {withCredentials:true})
         .then(response=>response.data)
     return{
         type:ID_DUPL_CHECK_USER, payload:request
@@ -47,28 +47,28 @@ export function SavePostDetailUserInfo(dataToSubmit){
     }
 }
 export function memberLogin(dataToSubmit){
-    const request=axios.post('https://agmall.herokuapp.com/api/user/memberLogin', dataToSubmit)
+    const request=axios.post('https://agmall.herokuapp.com/api/user/memberLogin', dataToSubmit, {withCredentials:true})
         .then(response=>response.data)
     return{
         type:MEMBER_LOGIN_USER, payload:request
     }
 }
 export function idSaveFunc(dataToSubmit){
-    const request=axios.post('https://agmall.herokuapp.com/api/user/idSave', dataToSubmit)
+    const request=axios.post('https://agmall.herokuapp.com/api/user/idSave', dataToSubmit, {withCredentials:true})
         .then(response=>response.data)
     return{
         type:SAVE_ID_USER, payload:request
     }
 }
 export function logoutFunc(){
-    const request=axios.get('https://agmall.herokuapp.com/api/user/logout')
+    const request=axios.get('https://agmall.herokuapp.com/api/user/logout', {withCredentials:true})
         .then(response=>response.data)
     return{
         type:LOGOUT_USER, payload:request
     }
 }
 export function auth(){
-    const request=axios.get('https://agmall.herokuapp.com/api/user/auth')
+    const request=axios.get('https://agmall.herokuapp.com/api/user/auth', {withCredentials:true})
         .then(response=>response.data)
     return{
         type:AUTH_USER, payload:request
