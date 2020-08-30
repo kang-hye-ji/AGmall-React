@@ -54,6 +54,7 @@ router.post('/memberLogin', (req, res)=>{
                     if(err) return res.send(err);
                     res.cookie('w_authExp', user.tokenExp);
                     res.cookie('w_auth', user.token)
+                    res.cookie('ohhps', true)
                     /* req.session.w_auth=user.token */
                     res.status(200)
                         .json({
