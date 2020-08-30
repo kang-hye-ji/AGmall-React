@@ -111,6 +111,7 @@ router.get('/logout', auth, (req, res)=>{
     })
 }) */
 router.get('/auth', auth, (req, res)=>{
+    console.log(req.session.w_auth)
     res.status(200).json({
         _id:req.user._id,
         isAuth:true

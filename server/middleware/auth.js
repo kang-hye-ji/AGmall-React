@@ -1,7 +1,7 @@
 const {User} =require('../models/user');
 
 let auth=(req, res, next)=>{
-    console.log(req.session.w_auth)
+    /* console.log(req.session.w_auth) */
     User.findByToken(req.session.w_auth, (err,user)=>{
         if(err) console.log(err);
         if(!user){
