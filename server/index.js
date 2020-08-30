@@ -46,8 +46,8 @@ app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'agag',
     resave: false,
-    saveUninitialized: true,
-    httpOnly:false
+    saveUninitialized: false,
+    cookie: { secure: true }
 }))
 //store 설정할것
 
@@ -79,6 +79,5 @@ app.use('/api/product', require('./routes/products'))
 
 app.get('/', (req, res)=>{
     res.send("Hello World")
-    return console.log(req.session.w_auth)
 })
 app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
