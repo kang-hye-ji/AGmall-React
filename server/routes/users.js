@@ -7,7 +7,7 @@ const app = express()
 const session=require('express-session')
 
 router.use(function(req, res, next) {
-    /* res.header("Access-Control-Allow-Origin", "*"); */
+    res.header("Access-Control-Allow-Origin", "https://jolly-turing-1308c8.netlify.app");
     /* res.header("Access-Control-Allow-Headers", "*"); */
     //res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Credentials", true);
