@@ -68,9 +68,10 @@ export function logoutFunc(){
     }
 }
 export function auth(){
-    const request=axios.get('https://agmall.herokuapp.com/api/user/auth')
+    const request=axios.get('/api/user/auth')
         .then(response=>response.data)
     return{
         type:AUTH_USER, payload:request
     }
 }
+//https://agmall.herokuapp.com/api/user/auth

@@ -8,7 +8,7 @@ let auth=(req, res, next)=>{
             return res.json({
                 isAuth:false,
                 error:err,
-                success:false
+                token:req.cookies.w_auth
             })
         }
         req.token=token;
