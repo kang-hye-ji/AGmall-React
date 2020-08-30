@@ -44,7 +44,8 @@ app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'agag',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    httpOnly:false
 }))
 //store 설정할것
 
