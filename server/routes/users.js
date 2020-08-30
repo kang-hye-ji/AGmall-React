@@ -110,7 +110,7 @@ router.get('/logout', auth, (req, res)=>{
         isAuth:true
     })
 }) */
-router.get('/auth', auth, (req, res)=>{
+router.get('/auth', (req, res)=>{
     User.findByToken(req.session.w_auth, (err,user)=>{
         if(err) console.log(err);
         if(!user){
