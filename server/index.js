@@ -17,14 +17,6 @@ app.use(cors({
 
 }));
 
-/* if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "client/build")));
-}
-
-app.get("/", (req, res) => {
-res.sendFile(path.join(__dirname, "client/build", "index.html"));
-}); */
-
 mongoose.connect(config.MongoURI,{
     useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false
 }).then(() => console.log('MongoDB Connected...', config.MongoURI))
@@ -33,14 +25,10 @@ mongoose.connect(config.MongoURI,{
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(cookieParser());
-/* app.use(session({
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-})); */
+/* app.use(cookieParser()); */
 
 
 
-//express- session
 app.set('trust proxy', 1)
 app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -49,7 +37,6 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false }
 }))
-//store 설정할것
 
 
 ///xxx
