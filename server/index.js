@@ -10,7 +10,7 @@ const config = require('./config/key')
 const cors =require('cors');
 
 const path = require('path');
-app.set('trust proxy', 1)
+/* app.set('trust proxy', 1) */
 app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'agag',
