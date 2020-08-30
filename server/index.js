@@ -10,7 +10,10 @@ const config = require('./config/key')
 const cors =require('cors');
 
 const path = require('path');
-app.use(cors());
+app.use(cors({
+    origin: "https://jolly-turing-1308c8.netlify.app/",
+    credentials: true
+}));
 
 /* if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "client/build")));
