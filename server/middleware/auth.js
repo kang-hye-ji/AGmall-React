@@ -5,11 +5,11 @@ let auth=(req, res, next)=>{
     User.findByToken(req.session.w_auth, (err,user)=>{
         if(err) console.log(err);
         if(!user){
-            return console.log(req.session.w_auth)
-            /* return res.json({
+            /* return console.log(req.session.w_auth) */
+            return res.json({
                 isAuth:false,
                 error:true
-            }) */
+            })
         }
         /* req.token=req.session.w_auth; */
         req.user=user;
