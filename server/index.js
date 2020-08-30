@@ -39,13 +39,13 @@ app.use(cookieParser());
 
 
 //express- session
-/* app.set('trust proxy', 1)
+app.set('trust proxy', 1)
 app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'agag',
     resave: false,
     saveUninitialized: true
-})) */
+}))
 //store 설정할것
 
 
