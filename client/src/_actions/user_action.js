@@ -47,7 +47,7 @@ export function SavePostDetailUserInfo(dataToSubmit){
     }
 }
 export function memberLogin(dataToSubmit){
-    const request=axios.post('https://agmall.herokuapp.com/api/user/memberLogin', dataToSubmit)
+    const request=axios.post('/api/user/memberLogin', dataToSubmit)
         .then(response=>response.data)
     return{
         type:MEMBER_LOGIN_USER, payload:request

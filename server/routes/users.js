@@ -4,6 +4,7 @@ const jwt=require('jsonwebtoken');
 const {User} = require('../models/user')
 const {auth}=require('../middleware/auth')
 const app = express()
+const session=require('express-session')
 
 router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -51,10 +52,10 @@ router.post('/memberLogin', (req, res)=>{
                 User.findOne({userId:req.body.userId})
                 .exec((err, user)=>{
                     if(err) return res.send(err);
-                    /* app.use(session({ secret: 'agag', cookie: { w_auth: user.token }})) */
-                    res.cookie('w_authExp', user.tokenExp);
-                    res.cookie('w_auth', user.token)
-                        .status(200)
+                    /* res.cookie('w_authExp', user.tokenExp);
+                    res.cookie('w_auth', user.token) */
+                    req.session.w_auth=user.token
+                    res.status(200)
                         .json({
                             loginSuccess:true,
                             user_id:user._id
@@ -97,7 +98,7 @@ router.post('/provideId', (req, res)=>{
 } */
 
 router.get('/logout', auth, (req, res)=>{
-    User.findOneAndUpdate({_id:req.user._id}, {token:'', tokenExp:''}, (err, doc)=>{
+    User.findOneAndUpdate({'_id':req.user._id}, {'token':'', 'tokenExp':''}, (err, doc)=>{
         if(err) return console.log(err)
         return res.status(200).json({success:true, message:req.user.user_id})
     })
