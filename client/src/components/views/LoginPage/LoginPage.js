@@ -13,7 +13,11 @@ function LoginPage(props) {
     useEffect(() => {
         if(localStorage.getItem('idSave')==='true'){
             let variable={user_id:localStorage.getItem('user_id')}
-            Axios.post('https://agmall.herokuapp.com/api/user/provideId',variable)
+            const config={
+                headers:{'Content-Type': 'application/json'},
+                withCredentials: true
+            }
+            Axios.post('https://agmall.herokuapp.com/api/user/provideId',variable, config)
             .then(response=>{
                 if(response.data.success){
                     setIdValue(response.data.userId)
