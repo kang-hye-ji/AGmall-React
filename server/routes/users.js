@@ -111,11 +111,28 @@ router.get('/logout', auth, (req, res)=>{
     })
 }) */
 router.get('/auth', auth, (req, res)=>{
+    User.findByToken(req.session.w_auth, (err,user)=>{
+        if(err) console.log(err);
+        if(!user){
+            console.log(req.session)
+            return res.json({
+                isAuth:false,
+                error:true
+            })
+        }
+        res.status(200).json({
+            _id:user._id,
+            isAuth:true
+        })
+    })
+})
+/* router.get('/auth', auth, (req, res)=>{
+    
     console.log(req.session.w_auth)
     res.status(200).json({
         _id:req.user._id,
         isAuth:true
     })
-})
+}) */
 
 module.exports = router;
