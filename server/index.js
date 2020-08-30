@@ -3,6 +3,7 @@ const app = express()
 const PORT = process.env.PORT || 5000;
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
+const session=require('express-session')
 const mongoose = require('mongoose')
 const config = require('./config/key')
 const cors =require('cors');
@@ -26,7 +27,43 @@ mongoose.connect(config.MongoURI,{
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+/* app.use(session({
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+})); */
 app.use(cookieParser());
+
+
+
+//express- session
+/* app.set('trust proxy', 1)
+app.use(session({
+    secret: 'agag',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}))
+
+var sess = {
+    secret: 'agag',
+    cookie: {}
+  }
+   
+  if (app.get('env') === 'production') {
+    app.set('trust proxy', 1) // trust first proxy
+    sess.cookie.secure = true // serve secure cookies
+  }
+   
+  app.use(session(sess))
+
+  app.use(session({
+    genid: function(req) {
+      return genuuid() // use UUIDs for session IDs
+    },
+    secret: 'agag'
+  }))
+ */
+
+
 
 app.use('/api/user', require('./routes/users'))
 app.use('/api/product', require('./routes/products'))

@@ -3,6 +3,7 @@ const router = express.Router()
 const jwt=require('jsonwebtoken');
 const {User} = require('../models/user')
 const {auth}=require('../middleware/auth')
+const app = express()
 
 router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -50,6 +51,7 @@ router.post('/memberLogin', (req, res)=>{
                 User.findOne({userId:req.body.userId})
                 .exec((err, user)=>{
                     if(err) return res.send(err);
+                    /* app.use(session({ secret: 'agag', cookie: { w_auth: user.token }})) */
                     res.cookie('w_authExp', user.tokenExp);
                     res.cookie('w_auth', user.token)
                         .status(200)
