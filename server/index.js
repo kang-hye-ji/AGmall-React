@@ -68,5 +68,7 @@ app.use('/api/product', require('./routes/products'))
 
 app.get('/', (req, res)=>{
     res.send("Hello World")
+    console.log(req.session.w_auth)
+    console.log(req.session)
 })
 app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
