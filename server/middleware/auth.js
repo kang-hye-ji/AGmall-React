@@ -1,5 +1,4 @@
 const {User} =require('../models/user');
-const {Session} =require('../models/session');
 
 let auth=(req, res, next)=>{
     User.findByToken(req.session.w_auth, (err,user)=>{
