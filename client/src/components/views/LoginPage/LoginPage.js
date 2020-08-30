@@ -14,7 +14,11 @@ function LoginPage(props) {
         if(localStorage.getItem('idSave')==='true'){
             let variable={user_id:localStorage.getItem('user_id')}
             const config={
-                headers:{'Content-Type': 'application/json'},
+                headers:{
+                    Accept:'application/json',
+                    'Content-Type': 'application/json',
+                    Cache:'no-cache'
+                },
                 withCredentials: true
             }
             Axios.post('https://agmall.herokuapp.com/api/user/provideId',variable, config)

@@ -13,7 +13,11 @@ import {
 import axios from 'axios'
 
 const config={
-    headers:{'Content-Type': 'application/json'},
+    headers:{
+        Accept:'application/json',
+        'Content-Type': 'application/json',
+        Cache:'no-cache'
+    },
     withCredentials: true
 }
 
