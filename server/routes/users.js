@@ -103,7 +103,7 @@ router.get('/logout', (req, res)=>{
     User.findByToken(req.session.w_auth, (err,user)=>{
         if(err) console.log(err);
         if(!user){
-            console.log(req.session)
+            console.log(user)
             return res.json({
                 success:false
             })
