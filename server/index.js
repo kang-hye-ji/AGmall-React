@@ -13,9 +13,9 @@ const cors =require('cors');
 const path = require('path');
 /* app.set('trust proxy', false) */
 app.use(session({
-    genid: function(req) {
+    /* genid: function(req) {
         return genuugid() // use UUIDs for session IDs
-    },
+    }, */
     secret: 'agag',
     resave: true,
     saveUninitialized: true,
