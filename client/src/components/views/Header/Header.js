@@ -60,7 +60,8 @@ function Header(props) {
                                 </li>
                                 <li><a href="!#" onClick={e=>{e.preventDefault();}} title="" target="_self">고객센터</a></li>
                                 <li>
-                                    <a href="!#" onClick={logoutHandler}>로그아웃</a>
+                                    {/* <a href="!#" onClick={logoutHandler}>로그아웃</a> */}
+                                    <button onClick={logoutHandler}>로그아웃</button>
                                 </li>
                             </ul>
                             :

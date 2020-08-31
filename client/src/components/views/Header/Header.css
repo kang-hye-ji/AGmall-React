@@ -82,7 +82,8 @@ header.onH .headerInner{
     float:left;
 }
 .info>li>a,
-.info_login>li>a{
+.info_login>li>a,
+.info_login>li>button{
     display:block; height:22px; line-height:22px; width:45px; padding-left:28px; margin-left:10px;
     text-decoration:none; color:#000; font-size:11px;
 }
@@ -91,7 +92,7 @@ header.onH .headerInner{
     width:52px;
 }
 .info>li:nth-child(1)>a,
-.info_login>li:nth-child(4)>a{
+.info_login>li:nth-child(4)>button{
     background:url('/img/layout/info_ico1.png') left no-repeat;
 }
 .info>li:nth-child(2)>a,
