@@ -100,7 +100,7 @@ router.post('/provideId', (req, res)=>{
 } */
 
 router.get('/logout', auth, (req, res)=>{
-    User.findOneAndUpdate({'_id':req.user._id}, {'token':'', 'tokenExp':''}, (err, doc)=>{
+    User.findOneAndUpdate({_id:req.user._id}, {token:'', tokenExp:''}, (err, doc)=>{
         if(err) return console.log(err)
         return res.status(200).json({success:true, message:req.user.user_id})
     })
