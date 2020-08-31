@@ -1,5 +1,6 @@
 const express=require('express')
 const app = express()
+const router = express.Router()
 const PORT = process.env.PORT || 5000;
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
@@ -25,6 +26,14 @@ app.use(cors({
     /* methods:"PUT, GET, POST, DELETE, OPTIONS", */
 
 }));
+router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://jolly-turing-1308c8.netlify.app");
+    //res.header("Access-Control-Allow-Headers", "*");
+    //res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=none")
+    next();
+});
 
 mongoose.connect(config.MongoURI,{
     useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false
