@@ -13,6 +13,9 @@ const cors =require('cors');
 const path = require('path');
 app.set('trust proxy', false)
 app.use(session({
+    genid: function(req) {
+        return genuuid() // use UUIDs for session IDs
+    },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'agag',
     resave: false,
