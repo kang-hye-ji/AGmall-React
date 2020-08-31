@@ -109,9 +109,9 @@ router.get('/logout', (req, res)=>{
                 error:true
             })
         }
-        User.findOneAndUpdate({_id:req.user._id}, {token:'', tokenExp:''}, (err, user)=>{
+        User.findOneAndUpdate({_id:user._id}, {token:'', tokenExp:''}, (err, user)=>{
             if(err) return console.log(err)
-            return res.status(200).json({success:true, message:user.user_id})
+            return res.status(200).json({success:true})
         })
     })
 })
