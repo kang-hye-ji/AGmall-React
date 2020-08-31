@@ -99,10 +99,20 @@ router.post('/provideId', (req, res)=>{
     })
 } */
 
-router.get('/logout', auth, (req, res)=>{
-    User.findOneAndUpdate({_id:req.user._id}, {token:'', tokenExp:''}, (err, doc)=>{
-        if(err) return console.log(err)
-        return res.status(200).json({success:true, message:req.user.user_id})
+router.get('/logout', (req, res)=>{
+    User.findByToken(req.session.w_auth, (err,user)=>{
+        if(err) console.log(err);
+        if(!user){
+            console.log(req.session)
+            return res.json({
+                isAuth:false,
+                error:true
+            })
+        }
+        User.findOneAndUpdate({_id:req.user._id}, {token:'', tokenExp:''}, (err, user)=>{
+            if(err) return console.log(err)
+            return res.status(200).json({success:true, message:user.user_id})
+        })
     })
 })
 
