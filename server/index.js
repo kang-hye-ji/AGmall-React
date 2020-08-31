@@ -13,9 +13,6 @@ const cors =require('cors');
 const path = require('path');
 app.set('trust proxy', 1)
 app.use(session({
-    /* genid: function(req) {
-        return genuugid() // use UUIDs for session IDs
-    }, */
     secret: 'agag',
     resave: false,
     saveUninitialized: false,
@@ -25,6 +22,17 @@ app.use(session({
         sameSite:'none'
     }
 }))
+
+//dev ver
+/* app.use(session({
+    secret: 'agag',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { 
+        secure: false
+    }
+})) */
 
 app.use(cors({
     origin: "https://jolly-turing-1308c8.netlify.app",
@@ -44,39 +52,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-
-
-
-
-
-///xxx
-//개발환경
-/* var sess = {
-    secret: 'agag',
-    cookie: {}
-}
-if (app.get('env') === 'production') {
-    app.set('trust proxy', 1) // trust first proxy
-    sess.cookie.secure = true // serve secure cookies
-} */
-/* app.use(session({
-    sess,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    genid: function(req) {
-        return genuuid() // use UUIDs for session IDs
-    },
-    secret: 'agag'
-})) */
-
-
-
-
 app.use('/api/user', require('./routes/users'))
 app.use('/api/product', require('./routes/products'))
 
 app.get('/', (req, res)=>{
     res.send("Hello World")
-    console.log(req.session.w_auth)
-    console.log(req.session)
 })
 app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
