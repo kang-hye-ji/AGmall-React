@@ -107,11 +107,14 @@ router.get('/logout', (req, res)=>{
                 success:false
             })
         }
+        
         User.findOneAndUpdate({_id:user._id}, {token:"", tokenExp:""}, (err, user)=>{
             if(err) return console.log(err)
             return res.status(200).json({success:true})
         })
-        req.session.destory();
+        .exec((err,doc)=>{
+            req.session.destroy();
+        })
     })
 })
 
