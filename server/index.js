@@ -17,8 +17,8 @@ app.use(session({
         return genuugid() // use UUIDs for session IDs
     }, */
     secret: 'agag',
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     cookie: { 
         secure: true,
