@@ -11,16 +11,20 @@ const config = require('./config/key')
 const cors =require('cors');
 
 const path = require('path');
-app.set('trust proxy', false)
+/* app.set('trust proxy', false) */
 app.use(session({
     genid: function(req) {
-        return genuuid() // use UUIDs for session IDs
+        return genuugid() // use UUIDs for session IDs
     },
     secret: 'agag',
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    cookie: { secure: false }
+    cookie: { 
+        secure: false,
+        sameSite:'none',
+        httpOnly:false
+    }
 }))
 
 app.use(cors({
