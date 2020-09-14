@@ -7,14 +7,15 @@ import { Pagination } from 'antd';
 function VitaProdPage() {
     const [OpenSelector, setOpenSelector] = useState(false)
     const [rangeSetBtnClassName, setrangeSetBtnClassName] = useState()
-    const [rangeSetValue, setrangeSetValue] = useState("40개씩보기")
+    const [rangeSetValue, setrangeSetValue] = useState("4개씩보기")
     const [Products, setProducts] = useState([])
     const [loading, setloading] = useState(false)
     const [currentPage, setcurrentPage] = useState(1)
     const [productsPerPage, setproductsPerPage] = useState(40)
+    
     useEffect(() => {
         setloading(true);
-        let body={category:'안심비타민'}
+        let body={category:'비타민'}
         Axios.post('https://agmall.herokuapp.com/api/product/lists', body)
         .then(response=>{
             if(response.data.success){
@@ -25,10 +26,10 @@ function VitaProdPage() {
     }, [])
 
     const rangeOptions=[
-        {value:"10개씩보기"},
-        {value:"20개씩보기"},
-        {value:"30개씩보기"},
-        {value:"40개씩보기"}
+        {value:"1개씩보기"},
+        {value:"2개씩보기"},
+        {value:"3개씩보기"},
+        {value:"4개씩보기"}
     ]
     const rangeSetBtnHandler=(e)=>{
         setOpenSelector(!OpenSelector)
@@ -38,17 +39,18 @@ function VitaProdPage() {
             setrangeSetBtnClassName("arrowUp")
         }
     }
+    console.log(rangeSetBtnClassName)
     const rangeOptionHandler=(e)=>{
         let curVal=e.currentTarget.value;
         setrangeSetValue(curVal)
-        if(curVal==="40개씩보기"){
-            setproductsPerPage(40)
-        }else if(curVal==="30개씩보기"){
-            setproductsPerPage(30)
-        }else if(curVal==="20개씩보기"){
-            setproductsPerPage(20)
-        }else if(curVal==="10개씩보기"){
-            setproductsPerPage(10)
+        if(curVal==="4개씩보기"){
+            setproductsPerPage(4)
+        }else if(curVal==="3개씩보기"){
+            setproductsPerPage(3)
+        }else if(curVal==="2개씩보기"){
+            setproductsPerPage(2)
+        }else if(curVal==="1개씩보기"){
+            setproductsPerPage(1)
         }
     }
 
@@ -67,13 +69,13 @@ function VitaProdPage() {
             <Header/>
             <div className="ProdPageWrap">
                 <div className="banner">
-                    <img src="/img/productBanner/list_3_pc_105938.jpg" alt="비타민 | 자연에 가까운 건강한 원료를 담은 비타민, 안심하고 섭취하세요."/>
+                    <img src="/img/productBanner/list_3_pc_105938.jpg" alt="자연에 가까운 건강한 원료를 담은 비타민, 안심하고 섭취하세요."/>
                 </div>
                 <div className="prodTopBar">
-                    <p>상품 <span>12</span>개</p>
+                    <p>상품 <span>{Products.length}</span>개</p>
                     <ul>
                         <li>
-                            <a>1</a>
+                            {/* <a>1</a> */}
                         </li>
                         <li>
                         <input title="보기설정" type="button" value={rangeSetValue} className={rangeSetBtnClassName} onClick={rangeSetBtnHandler}/>

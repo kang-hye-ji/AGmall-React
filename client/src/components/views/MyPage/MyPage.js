@@ -1,11 +1,26 @@
-import React, {useEffect} from 'react'
+import Axios from 'axios'
+import React, {useEffect, useState} from 'react'
+import { useSelector } from 'react-redux'
 import Header from '../Header/Header'
 import './MyPage.css'
 
 function MyPage() {
+    const user = useSelector(state => state.user);
+    const [userInfo, setuserInfo] = useState()
     useEffect(() => {
-        
-    }, [])
+        if(user.userData){
+            let body={userId:user.userData._id}
+            Axios.post('https://agmall.herokuapp.com/api/user/userInfo',body)
+            .then(response=>{
+                if(response.data.success){
+                    setuserInfo(response.data.user)
+                }else{
+                    alert('사용자 정보를 가져오는 데 실패했습니다.')
+                }
+                
+            })
+        }
+    }, [user.userData])
     return (
         <div>
             <Header/>
@@ -50,8 +65,12 @@ function MyPage() {
                 <article className="myInfo">
                     <ul>
                         <li>
-                            <p>{`님의`}</p>
-                            <h3>{`회원등급은 등급 입니다.`}</h3>
+                            {userInfo &&
+                                <React.Fragment>
+                                    <p>{`${userInfo.name}님의`}</p>
+                                    <h3>{`회원등급은 ${userInfo.class}등급 입니다.`}</h3>
+                                </React.Fragment>
+                            }
                             <div className="classButton">
                                 <button type="button">등급혜택보기</button>
                                 <div className="classBenefit">
@@ -152,24 +171,26 @@ function MyPage() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
                 </article>
                 <article className="recentView">
-                    <h2>최근 본 상품<span>님께서 본 최근 상품입니다.</span></h2>
+                    {userInfo && 
+                        <h2>최근 본 상품<span>{`${userInfo.name}님께서 본 최근 상품입니다.`}</span></h2>
+                    }
                     <ul>
                         <li>
                             <div className="recentCont">

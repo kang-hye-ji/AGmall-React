@@ -6,14 +6,14 @@ const {auth}=require('../middleware/auth')
 const app = express()
 const session=require('express-session')
 
-router.use(function(req, res, next) {
+/* router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "https://jolly-turing-1308c8.netlify.app");
     //res.header("Access-Control-Allow-Headers", "*");
     //res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Credentials", true);
     res.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=None")
     next();
-});
+}); */
 router.post('/register', (req, res)=>{
     const registerInfo = new User(req.body);
     registerInfo.save((err, doc)=>{
@@ -118,11 +118,6 @@ router.get('/logout', (req, res)=>{
     })
 })
 
-/* router.get('/auth', (req, res)=>{
-    res.status(200).json({
-        isAuth:true
-    })
-}) */
 router.get('/auth', (req, res)=>{
     User.findByToken(req.session.w_auth, (err,user)=>{
         if(err) console.log(err);
@@ -139,13 +134,11 @@ router.get('/auth', (req, res)=>{
         })
     })
 })
-/* router.get('/auth', auth, (req, res)=>{
-    
-    console.log(req.session.w_auth)
-    res.status(200).json({
-        _id:req.user._id,
-        isAuth:true
-    })
-}) */
 
+router.post('/userInfo',(req,res)=>{
+    User.findOne({'_id':req.body.userId}, (err,user)=>{
+        if(err) return console.log(err)
+        res.status(200).json({success:true, user})
+    })
+})
 module.exports = router;

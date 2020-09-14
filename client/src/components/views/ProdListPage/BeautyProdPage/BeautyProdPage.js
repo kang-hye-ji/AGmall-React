@@ -8,11 +8,11 @@ import { Pagination } from 'antd';
 function BeautyProdPage() {
     const [OpenSelector, setOpenSelector] = useState(false)
     const [rangeSetBtnClassName, setrangeSetBtnClassName] = useState()
-    const [rangeSetValue, setrangeSetValue] = useState("40개씩보기")
+    const [rangeSetValue, setrangeSetValue] = useState("4개씩보기")
     const [Products, setProducts] = useState([])
     const [loading, setloading] = useState(false)
     const [currentPage, setcurrentPage] = useState(1)
-    const [productsPerPage, setproductsPerPage] = useState(40)
+    const [productsPerPage, setproductsPerPage] = useState(4)
     
     useEffect(() => {
         setloading(true);
@@ -25,13 +25,12 @@ function BeautyProdPage() {
             }
         })
     }, [])
-    //https://medium.com/@loshy244110/react-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%84%A4%EC%9D%B4%EC%85%98-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-9c645c5046cd
 
     const rangeOptions=[
-        {value:"10개씩보기"},
-        {value:"20개씩보기"},
-        {value:"30개씩보기"},
-        {value:"40개씩보기"}
+        {value:"1개씩보기"},
+        {value:"2개씩보기"},
+        {value:"3개씩보기"},
+        {value:"4개씩보기"}
     ]
     const rangeSetBtnHandler=(e)=>{
         setOpenSelector(!OpenSelector)
@@ -45,14 +44,14 @@ function BeautyProdPage() {
     const rangeOptionHandler=(e)=>{
         let curVal=e.currentTarget.value;
         setrangeSetValue(curVal)
-        if(curVal==="40개씩보기"){
-            setproductsPerPage(40)
-        }else if(curVal==="30개씩보기"){
-            setproductsPerPage(30)
-        }else if(curVal==="20개씩보기"){
-            setproductsPerPage(20)
-        }else if(curVal==="10개씩보기"){
-            setproductsPerPage(10)
+        if(curVal==="4개씩보기"){
+            setproductsPerPage(4)
+        }else if(curVal==="3개씩보기"){
+            setproductsPerPage(3)
+        }else if(curVal==="2개씩보기"){
+            setproductsPerPage(2)
+        }else if(curVal==="1개씩보기"){
+            setproductsPerPage(1)
         }
     }
 
@@ -74,10 +73,10 @@ function BeautyProdPage() {
                     <img src="/img/productBanner/list_2_pc_105924.jpg" alt="인생뷰티 | 촉촉, 탱탱, 생기, 나에게 필요한 인생뷰티를 선택해보세요 | 안국건강 인생뷰티모델 배우 엄지원"/>
                 </div>
                 <div className="prodTopBar">
-                    <p>상품 <span>12</span>개</p>
+                    <p>상품 <span>{Products.length}</span>개</p>
                     <ul>
                         <li>
-                            <a>1</a>
+                            {/* <a>1</a> */}
                         </li>
                         <li>
                         <input title="보기설정" type="button" value={rangeSetValue} className={rangeSetBtnClassName} onClick={rangeSetBtnHandler}/>

@@ -12,7 +12,7 @@
 }
 
 .ProdPageWrap .prodTopBar{
-    *zoom:1; width:1180; padding:0 10px; height:30px; margin:50px 0 20px;
+    *zoom:1; width:1180; padding:0 5px 0 10px; height:30px; margin:50px 0 20px;
     border-bottom:1px solid #cfcfcf;
 }
 .ProdPageWrap .prodTopBar:after{
@@ -28,7 +28,7 @@
 }
 
 .ProdPageWrap .prodTopBar>ul{
-    float:right;
+    float:right; padding-bottom:10px;
 }
 .ProdPageWrap .prodTopBar>ul>li{
     float:left;
@@ -36,7 +36,7 @@
 
 /* 보기방식 설정 */
 .ProdPageWrap .prodTopBar>ul>li:nth-child(2){
-    display:inline-block; width:110px; height:28px; /* margin:10px 0 0 10px; */ position:relative; 
+    display:inline-block; width:100px; height:28px; /* margin:10px 0 0 10px; */ position:relative; 
 }
 .ProdPageWrap .prodTopBar>ul>li:nth-child(2)>input{
     padding:0 0 0 8px; width:102px; height:100%; /* margin:0; */
@@ -87,8 +87,12 @@
     display:block; width:100%; height:100%; position:relative; overflow:hidden;
     border:1px solid #e5e5e5;
 }
+.ProdPageWrap .ProdListCont_box>.productImg .discount{
+    position:absolute; top:0; right:0; width:45px; height:45px; display:block; z-index:10; line-height:45px;
+    background:#a0a0a0; font-size:14px; font-weight:600; text-align:center; color:#fff;
+}
 .ProdPageWrap .ProdListCont_box>.productImg>img{
-    /* position:absolute;  */width:288px; height:289px;
+    width:288px; height:289px;
 }
 .ProdPageWrap .ProdListCont_box>.productImg:hover>img{
     animation:productImg 0.5s ease 0s both;
@@ -135,9 +139,14 @@
     font-size:18px;
 }
 
+
 .ProdPageWrap .ProdListCont>span{
-    margin-top:15px; width:100%; text-align:center; display:block;
-    font-weight:600; font-size:17px;
+    width:100%; display:block; margin-top:15px;
+    font-weight:600; font-size:17px; text-align:center;
+}
+.ProdPageWrap .ProdListCont>span>del{
+    margin-right:10px; vertical-align: inherit;
+    color:#999; font-size:13px; font-weight:500;
 }
 
 

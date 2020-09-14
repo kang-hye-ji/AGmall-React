@@ -7,11 +7,12 @@ import { Pagination } from 'antd';
 function EyeProdPage() {
     const [OpenSelector, setOpenSelector] = useState(false)
     const [rangeSetBtnClassName, setrangeSetBtnClassName] = useState()
-    const [rangeSetValue, setrangeSetValue] = useState("40개씩보기")
+    const [rangeSetValue, setrangeSetValue] = useState("4개씩보기")
     const [Products, setProducts] = useState([])
     const [loading, setloading] = useState(false)
     const [currentPage, setcurrentPage] = useState(1)
     const [productsPerPage, setproductsPerPage] = useState(40)
+    
     useEffect(() => {
         setloading(true);
         let body={category:'눈건강'}
@@ -25,10 +26,10 @@ function EyeProdPage() {
     }, [])
 
     const rangeOptions=[
-        {value:"10개씩보기"},
-        {value:"20개씩보기"},
-        {value:"30개씩보기"},
-        {value:"40개씩보기"}
+        {value:"1개씩보기"},
+        {value:"2개씩보기"},
+        {value:"3개씩보기"},
+        {value:"4개씩보기"}
     ]
     const rangeSetBtnHandler=(e)=>{
         setOpenSelector(!OpenSelector)
@@ -38,17 +39,18 @@ function EyeProdPage() {
             setrangeSetBtnClassName("arrowUp")
         }
     }
+    console.log(rangeSetBtnClassName)
     const rangeOptionHandler=(e)=>{
         let curVal=e.currentTarget.value;
         setrangeSetValue(curVal)
-        if(curVal==="40개씩보기"){
-            setproductsPerPage(40)
-        }else if(curVal==="30개씩보기"){
-            setproductsPerPage(30)
-        }else if(curVal==="20개씩보기"){
-            setproductsPerPage(20)
-        }else if(curVal==="10개씩보기"){
-            setproductsPerPage(10)
+        if(curVal==="4개씩보기"){
+            setproductsPerPage(4)
+        }else if(curVal==="3개씩보기"){
+            setproductsPerPage(3)
+        }else if(curVal==="2개씩보기"){
+            setproductsPerPage(2)
+        }else if(curVal==="1개씩보기"){
+            setproductsPerPage(1)
         }
     }
 
@@ -67,13 +69,13 @@ function EyeProdPage() {
             <Header/>
             <div className="ProdPageWrap">
                 <div className="banner">
-                    <img src="/img/productBanner/list_1_pc_105908.jpg" alt="눈 | 20년 가까이 눈 하나만 고집한 눈건강 NO.1. 브랜드 안국이니까, 안심되잖아요. | 안국 루테인 모델 배우 이서진"/>
+                    <img src="/img/productBanner/list_1_pc_105908.jpg" alt="눈건강 | 20년 가까이 눈 하나만 고집한 눈건강 NO.1  브랜드 안국이니까, 안심되잖아요 | 안국 루테인 모델 배우 이서진"/>
                 </div>
                 <div className="prodTopBar">
-                    <p>상품 <span>12</span>개</p>
+                    <p>상품 <span>{Products.length}</span>개</p>
                     <ul>
                         <li>
-                            <a>1</a>
+                            {/* <a>1</a> */}
                         </li>
                         <li>
                         <input title="보기설정" type="button" value={rangeSetValue} className={rangeSetBtnClassName} onClick={rangeSetBtnHandler}/>

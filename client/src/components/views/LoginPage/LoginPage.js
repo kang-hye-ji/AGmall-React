@@ -21,7 +21,7 @@ function LoginPage(props) {
                 },
                 withCredentials: true
             }
-            Axios.post('/api/user/provideId',variable, config)
+            Axios.post('https://agmall.herokuapp.com/api/user/provideId',variable, config)
             .then(response=>{
                 if(response.data.success){
                     setIdValue(response.data.userId)

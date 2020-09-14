@@ -85,7 +85,7 @@ header.onH .headerInner{
 .info_login>li>a,
 .info_login>li>button{
     display:block; height:22px; line-height:22px; width:45px; padding-left:28px; margin-left:10px;
-    text-decoration:none; color:#000; font-size:11px;
+    text-decoration:none; color:#000; font-size:11px; box-sizing: content-box;
 }
 .info_login>li:first-child>a{
     /* info_login 마이페이지 */

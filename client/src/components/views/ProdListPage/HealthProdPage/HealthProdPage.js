@@ -7,11 +7,12 @@ import { Pagination } from 'antd';
 function HealthProdPage() {
     const [OpenSelector, setOpenSelector] = useState(false)
     const [rangeSetBtnClassName, setrangeSetBtnClassName] = useState()
-    const [rangeSetValue, setrangeSetValue] = useState("40개씩보기")
+    const [rangeSetValue, setrangeSetValue] = useState("4개씩보기")
     const [Products, setProducts] = useState([])
     const [loading, setloading] = useState(false)
     const [currentPage, setcurrentPage] = useState(1)
-    const [productsPerPage, setproductsPerPage] = useState(40)
+    const [productsPerPage, setproductsPerPage] = useState(4)
+    
     useEffect(() => {
         setloading(true);
         let body={category:'건강기능식품'}
@@ -25,10 +26,10 @@ function HealthProdPage() {
     }, [])
 
     const rangeOptions=[
-        {value:"10개씩보기"},
-        {value:"20개씩보기"},
-        {value:"30개씩보기"},
-        {value:"40개씩보기"}
+        {value:"1개씩보기"},
+        {value:"2개씩보기"},
+        {value:"3개씩보기"},
+        {value:"4개씩보기"}
     ]
     const rangeSetBtnHandler=(e)=>{
         setOpenSelector(!OpenSelector)
@@ -38,17 +39,18 @@ function HealthProdPage() {
             setrangeSetBtnClassName("arrowUp")
         }
     }
+    console.log(rangeSetBtnClassName)
     const rangeOptionHandler=(e)=>{
         let curVal=e.currentTarget.value;
         setrangeSetValue(curVal)
-        if(curVal==="40개씩보기"){
-            setproductsPerPage(40)
-        }else if(curVal==="30개씩보기"){
-            setproductsPerPage(30)
-        }else if(curVal==="20개씩보기"){
-            setproductsPerPage(20)
-        }else if(curVal==="10개씩보기"){
-            setproductsPerPage(10)
+        if(curVal==="4개씩보기"){
+            setproductsPerPage(4)
+        }else if(curVal==="3개씩보기"){
+            setproductsPerPage(3)
+        }else if(curVal==="2개씩보기"){
+            setproductsPerPage(2)
+        }else if(curVal==="1개씩보기"){
+            setproductsPerPage(1)
         }
     }
 
@@ -67,13 +69,13 @@ function HealthProdPage() {
             <Header/>
             <div className="ProdPageWrap">
                 <div className="banner">
-                    <img src="/img/productBanner/list_5_pc_110023.jpg" alt="건강기능식품 | 자연에 가깝게, 조금 더 안전하게/고객이 안심할 수 있도록 지속가능한 건강을 제공합니다."/>
+                    <img src="/img/productBanner/list_5_pc_110023.jpg" alt="자연에 가깝게, 조금 더 안전하게 고객이 안심할 수 있도록 지속가능한 건강을 제공합니다."/>
                 </div>
                 <div className="prodTopBar">
-                    <p>상품 <span>12</span>개</p>
+                    <p>상품 <span>{Products.length}</span>개</p>
                     <ul>
                         <li>
-                            <a>1</a>
+                            {/* <a>1</a> */}
                         </li>
                         <li>
                         <input title="보기설정" type="button" value={rangeSetValue} className={rangeSetBtnClassName} onClick={rangeSetBtnHandler}/>

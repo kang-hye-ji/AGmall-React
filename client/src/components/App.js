@@ -16,6 +16,7 @@ import EyeProdPage from "./views/ProdListPage/EyeProdPage/EyeProdPage";
 import HealthProdPage from "./views/ProdListPage/HealthProdPage/HealthProdPage";
 import NoseProdPage from "./views/ProdListPage/NoseProdPage/NoseProdPage";
 import VitaProdPage from "./views/ProdListPage/VitaProdPage/VitaProdPage";
+import ProdDetailPage from "./views/ProdDetailPage/ProdDetailPage";
 import Footer from "./views/Footer/Footer"
 import TopAndBottomBtn from "./functions/TopAndBottomBtn/TopAndBottomBtn"
 import QuickSide from "./functions/QuickSide/QuickSide"
@@ -43,6 +44,7 @@ function App() {
             <Route exact path="/health_prod_list" component={auth(HealthProdPage)}/>
             <Route exact path="/nose_prod_list" component={auth(NoseProdPage)}/>
             <Route exact path="/vitamin_prod_list" component={auth(VitaProdPage)}/>
+            <Route exact path="/prod/:prodId" component={auth(ProdDetailPage)}/>
           </Switch>
           <Footer/>
         </div>
