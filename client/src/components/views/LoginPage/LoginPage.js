@@ -82,6 +82,9 @@ function LoginPage(props) {
     const IdSaveHandler=()=>{
         setIdSaveChecked(!IdSaveChecked)
     }
+    const submitHandler=(e)=>{
+        e.preventDefault();
+    }
     return (
         <div>
             <Header/>
@@ -89,7 +92,7 @@ function LoginPage(props) {
                 <div className="loginWrap">
                     <h2 className="loginTitle">로그인</h2>
                     <div className="memberLogin">
-                        <form className>
+                        <form onSubmit={submitHandler}>
                             <fieldset>
                                 <h3>회원 로그인</h3>
                                 <div className="idAndPW">
@@ -97,9 +100,9 @@ function LoginPage(props) {
                                     <input type="password" placeholder="비밀번호" value={PWValue} onChange={e=>setPWValue(e.currentTarget.value)}/>
                                 </div>
                             </fieldset>
+                            <button className="loginBtn" onClick={memberLoginClick}>로그인</button>
+                            <input type="checkbox" id="idSave" checked={IdSaveChecked} onClick={IdSaveHandler}/><label htmlFor="idSave">아이디 저장</label>
                         </form>
-                        <button className="loginBtn" onClick={memberLoginClick}>로그인</button>
-                        <input type="checkbox" id="idSave" checked={IdSaveChecked} onClick={IdSaveHandler}/><label htmlFor="idSave">아이디 저장</label>
                     </div>
                     <ul className="snsLogin">
                         <li>
