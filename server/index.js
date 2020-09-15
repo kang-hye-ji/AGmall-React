@@ -17,10 +17,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    cookie: { 
+    /* cookie: { 
         secure: true,
         sameSite:'none'
-    }
+    } */
 }))
 
 //dev ver
