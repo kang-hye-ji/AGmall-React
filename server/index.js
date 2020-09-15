@@ -12,7 +12,7 @@ const cors =require('cors');
 
 const path = require('path');
 app.set('trust proxy', 1)
-/* app.use(session({
+app.use(session({
     secret: 'agag',
     resave: false,
     saveUninitialized: false,
@@ -21,10 +21,10 @@ app.set('trust proxy', 1)
         secure: true,
         sameSite:'none'
     }
-})) */
+}))
 
 //dev ver
-app.use(session({
+/* app.use(session({
     secret: 'agag',
     resave: false,
     saveUninitialized: false,
@@ -32,7 +32,7 @@ app.use(session({
     cookie: { 
         secure: false
     }
-}))
+})) */
 
 app.use(cors({
     origin: "https://jolly-turing-1308c8.netlify.app",

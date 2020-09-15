@@ -8,16 +8,16 @@
 }
 /* 회원 로그인 */
 .loginWrap .memberLogin{
-    *zoom:1; position:relative;
-}
-.loginWrap .memberLogin:after{
-    content:''; display:table; clear:both;
+    position:relative;
 }
 .loginWrap .memberLogin>form{
-    float:left;
+    *zoom:1;
+}
+.loginWrap .memberLogin>form:after{
+    content:''; display:table; clear:both;
 }
 .loginWrap .memberLogin fieldset{
-    padding-bottom:35px;
+    padding-bottom:35px; float:left;
     border:none;
 }
 .loginWrap .memberLogin h3{
