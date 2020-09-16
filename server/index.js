@@ -36,7 +36,7 @@ app.use(session({
 
 app.use(cors({
     origin: "https://jolly-turing-1308c8.netlify.app",
-    credentials: true,
+    credentials: 'include',
     methods:"PUT, GET, POST, DELETE, OPTIONS",
 
 }));
