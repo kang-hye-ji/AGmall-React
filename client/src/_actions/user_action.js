@@ -83,4 +83,4 @@ export function auth(){
         type:AUTH_USER, payload:request
     }
 }
-//https://agmall.herokuapp.com/api/user/auth
+// https://agmall.herokuapp.com/

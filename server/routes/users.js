@@ -3,8 +3,7 @@ const router = express.Router()
 const jwt=require('jsonwebtoken');
 const {User} = require('../models/user')
 const {auth}=require('../middleware/auth')
-const app = express()
-const session=require('express-session')
+/* const session=require('express-session') */
 
 router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "https://jolly-turing-1308c8.netlify.app");
@@ -76,12 +75,31 @@ router.post('/idSave', (req, res)=>{
     })
 })
 
-router.post('/provideId', (req, res)=>{
+/* router.post('/provideId', (req, res)=>{
     jwt.verify(req.body.user_id, 'secret', function(err, decode){
         User.findOne({'_id':decode}, function(err, user){
             if(err) return res.status(400).send(err);
             return res.status(200).json({success:true, userId:user.userId})
         })
+    }) */
+    /* User.findOne({_id:req.body.user_id}, (err, user)=>{
+        if(err) return console.log(err)
+        return res.status(200).json({success:true})
+    }) */
+/* }) */
+/* userSchema.statics.findByToken=function(token, cb){
+    var user=this;
+    jwt.verify(token, 'secret', function(err, decode){
+        user.findOne({'_id':decode, 'token':token}, function(err, user){
+            if(err) return cb(err);
+            cb(null, user);
+        })
+    })
+} */
+router.post('/provideId', (req, res)=>{
+    User.findByToken(req.body.user_id, (err, user)=>{
+        if (err) console.log(err);/* return res.status(400).send(err); */
+        return res.status(200).json({success:true, userId:user})
     })
     /* User.findOne({_id:req.body.user_id}, (err, user)=>{
         if(err) return console.log(err)

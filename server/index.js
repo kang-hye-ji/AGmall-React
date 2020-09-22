@@ -1,6 +1,5 @@
 const express=require('express')
 const app = express()
-const router = express.Router()
 const PORT = process.env.PORT || 5000;
 const bodyParser=require('body-parser')
 const cookieParser=require('cookie-parser')
@@ -10,7 +9,6 @@ const mongoose = require('mongoose')
 const config = require('./config/key')
 const cors =require('cors');
 
-const path = require('path');
 app.set('trust proxy', 1)
 app.use(session({
     secret: 'agag',
