@@ -3,7 +3,7 @@ const router = express.Router()
 const jwt=require('jsonwebtoken');
 const {User} = require('../models/user')
 const {auth}=require('../middleware/auth')
-const session=require('express-session')
+/* const session=require('express-session') */
 
 router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "https://jolly-turing-1308c8.netlify.app");
@@ -51,7 +51,7 @@ router.post('/memberLogin', (req, res)=>{
                 User.findOne({userId:req.body.userId})
                 .exec((err, user)=>{
                     if(err) return res.send(err);
-                    req.session.w_auth=user.token
+                    req.session.w_auth=user.token;
                     res.status(200)
                         .json({
                             loginSuccess:true,
@@ -81,39 +81,20 @@ router.post('/provideId', (req, res)=>{
     })
 })
 
-router.get('/logout', (req, res)=>{
-    User.findByToken(req.session.w_auth, (err,user)=>{
-        if(err) console.log(err);
-        if(!user){
-            return res.json({
-                success:false
-            })
-        }
-        
-        User.findOneAndUpdate({_id:user._id}, {token:"", tokenExp:""}, (err, user)=>{
-            if(err) return console.log(err)
-            return res.status(200).json({success:true})
-        })
-        .exec((err,doc)=>{
-            req.session.destroy();
-        })
+router.get('/logout', auth, (req, res)=>{
+    User.findOneAndUpdate({_id:req.user._id}, {token:"", tokenExp:""}, (err, user)=>{
+        if(err) return console.log(err)
+        return res.status(200).json({success:true})
+    })
+    .exec((err,doc)=>{
+        req.session.destroy();
     })
 })
 
-router.get('/auth', (req, res)=>{
-    User.findByToken(req.session.w_auth, (err,user)=>{
-        if(err) console.log(err);
-        if(!user){
-            console.log(req.session)
-            return res.json({
-                isAuth:false,
-                error:true
-            })
-        }
-        res.status(200).json({
-            _id:user._id,
-            isAuth:true
-        })
+router.get('/auth', auth, (req, res)=>{
+    res.status(200).json({
+        _id:req.user._id,
+        isAuth:true
     })
 })
 

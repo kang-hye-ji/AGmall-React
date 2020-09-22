@@ -22,7 +22,7 @@ app.use(session({
 }))
 
 //dev ver
-app.use(session({
+/* app.use(session({
     secret: 'agag',
     resave: false,
     saveUninitialized: false,
@@ -30,7 +30,7 @@ app.use(session({
     cookie: { 
         secure: false
     }
-}))
+})) */
 
 app.use(cors({
     origin: "https://jolly-turing-1308c8.netlify.app",
