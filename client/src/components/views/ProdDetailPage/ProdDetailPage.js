@@ -1,22 +1,36 @@
 import React, { useState,useEffect } from 'react'
-import axios from 'axios'
+import { useSelector,useDispatch } from 'react-redux'
+import {ImportProd, SaveRecentViewProd} from '../../../_actions/product_action'
 import Header from '../Header/Header'
 import './ProdDetailPage.css'
+import moment from 'moment'
 
 function ProdDetailPage(props) {
+    const user = useSelector(state => state.user)
+    const dispatch = useDispatch();
     const [Products, setProducts] = useState([]);
     const [number, setnumber] = useState(1)
     useEffect(() => {
         const prodId=props.match.params.prodId;
         let body={prodId:prodId}
-        axios.post('https://agmall.herokuapp.com/api/product/prodDetail', body)
+        dispatch(ImportProd(body))
         .then(response=>{
-            if(response.data.success){
-                setProducts(response.data.products)
+            if(response.payload.success){
+                setProducts(response.payload.products)
             }
         })
     }, [])
-    
+    useEffect(() => {
+        if(user.userData && user.userData._id){
+            const prodId=props.match.params.prodId;
+            const variable={
+                userId:user.userData._id,
+                prodId:prodId,
+                viewDate:moment()._d
+            }
+            dispatch(SaveRecentViewProd(variable))
+        }
+    }, [user.userData])
     const productInfo=Products.map((product, index)=>{
         const comma = (num)=>{
             var len, point, str;

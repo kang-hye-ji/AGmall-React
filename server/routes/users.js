@@ -3,15 +3,14 @@ const router = express.Router()
 const jwt=require('jsonwebtoken');
 const {User} = require('../models/user')
 const {auth}=require('../middleware/auth')
-/* const session=require('express-session') */
 
-router.use(function(req, res, next) {
+/* router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "https://jolly-turing-1308c8.netlify.app");
     //res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Credentials", true);
     res.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=None")
     next();
-});
+}); */
 router.post('/register', (req, res)=>{
     const registerInfo = new User(req.body);
     registerInfo.save((err, doc)=>{

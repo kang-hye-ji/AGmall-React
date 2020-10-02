@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 const config = require('./config/key')
 const cors =require('cors');
 
-app.set('trust proxy', 1)
+/* app.set('trust proxy', 1)
 app.use(session({
     secret: 'agag',
     resave: false,
@@ -19,10 +19,10 @@ app.use(session({
         secure: true,
         sameSite:'none'
     }
-}))
+})) */
 
 //dev ver
-/* app.use(session({
+app.use(session({
     secret: 'agag',
     resave: false,
     saveUninitialized: false,
@@ -30,10 +30,10 @@ app.use(session({
     cookie: { 
         secure: false
     }
-})) */
+}))
 
 app.use(cors({
-    origin: "https://jolly-turing-1308c8.netlify.app",
+    /* origin: "https://jolly-turing-1308c8.netlify.app", */
     credentials: true,
     methods:"PUT, GET, POST, DELETE, OPTIONS",
 

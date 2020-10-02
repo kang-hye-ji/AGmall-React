@@ -1,16 +1,20 @@
 import Axios from 'axios'
 import React, {useEffect, useState} from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import {ImportRecentViewProd, ImportProd} from '../../../_actions/product_action'
 import Header from '../Header/Header'
+import ProdList from '../ProdList/ProdList'
 import './MyPage.css'
 
 function MyPage() {
     const user = useSelector(state => state.user);
-    const [userInfo, setuserInfo] = useState()
+    const dispatch = useDispatch();
+    const [userInfo, setuserInfo] = useState();
+    const [recentProdID, setrecentProdID] = useState([])
     useEffect(() => {
         if(user.userData){
             let body={userId:user.userData._id}
-            Axios.post('https://agmall.herokuapp.com/api/user/userInfo',body)
+            Axios.post('/api/user/userInfo',body)
             .then(response=>{
                 if(response.data.success){
                     setuserInfo(response.data.user)
@@ -19,8 +23,27 @@ function MyPage() {
                 }
                 
             })
+            dispatch(ImportRecentViewProd(body))
+            .then(response=>{
+                if(response.payload.success){
+                    setrecentProdID(response.payload.doc)
+                }else{
+                    alert('최근 본 상품 정보를 가져오는 데 실패했습니다.')
+                }
+            })
         }
     }, [user.userData])
+
+    const recentCont = recentProdID.map((prodId, index)=>{
+        dispatch(ImportProd({prodId:prodId}))
+        .then(res=>{
+            if(res.payload.success){
+                console.log(res.payload.products.name)
+            }else{
+                alert('제품 정보를 불러오는 데 실패했습니다.')
+            }
+        })
+    })
     return (
         <div>
             <Header/>
@@ -191,6 +214,7 @@ function MyPage() {
                     {userInfo && 
                         <h2>최근 본 상품<span>{`${userInfo.name}님께서 본 최근 상품입니다.`}</span></h2>
                     }
+                    {recentCont}
                     <ul>
                         <li>
                             <div className="recentCont">

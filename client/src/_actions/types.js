@@ -12,3 +12,6 @@ export const AUTH_USER='auth_user';
 
 
 export const CATEGORY_PRODUCT='category_product';
+export const IMPORT_PROD_PRODUCT='import_prod_product';
+export const SAVE_RECENT_VIEW_PRODUCT='save_recent_view_product';
+export const IMPORT_RECENT_VIEW_PRODUCT='import_recent_view_product';
