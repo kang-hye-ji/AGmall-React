@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# AGmall 프로젝트는?)
+> 위 프로젝트는 React.js + Node.js + MongoDB를 기반으로 제작한 사이트입니다.<br/>
+> 안국건강몰 홈페이지를 참고해서 개인 포트폴리오용으로 만들었습니다.<br/>
+> 구현 기능으로는 사용자 관련 기능, 제품 관련 기능이 있고 아래와 같습니다.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<br/><br/><br/>
+# 구현 기능
+## 사용자 관련 기능
+  - ### 로그인
+  - ### 로그인 시 ID 저장
+  - ### 로그아웃
+  - ### 회원가입
+  - ### 회원가입 시 EMAIL 및 PW 유효성 검사
+  - ### 회원가입 시 ID 중복 검사 
+  - ### 회원가입 시 우편번호 찾기 API
+    : 카카오 우편번호찾기 오픈 API 사용(react 라이브러리 버전)
+  - ### 권한 체크
+  
+## 사용자 관련 기능
+  - ### 제품 목록 페이지 - 페이지네이션
+  - ### 제품 목록 페이지 - DB에서 상품 리스트 불러오기
+  - ### 제품 상세 페이지 - DB에서 제품 상세 정보 불러오기
+  - ### 마이페이지 - 최근 본 상품 불러오기
