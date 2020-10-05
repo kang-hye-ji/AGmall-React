@@ -17,7 +17,7 @@ function BeautyProdPage() {
     useEffect(() => {
         setloading(true);
         let body={category:'인생뷰티'}
-        Axios.post('/api/product/lists', body)
+        Axios.post('https://agmall.herokuapp.com/api/product/lists', body)
         .then(response=>{
             if(response.data.success){
                 setProducts(response.data.products)
@@ -40,7 +40,6 @@ function BeautyProdPage() {
             setrangeSetBtnClassName("arrowUp")
         }
     }
-    console.log(rangeSetBtnClassName)
     const rangeOptionHandler=(e)=>{
         let curVal=e.currentTarget.value;
         setrangeSetValue(curVal)

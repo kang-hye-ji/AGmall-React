@@ -25,7 +25,7 @@ function ProdDetailPage(props) {
             const prodId=props.match.params.prodId;
             const variable={
                 userId:user.userData._id,
-                prodId:prodId,
+                product:prodId,
                 viewDate:moment()._d
             }
             dispatch(SaveRecentViewProd(variable))

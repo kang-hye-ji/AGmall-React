@@ -1,7 +1,8 @@
 import Axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import {ImportRecentViewProd, ImportProd} from '../../../_actions/product_action'
+import {ImportRecentViewProd} from '../../../_actions/product_action'
+import {importUserInfo} from '../../../_actions/user_action'
 import Header from '../Header/Header'
 import ProdList from '../ProdList/ProdList'
 import './MyPage.css'
@@ -10,39 +11,37 @@ function MyPage() {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
     const [userInfo, setuserInfo] = useState();
-    const [recentProdID, setrecentProdID] = useState([])
+    const [recentProd, setrecentProd] = useState([])
     useEffect(() => {
         if(user.userData){
+            // 로그인 유저 정보 가져오기
             let body={userId:user.userData._id}
-            Axios.post('/api/user/userInfo',body)
+            dispatch(importUserInfo(body))
             .then(response=>{
-                if(response.data.success){
-                    setuserInfo(response.data.user)
+                if(response.payload.success){
+                    setuserInfo(response.payload.user)
                 }else{
                     alert('사용자 정보를 가져오는 데 실패했습니다.')
                 }
                 
             })
+            //최근 본 상품
             dispatch(ImportRecentViewProd(body))
             .then(response=>{
                 if(response.payload.success){
-                    setrecentProdID(response.payload.doc)
+                    setrecentProd(response.payload.products)
                 }else{
                     alert('최근 본 상품 정보를 가져오는 데 실패했습니다.')
                 }
             })
         }
     }, [user.userData])
-
-    const recentCont = recentProdID.map((prodId, index)=>{
-        dispatch(ImportProd({prodId:prodId}))
-        .then(res=>{
-            if(res.payload.success){
-                console.log(res.payload.products.name)
-            }else{
-                alert('제품 정보를 불러오는 데 실패했습니다.')
-            }
-        })
+    const recentCont=recentProd.map((prod,index)=>{
+        if(prod.product){
+            return(
+                <ProdList product={prod.product}/>
+            )
+        }
     })
     return (
         <div>
@@ -214,85 +213,12 @@ function MyPage() {
                     {userInfo && 
                         <h2>최근 본 상품<span>{`${userInfo.name}님께서 본 최근 상품입니다.`}</span></h2>
                     }
-                    {recentCont}
-                    <ul>
-                        <li>
-                            <div className="recentCont">
-                                <a href="!#" target="_self" className="productImg">
-                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
-                                    <div>
-                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
-                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
-                                    </div>
-                                </a>
-                                <a href="!#" target="_self" className="productName">
-                                    <h3>코박사키즈 1통</h3>
-                                </a>
-                            </div>
-                            <span>25,000원</span>
-                        </li>
-                        <li>
-                            <div className="recentCont">
-                                <a href="!#" target="_self" className="productImg">
-                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
-                                    <div>
-                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
-                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
-                                    </div>
-                                </a>
-                                <a href="!#" target="_self" className="productName">
-                                    <h3>코박사키즈 1통</h3>
-                                </a>
-                            </div>
-                            <span>25,000원</span>
-                        </li>
-                        <li>
-                            <div className="recentCont">
-                                <a href="!#" target="_self" className="productImg">
-                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
-                                    <div>
-                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
-                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
-                                    </div>
-                                </a>
-                                <a href="!#" target="_self" className="productName">
-                                    <h3>코박사키즈 1통</h3>
-                                </a>
-                            </div>
-                            <span>25,000원</span>
-                        </li>
-                        <li>
-                            <div className="recentCont">
-                                <a href="!#" target="_self" className="productImg">
-                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
-                                    <div>
-                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
-                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
-                                    </div>
-                                </a>
-                                <a href="!#" target="_self" className="productName">
-                                    <h3>코박사키즈 1통</h3>
-                                </a>
-                            </div>
-                            <span>25,000원</span>
-                        </li>
-                        <li>
-                            <div className="recentCont">
-                                <a href="!#" target="_self" className="productImg">
-                                    <img src="/img/mypage/601_main_060.jpg" alt="상품"/>
-                                    <div>
-                                        <button type="button"><img alt="장바구니" src="/img/main/best_ico1.png"/></button>
-                                        <button type="button"><img alt="찜하기" src="/img/main/best_ico2.png"/></button>
-                                    </div>
-                                </a>
-                                <a href="!#" target="_self" className="productName">
-                                    <h3>코박사키즈 1통</h3>
-                                </a>
-                            </div>
-                            <span>25,000원</span>
-                        </li>
-                        
-                    </ul>
+                    <div className="prodList">
+                        {recentCont.length===0
+                        ? <p>최근 본 항목이 없습니다.</p>
+                        : (<div className="prodList">{recentCont}</div>)
+                        }
+                    </div>
                 </article>
             </div>
         </div>

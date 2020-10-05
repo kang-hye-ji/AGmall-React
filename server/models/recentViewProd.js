@@ -2,7 +2,10 @@ const mongoose=require('mongoose');
 
 const recentViewProdSchema=mongoose.Schema({
     userId:String,
-    prodId:String,
+    product:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Product'
+    },
     viewDate:Date
 })
 
